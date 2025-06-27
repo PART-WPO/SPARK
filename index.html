@@ -1,0 +1,537 @@
+</div><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Table Design</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <div class="header">
+      <div class="title-with-logo">
+        <img src="data:image/png;base64,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" alt="WPO logo" class="logo">
+        <h1>System for Public Access to Research Knowledge (SPARK)</h1>
+      </div>
+      <div class="title-underline"></div>
+
+    <div class="top-row">
+       <!-- Column 1: Intro Text -->
+      <div class="top-col intro-text">
+        <p>
+          The SPARK tool is designed to increase access to and visibility of research projects funded by the Weather Program Office (WPO). By providing public access to project-level information, including topics, hazards, and related research outputs, SPARK supports WPO’s open science initiative, helping users discover, understand, and apply research knowledge across the Weather Enterprise.
+          <br><br>
+          <strong>Start exploring WPO-funded projects now—search by hazard, topic, or keywords and discover related publications and research outputs using the filters below.</strong>
+        </p>
+      </div>
+  <!-- Column 2: Output Widget -->
+      <div class="output-widget">
+        <div class="widget-title">Total<br>Projects</div>
+        <div class="output-number-box">
+          <div id="output-count" class="output-number">0</div>
+        </div>
+      </div>
+<!-- Column 3: Contact + Feedback Widgets -->
+      <div class="top-col contact-feedback">
+        <div class="widget contact-widget">
+          <h3 class="widget-header"><strong>Contact Information:</strong></h3>
+          <p>PART Program<br>
+          <a href="mailto:part.wpo@noaa.gov" style="text-decoration: underline;">part.wpo@noaa.gov</a></p>
+        </div>
+        <div class="widget feedback-widget">
+          <div class="widget-content">
+            <h3 class="widget-header"><strong>Have feedback for us?</strong></h3>
+            <p>
+              Submit your feedback through our<br>
+              <a href="https://forms.gle/RV3HyXy9s8B2cEfY8" target="_blank" style="text-decoration: underline;">Google Form</a>!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+ <div class="hazard-nav">
+  <div class="hazard-button-wrapper">
+  <button class="hazard-button all" data-hazard="ALL">
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/all-hazards.png" alt="All" />
+  </button>
+  <div class="hazard-label">ALL</div>
+</div>
+   <div class="hazard-button-wrapper">
+  <button class="hazard-button severe" data-hazard="SEVERE">
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/severe%20(1).png" alt="Severe" />
+  </button>
+  <div class="hazard-label">SEVERE</div>
+</div>
+   <div class="hazard-button-wrapper">
+  <button class="hazard-button temps" data-hazard="EXTREME TEMPS">
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/extremetemp.png" alt="Extreme Temps" />
+  </button>
+  <div class="hazard-label">EXTREME TEMPS</div>
+</div>
+     <div class="hazard-button-wrapper">
+  <button class="hazard-button water" data-hazard="WATER">
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/flooding.png" alt="Water" />
+  </button>
+  <div class="hazard-label">WATER</div>
+</div>
+  <div class="hazard-button-wrapper">
+  <button class="hazard-button fire" data-hazard="FIRE">
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/fire%20weather.png" alt="Fire" />
+  </button>
+  <div class="hazard-label">FIRE</div>
+</div>
+  <div class="hazard-button-wrapper">
+  <button class="hazard-button tropical" data-hazard="TROPICAL">
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/tropical%20(1).png" alt="Tropical" />
+  </button>
+  <div class="hazard-label">TROPICAL</div>
+</div>
+     <div class="hazard-button-wrapper">
+  <button class="hazard-button winter" data-hazard="WINTER">
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/winter%20(2).png" alt="Winter" />
+  </button>
+  <div class="hazard-label">WINTER</div>
+</div>
+  <div class="hazard-button-wrapper">
+  <button class="hazard-button air-quality" data-hazard="AIR QUALITY">
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/air%20quality%20(2).png" alt="Air Quality" />
+  </button>
+  <div class="hazard-label">AIR QUALITY</div>
+</div>
+</div>
+      
+      
+   <!-- Search & Filter Section with Light Blue Background -->
+<div class="filters-container">
+
+  <!-- Top Search Row -->
+  <div class="filter-row">
+  <!-- Left: Search + Dropdown -->
+  <div class="filter-inputs">
+    <div class="filter-group">
+      <label for="combinedSearch">Search</label>
+      <input type="text" id="combinedSearch" placeholder="Search by keyword" />
+    </div>
+
+  <div class="filter-group">
+     <label for="programFilter">Funded By</label>
+      <select id="programFilter">
+      <option value="">All Programs</option>
+      <option value="Earth Prediction Innovation Center (EPIC)">EPIC</option>
+      <option value="Joint Technology Transfer Initiative (JTTI)">JTTI</option>
+      <option value="Observations">Observations</option>
+      <option value="Social Science">Social Science</option>
+      <option value="Subseasonal to Seasonal (S2S)">S2S</option>
+      <option value="Synoptic">Synoptic</option>
+      <option value="Testbeds">Testbeds</option>
+      <option value="VORTEX">VORTEX</option>
+    </select>
+    </div>
+  </div>
+    
+ <!-- Right: Buttons -->
+  <div class="filter-buttons">
+    <button id= "toggleFilters" class="filter-toggle">
+      <span class="material-icons">tune</span> Filters
+    </button>
+    <button class="reset-btn" onclick="resetFilters()">
+      <span class="material-icons">refresh</span> Reset
+    </button>
+  </div>
+</div>
+
+  <!-- Hidden Popout Filters -->
+  <div class="filters-popout" id="filtersPopout">
+    <!--Row 1--->
+    <div class ="filter-row three-columns">
+    <div class="filter-group">
+      <label for="keyword1Filter">Keyword #1</label>
+      <select id="keyword1Filter">
+        <option value="">All Output Types</option>
+        <option value="1">Journal Articles or Publications</option>
+        <option value="2">Code Releases</option>
+        <option value="3">Data & Instruments</option>
+        <option value="4">Other Outputs</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="keyword2Filter">Keyword #2</label>
+      <select id="keyword2Filter">
+        <option value="">Show All</option>
+        <option value="Open Access">Open Access</option>
+        <option value="Not Open Access">Not Open Access</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="keyword3Filter">Keyword #3</label>
+      <select id="keyword3Filter">
+       <option value="">Show All</option>
+        <option value="Open Access">Open Access</option>
+        <option value="Not Open Access">Not Open Access</option>
+      </select>
+    </div>
+    </div>
+         <!--Row 2--->
+      <div class="filter-row three-columns second-row">
+        <div class="filter-group">
+      <label for="forecastSystem">Forecast System or Model</label>
+      <select id="forecastSystem">
+        <option value="">All Output Types</option>
+        <option value="1">Journal Articles or Publications</option>
+        <option value="2">Code Releases</option>
+        <option value="3">Data & Instruments</option>
+        <option value="4">Other Outputs</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="projectStatus">Project Status</label>
+      <select id="projectStatus">
+        <option value="">Show All</option>
+        <option value="Open Access">Complete</option>
+        <option value="Not Open Access">Active</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="dateRange">Date Range</label>
+    <input type="text" id="dateRange" placeholder="Eg: 05-25-2025 - 06-25-2025" />
+  </div>
+      </div>
+      </div>
+    </div>
+<p id="noResultsMessage" class="no-results">
+  <span class="no-results-title">No results found.</span>
+  <br>
+  Nothing is turning up with that word, phrase, or award number. Please check your filters or try something else.
+</p>
+  <div class="results-container">
+    <div class="faux-header">
+      <div class="cell hazard-icon"></div>
+      <div class="cell title">Title & Project Goal</div>
+      <div class="cell pi">PI Last Name(s)</div>
+      <div class="cell program">Program</div>
+      <div class="cell status">Project Status</div>
+      <div class="cell year">Year Funded</div>
+      <div class="cell link">Link to Outputs</div>
+    </div>
+
+    <div class="faux-row"
+     data-title="Subseasonal Predictability of Fire Weather Metrics for Decision Support"
+     data-goal="The goal of this project is to help predict subseasonal fire weather for operational use."
+     data-description="We propose determining the degree of success in predicting subseasonal fire weather metrics (HDWI, wind, humidity, soil moisture [as a proxy for fuel moisture], precipitation, and temperature) by using the existing retrospective forecasts from Unified Forecast  System (UFS) Subseasonal to Seasonal (S2S) and Subseasonal Experiment (SubX) models. We will also evaluate the impact of calibration, statistical downscaling, dynamical downscaling, and multiple ensemble members on forecast skill (accuracy, reliability, and uncertainty) and usefulness for decision-making with stakeholders. The proposed project will produce a database of retrospective S2S fire weather forecasts and address S2S fire weather prediction tools for use in decision making. We will use existing data from NOAA S2S projects (UFS, SubX) to assess uncertainty, calibration techniques, downscaling (statistical [machine learning] and dynamical [EPIC]), and overall forecast skill and reliability. We will directly engage with stakeholders (USFS, state and federal agencies, industry) to evaluate community needs and interpret generated forecasts. The applied research, proof of concept, and evaluation will provide an actionable path forward for operational S2S fire weather forecasts and may inform additional extreme weather S2S forecast products (e.g., heat, drought)."
+     data-benefits="Increasing the lead time of fire weather metrics will benefit land managers (e.g., California Department of Forestry and Fire Protection [CAL FIRE], US Forest Service (USFS), Southeast Fire Exchange [SEFE]), air managers (e.g., California Air Resources Board [CARB], U.S. Environmental Protection Agency [EPA]), emergency response personnel, forecasters (e.g., National Interagency Fire Center [NIFC], National Interagency Coordination Center [NICC]), and other sectors (e.g., Pacific Gas and Electric [PG&E]) by aiding in planning and allocation of resources. In addition, longer lead times allow more time to communicate potential risks to the public and pre-plan risk mitigation strategies for disadvantaged communities. The forecasts will be generated for the continental U.S., and we expect local- to national-level use."
+     data-keywords="AI/ML, Data Assimilation & Ensembles, Dynamics & Nesting, Forecast Skill Metrics, Decision Support, Unified Forecast System (UFS)"
+     data-award="NA23OAR4590383"
+     data-program="Synoptic"
+     data-performance="August 2023 – July 2025"
+     data-pi="Samantha Kramer"
+     data-orgs="Sonoma Technology, Inc., US Forest Service, University of Miami"
+     data-poc="N/A"
+     data-outputlink="https://part-wpo.github.io/reach-dashboard/?award=NA23OAR4590383"
+     data-icon="https://github.com/PART-WPO/SPARK/raw/18c22c82de3a6351ae035809f5acd2997d995460/fire%20weather.png">
+      <div class="cell hazard-icon">
+        <img src="https://github.com/PART-WPO/SPARK/raw/18c22c82de3a6351ae035809f5acd2997d995460/fire%20weather.png" alt="Wildfire" />
+      </div>
+      <div class="cell title">
+        <strong>Subseasonal Predictability of Fire Weather Metrics for Decision Support</strong>
+        <div>The goal of this project is to help predict subseasonal fire weather for operational use.</div>
+      </div>
+      <div class="cell pi">Tong</div>
+      <div class="cell program">Synoptic</div>
+      <div class ="cell status"><span class="material-icons status-icon complete" title="Complete">
+    check_circle
+  </span></div>
+      <div class="cell year">2023</div>
+      <div class="cell link"><a href="#">View Outputs</a></div>
+    </div>
+
+    <div class="faux-row">
+      <div class="cell hazard-icon">
+        <img src="https://github.com/PART-WPO/SPARK/raw/842c6ee9c8409c1ab195e9e90aa1db190db7a88c/flooding.png" alt="Flooding" />
+      </div>
+      <div class="cell title">
+        <strong>Supporting NWS Post-Fire Flash-Flood Warnings with Multi-Sensor Burn Scar Mapping</strong>
+        <div>To develop prototype near real-time, data-fused burn scar mapping products to improve wildland fire burn scar mapping during and after fire events, resulting in enhanced situational awareness.</div>
+      </div>
+      <div class="cell pi">Batzli</div>
+      <div class="cell program">Observations</div>
+      <div class ="cell status">
+        <span class="material-symbols-outlined status-icon active" title="Active">
+    search_activity
+  </span></div>
+      <div class="cell year">2025</div>
+      <div class="cell link"><a href="#">View Outputs</a></div>
+    </div>
+    <div id="pagination" class="pagination-controls"></div>
+    <p id="pagination-info" class="pagination-info"></p>
+  </div>
+
+  <div class="drawer-overlay" id="projectDrawer">
+  <div class="drawer-content">
+   <div class="drawer-header">
+     <div class = "drawer-header-inner">
+   <div class="drawer-context-chip">Fire Weather</div>
+     <img id="drawerIcon" alt="Hazard Icon" />
+  <div class="drawer-header-content">
+    <div class="drawer-header-row">
+      <div class="drawer-title-group">
+        <h2 id="drawerTitle">Project Title</h2>
+        <p id="drawerGoal">Project Goal</p>
+      </div>
+      <div class="drawer-close" onclick="closeDrawer()">✖</div>
+    </div>
+    <div class="drawer-keywords-row">
+  <div class="keywords-left">
+    <span class="keyword-label">Keywords:</span>
+    <div class="drawer-keywords" id="drawerKeywords"></div>
+  </div>
+  <a href="#" id= "drawerLink" class="output-button"><span class="material-icons toggle-icon">open_in_new</span>View Outputs</a>
+    </div>
+    </div>
+  </div>
+</div>
+
+    <div class="drawer-section collapsible" id="detailsSection">
+  <div class="collapsible-header" onclick="toggleCollapse(this)">
+    <span class="material-icons">info</span>
+    <h3>Project Details</h3>
+    <span class="material-icons toggle-icon">expand_more</span>
+  </div>
+  <div class="collapsible-body">
+    <ul class="drawer-details">
+      <li><strong>Award Number:</strong> <span id="drawerAward"></span></li>
+      <li><strong>WPO Program:</strong> <span id="drawerProgram"></span></li>
+      <li><strong>Period of Performance:</strong> <span id="drawerPeriod"></span></li>
+      <li><strong>Principal Investigators:</strong> <span id="drawerPIs"></span></li>
+      <li><strong>Organizations Involved:</strong> <span id="drawerOrgs"></span></li>
+    </ul>
+  </div>
+</div>
+    
+    <div class="drawer-section collapsible" id= "descriptionSection">
+      <div class="collapsible-header" onclick="toggleCollapse(this)">
+        <span class="material-icons">description</span>
+        <h3>Project Description</h3>
+        <span class="material-icons toggle-icon">expand_more</span>
+      </div>
+      <div class="collapsible-body collapsed">
+        <p id="drawerDescription"></p>
+      </div>
+    </div>
+
+    <div class="drawer-section collapsible" id= "benefitsSection">
+      <div class="collapsible-header" onclick="toggleCollapse(this)">
+        <span class="material-icons">insights</span>
+        <h3>Project Benefits</h3>
+        <span class="material-icons toggle-icon">expand_more</span>
+      </div>
+      <div class="collapsible-body collapsed">
+        <p id="drawerBenefits"></p>
+      </div>
+    </div>
+
+    <div class="drawer-section collapsible" id="transitionSection">
+  <div class="collapsible-header" onclick="toggleCollapse(this)">
+    <span class="material-icons">handshake</span>
+    <h3>Transition Information</h3>
+    <span class="material-icons toggle-icon">expand_more</span>
+  </div>
+  <div class="collapsible-body">
+    <p id="drawerPOC"></p>
+  </div>
+</div>
+  </div>
+</div>
+
+<script>
+function toggleCollapse(header) {
+  const body = header.nextElementSibling;
+  const icon = header.querySelector('.toggle-icon');
+  body.classList.toggle('collapsed');
+  icon.textContent = body.classList.contains('collapsed') ? 'expand_more' : 'expand_less';
+}
+  
+ function collapseAllSectionsExcept(detailsId) {
+  document.querySelectorAll('.drawer-section.collapsible').forEach(section => {
+    const body = section.querySelector('.collapsible-body');
+    const icon = section.querySelector('.toggle-icon');
+    if (section.id === detailsId) {
+      body.classList.remove('collapsed');
+      icon.textContent = 'expand_less';
+    } else {
+      body.classList.add('collapsed');
+      icon.textContent = 'expand_more';
+    }
+  });
+} 
+</script>
+  
+  <script>
+  const allRows = Array.from(document.querySelectorAll('.faux-row'));
+  const container = document.querySelector('.results-container');
+  const pagination = document.getElementById('pagination');
+
+  let currentPage = 1;
+  const itemsPerPage = 15; // TEMP: change to 15 later for real data
+  let initialLoad = true;
+
+  function showPage(page) {
+  container.querySelectorAll('.faux-row').forEach(row => row.style.display = 'none');
+
+  const start = (page - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const total = allRows.length;
+
+  allRows.slice(start, end).forEach(row => row.style.display = 'grid');
+
+  currentPage = page;
+  updatePaginationButtons();
+
+  // Update pagination summary text
+  const info = document.getElementById("pagination-info");
+  info.textContent = `Showing ${start + 1}–${Math.min(end, total)} of ${total} projects`;
+
+  // Only scroll if it's not the first page load
+  if (!initialLoad) {
+    document.querySelector(".results-container").scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+  function updatePaginationButtons() {
+  pagination.innerHTML = '';
+  const totalPages = Math.ceil(allRows.length / itemsPerPage);
+
+  // Previous button
+  if (currentPage > 1) {
+    const prevBtn = document.createElement('button');
+    prevBtn.textContent = '« Prev';
+    prevBtn.className = 'pagination-btn prev';
+    prevBtn.onclick = () => showPage(currentPage - 1);
+    pagination.appendChild(prevBtn);
+  }
+
+  // Page number buttons
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement('button');
+    btn.textContent = i;
+    btn.className = 'pagination-btn';
+    if (i === currentPage) btn.classList.add('active');
+    btn.onclick = () => showPage(i);
+    pagination.appendChild(btn);
+  }
+
+  // Next button
+  if (currentPage < totalPages) {
+    const nextBtn = document.createElement('button');
+    nextBtn.textContent = 'Next »';
+    nextBtn.className = 'pagination-btn next';
+    nextBtn.onclick = () => showPage(currentPage + 1);
+    pagination.appendChild(nextBtn);
+  }
+}
+    
+
+  showPage(currentPage);
+  initialLoad = false;
+    
+  let selectedRow = null;
+    
+function collapseAllSectionsExcept(openSectionId) {
+  document.querySelectorAll('.drawer-section.collapsible').forEach(section => {
+    const body = section.querySelector('.collapsible-body');
+    const icon = section.querySelector('.toggle-icon');
+
+    if (section.id === openSectionId) {
+      body.classList.remove('collapsed');
+      icon.textContent = 'expand_less';
+    } else {
+      body.classList.add('collapsed');
+      icon.textContent = 'expand_more';
+    }
+  });
+}
+    
+    function openDrawer(row) {
+   if (selectedRow) {
+    selectedRow.classList.remove("selected");
+  }
+
+  // Highlight the new row
+  row.classList.add("selected");
+  selectedRow = row;
+  
+  document.getElementById("drawerIcon").src = row.dataset.icon || '';
+  document.getElementById("drawerTitle").textContent = row.dataset.title || '';
+  document.getElementById("drawerGoal").textContent = row.dataset.goal || '';
+  document.getElementById("drawerDescription").textContent = row.dataset.description || '';
+  document.getElementById("drawerBenefits").textContent = row.dataset.benefits || '';
+  document.getElementById("drawerAward").textContent = row.dataset.award || '';
+  document.getElementById("drawerProgram").textContent = row.dataset.program || '';
+  document.getElementById("drawerPeriod").textContent = row.dataset.performance || '';
+  document.getElementById("drawerPIs").textContent = row.dataset.pi || '';
+  document.getElementById("drawerOrgs").textContent = row.dataset.orgs || '';
+  document.getElementById("drawerPOC").textContent = row.dataset.poc || '';
+
+  // Build keyword pills
+  const keywordsContainer = document.getElementById("drawerKeywords");
+  keywordsContainer.innerHTML = "";
+  if (row.dataset.keywords) {
+    const keywords = row.dataset.keywords.split(",");
+    keywords.forEach(word => {
+      const span = document.createElement("span");
+      span.textContent = word.trim();
+      keywordsContainer.appendChild(span);
+    });
+  }
+
+  // Outputs link
+  const link = document.getElementById("drawerLink");
+  link.href = row.dataset.outputlink || "#";
+
+  // Show the drawer
+ collapseAllSectionsExcept("detailsSection");
+  document.getElementById("projectDrawer").classList.add("open");
+  
+}
+
+function closeDrawer() {
+  document.getElementById("projectDrawer").classList.remove("open");
+  
+  if (selectedRow) {
+    selectedRow.classList.remove("selected");
+    selectedRow = null;
+}
+}
+
+// Attach click listeners
+document.querySelectorAll(".faux-row").forEach(row => {
+  row.addEventListener("click", () => openDrawer(row));
+});
+    
+
+  // Toggle filter visibility
+  document.getElementById("toggleFilters").addEventListener("click", function () {
+    const filters = document.getElementById("filtersPopout");
+    filters.classList.toggle("show");
+  });
+
+  function resetFilters() {
+    document.getElementById("combinedSearch").value = "";
+    document.getElementById("programFilter").value = "";
+    document.getElementById("outputTypeFilter").value = "";
+    document.getElementById("openAccessFilter").value = "";
+    document.getElementById("dateRange").value = "";
+    // Also reset search results or reload if needed
+  }
+
+</script>
+
+</body>
+</html>
