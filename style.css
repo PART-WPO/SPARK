@@ -208,7 +208,7 @@ body {
 
 .dashboard-container {
   width: 1200px;
-  height: 2000px;
+  height: 2700px;
   margin: 0 auto;
   padding: 30px;
   box-sizing: border-box;
@@ -262,7 +262,7 @@ body {
   align-items: flex-end;
   gap: 20px;
   justify-content: flex-start;
-  min-width: 360px;
+  min-width: 340px;
   margin-top: 16px;
 }
 
@@ -293,6 +293,7 @@ body {
   font-size: 14px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   display: flex;
+  width: auto;
 }
 
 .cards-grid {
@@ -433,7 +434,6 @@ body {
 
 .filter-row.second-row .filter-group select,
 .filter-row.second-row .filter-group input {
-  min-width: 205px;
   padding: 10px 65px 10px 8px;
   text-indent: 0px;
 }
@@ -893,19 +893,50 @@ body {
   transform: none;
   align-self: flex-start;
   text-align: center;
-  transform: translate(-30px, 10px);
+  transform: translate(-10px, 10px);
   
 }
 
 .drawer-context-chip {
-  background-color: #f7af39;
-  color: white;
+  color: black;
   font-size: 0.7rem;
   text-transform: uppercase;
   padding: 2px 8px;
   border-radius: 999px;
   display: inline-block;
   letter-spacing: 0.03em;
+}
+
+.drawer-context-chip.severe {
+  background-color: #f87e7d; 
+}
+
+.drawer-context-chip.extreme-temps {
+  background-color: #ffcd7a; 
+}
+
+.drawer-context-chip.water {
+  background-color: #c6e7c8; 
+}
+
+.drawer-context-chip.fire {
+  background-color: #ffe1af;
+}
+
+.drawer-context-chip.tropical {
+  background-color: #ffccd2; 
+}
+
+.drawer-context-chip.winter {
+  background-color: #f5b3f9; /* Blue for Winter */
+}
+
+.drawer-context-chip.air-quality {
+  background-color: #ebc7ef;
+}
+
+.drawer-context-chip.all-hazards {
+  background-color: #bdbdbd;
 }
 
 .faux-row.selected {
@@ -1089,4 +1120,90 @@ display: flex;
   .output-button {
     margin-top: 8px;
   }
+}
+
+/* Style for the active button */
+.hazard-button.active {
+  border: 2px solid #0066cc;  /* Example: Add a border to the active button */
+  box-shadow: 0px 0px 10px rgba(0, 102, 204, 0.6);  /* Optional: Add a shadow effect */
+}
+
+.multi-select-dropdown {
+  position: relative;
+  user-select: none;
+}
+
+.multi-select-selected {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 14px;
+  cursor: pointer;
+  display: flex;
+  border-radius: 999px;
+  font-size: 14px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  color: #000000;
+}
+
+.multi-select-options {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 999;
+  width: 100%;
+}
+
+.multi-select-options label {
+  display: block;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.multi-select-options input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.my-choices-wrapper .choices__inner {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 2px solid #cccccc;
+  width: 96%;
+
+}
+
+.my-choices-wrapper .choices__list--multiple .choices__item {
+  background-color: #0077cc;
+  color: white;
+  border-radius: 16px;
+  padding: 4px 10px;
+  margin: 4px 6px 4px 0;
+  font-weight: 500;
+}
+
+.my-choices-wrapper .choices__button {
+  color: white;
+  border-left: 1px solid rgba(255,255,255,0.4);
+  margin-left: 8px;
+  padding-left: 6px;
+}
+
+.choices__input--cloned {
+  min-width: 200px !important;
+  width: auto !important;
+}
+  
+.custom-optgroup-label {
+  background-color: #e6f0f8;
+  color: white !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  border-top: 1px solid #004080;
+  text-transform: uppercase;
+  opacity: 1 !important;
 }
