@@ -1,4 +1,4 @@
-</div><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -29,7 +29,7 @@
         <p>
           The SPARK tool is designed to increase access to and visibility of research projects funded by the Weather Program Office (WPO). By providing public access to project-level information, including topics, hazards, and related research outputs, SPARK supports WPO’s open science initiative, helping users discover, understand, and apply research knowledge across the Weather Enterprise.
           <br><br>
-          <strong>Start exploring WPO-funded projects now—search by hazard, topic, or keywords and discover related publications and research outputs using the filters below.</strong>
+          <strong>Explore WPO‑funded projects now. Filter by hazard, keyword, or other criteria—and then click any project row in the table below to view full details.</strong>
         </p>
       </div>
   <!-- Column 2: Output Widget -->
@@ -60,49 +60,58 @@
 
  <div class="hazard-nav">
   <div class="hazard-button-wrapper">
-  <button class="hazard-button all" data-hazard="ALL">
+  <button class="hazard-button all" data-hazard="ALL"
+          data-tooltip="This includes studies that are relevant to all weather hazards">
     <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/all-hazards.png" alt="All" />
   </button>
   <div class="hazard-label">RELEVANT TO ALL</div>
 </div>
    <div class="hazard-button-wrapper">
-  <button class="hazard-button severe" data-hazard="SEVERE">
+  <button class="hazard-button severe" 
+     data-hazard="SEVERE"
+     data-tooltip="This includes studies involving tornadoes, thunderstorms, hail, and straight‑line winds">
     <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/severe%20(1).png" alt="Severe" />
   </button>
   <div class="hazard-label">SEVERE</div>
 </div>
    <div class="hazard-button-wrapper">
-  <button class="hazard-button temps" data-hazard="EXTREME TEMPS">
+  <button class="hazard-button temps" data-hazard="EXTREME TEMPS"
+          data-tooltip="This includes studies involving extreme cold and hot temperatures">
     <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/extremetemp.png" alt="Extreme Temps" />
   </button>
   <div class="hazard-label">EXTREME TEMPS</div>
 </div>
      <div class="hazard-button-wrapper">
-  <button class="hazard-button water" data-hazard="WATER">
+  <button class="hazard-button water" data-hazard="WATER"
+          data-tooltip="This includes studies involving extreme precipitation, flooding, drought, and atmospheric rivers">
     <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/flooding.png" alt="Water" />
   </button>
   <div class="hazard-label">WATER</div>
 </div>
   <div class="hazard-button-wrapper">
-  <button class="hazard-button fire" data-hazard="FIRE">
+  <button class="hazard-button fire" data-hazard="FIRE"
+          data-tooltip="This includes studies involving wildfires and fire weather">
     <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/fire%20weather.png" alt="Fire" />
   </button>
   <div class="hazard-label">FIRE</div>
 </div>
   <div class="hazard-button-wrapper">
-  <button class="hazard-button tropical" data-hazard="TROPICAL">
+  <button class="hazard-button tropical" data-hazard="TROPICAL"
+          data-tooltip="This includes studies involving tropical cyclones, hurricanes, hurricane-force winds, and storm surge">
     <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/tropical%20(1).png" alt="Tropical" />
   </button>
   <div class="hazard-label">TROPICAL</div>
 </div>
      <div class="hazard-button-wrapper">
-  <button class="hazard-button winter" data-hazard="WINTER">
+  <button class="hazard-button winter" data-hazard="WINTER"
+          data-tooltip="This includes studies involving winter weather, blizzards, snow, sleet, etc.">
     <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/winter%20(2).png" alt="Winter" />
   </button>
   <div class="hazard-label">WINTER</div>
 </div>
   <div class="hazard-button-wrapper">
-  <button class="hazard-button air-quality" data-hazard="AIR QUALITY">
+  <button class="hazard-button air-quality" data-hazard="AIR QUALITY"
+          data-tooltip_air-quality="This includes studies involving air pollution and smoke">
     <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/air%20quality%20(2).png" alt="Air Quality" />
   </button>
   <div class="hazard-label">AIR QUALITY</div>
@@ -119,7 +128,7 @@
   <div class="filter-inputs">
     <div class="filter-group">
       <label for="combinedSearch">Search</label>
-      <input type="text" id="combinedSearch" placeholder="Search by Keyword" />
+      <input type="text" id="combinedSearch" placeholder="Search By Topic" />
     </div>
 
   <div class="filter-group">
@@ -212,7 +221,7 @@
     <option value="Risk Perception & Response">Risk Perception & Response</option>
     <option value="Social Vulnerability">Social Vulnerability</option>
     <option value="Societal Impacts & Outcomes">Societal Impacts & Outcomes</option>
-    <option value="Social, Behavioral, and Economic Sciences (SBES)">Social, Behavioral, and Economic Sciences (SBES)</option>
+    <option value="Social Science (SBES)">Social Science (SBES)</option>
     <option value="Visual Risk Communication">Visual Risk Communication</option>
   </optgroup>
   <optgroup label="Social Science Methods">
@@ -454,7 +463,8 @@
       <div class="cell year">Year Funded</div>
       <div class="cell link">Link to Outputs</div>
     </div>
-      </div>
+      <div class = "rows-container"></div>
+    
     <div id="pagination" class="pagination-controls"></div>
     <p id="pagination-info" class="pagination-info"></p>
   </div>
@@ -540,14 +550,45 @@
   </div>
 </div>
       
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <script             src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 
 <script>
+// At the top of your SPARK script
+  let countsMap = {};
+document.addEventListener("DOMContentLoaded", () => {
+  const reachCountsCsv  = "https://raw.githubusercontent.com/PART-WPO/reach-dashboard/refs/heads/main/Open%20Science%20Report%20(GitHub)%20-%20Open%20Science%20Report%20(1).csv";
+  const sparkProjectsCsv = "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/SPARK%20Report%20-%20SPARK%20Report.csv";
+  
+   // 1) Load counts first
+  Papa.parse(reachCountsCsv, {
+    download: true,
+    header: true,
+    complete(r) {
+    countsMap = r.data.reduce((acc,row) => {
+        const aw = (row["Award Number(s)"]||"").trim();
+        if (aw) acc[aw] = (acc[aw]||0) + 1;
+        return acc;
+      }, {});
+
+      // 2) Now that countsMap is ready, load & render projects
+      Papa.parse(sparkProjectsCsv, {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete(r2) {
+          populateRows(r2.data);
+          disableZeroButtons(countsMap);
+        }
+      });
+    }
+  });
+});
+  
+ 
 let keywordChoices;
 let modelChoices;
 let selectedModels = [];
 let selectedStatus = "";
-  const csvUrl = "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/SPARK%20Report%20-%20SPARK%20Report.csv";
 
 const allRows = [];
 const itemsPerPage = 10;
@@ -555,142 +596,117 @@ let currentPage = 1;
 let initialLoad = true;
 let selectedRow = null;
 
-// Load and parse the CSV
-fetch(csvUrl)
-  .then(response => response.text())
-  .then(csvText => {
-    Papa.parse(csvText, {
-      header: true,
-      skipEmptyLines: true,
-      complete: function (results) {
-        populateRows(results.data);
-      }
-    });
-  });
-
 function populateRows(projects) {
-  const resultsContainer = document.querySelector('.results-container');
+  // 1) grab & clear the container + reset our allRows array
+  const rowsContainer = document.querySelector('.rows-container');
+  rowsContainer.innerHTML = '';
+  allRows.length = 0;
 
-  // Clear previous rows before adding new ones
-  resultsContainer.innerHTML = '';
-  
-  // Sort projects by "Year Funded" in descending order (most recent first)
+  // 2) sort projects by Year Funded descending
   projects.sort((a, b) => {
-    const yearA = parseInt(a["Year Funded"], 10);
-    const yearB = parseInt(b["Year Funded"], 10);
-
-    // If "Year Funded" is not a valid number, default it to 0
-    if (isNaN(yearA)) return 1;
-    if (isNaN(yearB)) return -1;
-
-    return yearB - yearA;  // Descending order
+    const ya = parseInt(a["Year Funded"], 10) || 0;
+    const yb = parseInt(b["Year Funded"], 10) || 0;
+    return yb - ya;
   });
 
-  // Add rows from the CSV data
+  // 3) collect unique years & states (once)
+  const yearSet  = new Set();
+  const stateSet = new Set();
+  projects.forEach(p => {
+    const y = parseInt(p["Year Funded"], 10);
+    if (!isNaN(y)) yearSet.add(y);
+
+    if (p["State"]) {
+      p["State"]
+        .split(',')
+        .map(s => s.trim())
+        .forEach(s => stateSet.add(s));
+    }
+  });
+
+  // 4) populate the Year filter dropdown
+  const yearSelect = document.getElementById("yearFilter");
+  if (yearSelect) {
+    yearSelect.innerHTML = `<option value="">All Years</option>`;
+    Array.from(yearSet)
+      .sort((a, b) => b - a)
+      .forEach(year => yearSelect.append(new Option(year, year)));
+  }
+
+  // 5) populate the State filter dropdown
+  const stateSelect = document.getElementById("projectState");
+  if (stateSelect) {
+    stateSelect.innerHTML = `<option value="">Show All</option>`;
+    Array.from(stateSet)
+      .sort()
+      .forEach(st => stateSelect.append(new Option(st, st)));
+  }
+
+  // 6) now build each row
   projects.forEach(project => {
     const row = document.createElement('div');
+    const rawH = project["Weather Hazard"] || "";
+    const defaultIconHtml = project["Weather Hazard Icon"];
+    const iconHtml        = getHazardIconHtml(rawH, defaultIconHtml);
     row.classList.add('faux-row');
     
-   // Extract unique years from the data
-const yearSet = new Set();
 
-projects.forEach(project => {
-  const year = project["Year Funded"];
-  if (year && !isNaN(parseInt(year))) {
-    yearSet.add(year);
-  }
-});
+    // —— set all of your data‑ attributes —— 
+    row.dataset.title          = project["Project Title"]  || '';
+    row.dataset.goal           = project["Project Goal"]   || '';
+    row.dataset.description    = project["Project Description"]                        || '';
+    row.dataset.hazard         = project["Weather Hazard"]                            || '';
+    row.dataset.benefits       = project["Project Benefits"]                          || '';
+    row.dataset.keywords       = project["Combined Keywords"]                         || '';
+    row.dataset.award          = project["Award Number(s)"]                           || '';
+    row.dataset.program        = project["Managing WPO Program"]                     || '';
+    row.dataset.performance    = project["Period of Performance"]                     || '';
+    row.dataset.pi             = project["PI Last Name"]                             || '';
+    row.dataset.orgs           = project["Affiliations (Comma Separated)"]           || '';
+    row.dataset.partner        = project["Transition Partner Spelled Out"]            || '';
+    row.dataset.poc            = project["Transition POC"]                            || '';
+    row.dataset.outputlink     = project["REACH URLs"]                                || '';
+    row.dataset.icon           = project["Weather Hazard Icon"]                      || '';
+    row.dataset.state          = project["State"]                                      || '';
+    row.dataset.combinedsearch = project["Combined Search"]                           || '';
+    row.dataset.models         = project["Associated Forecast Systems & Models"]      || '';
+    row.dataset.year           = project["Year Funded"]                               || '';
+    row.dataset.status         = project["Project Status"]                           || '';
+    row.dataset.piFullName         = project["Principal Investigator"]                           || '';
+
+ 
     
- // Extract unique states from the data
-const stateSet = new Set();
-
-projects.forEach(project => {
-  const state = project["State"];
-  if (state) {
-    // If there are comma-separated states, split and add each
-    state.split(",").forEach(s => stateSet.add(s.trim()));
-  }
-});
-
-// Convert to array and sort alphabetically
-const sortedStates = Array.from(stateSet).sort();
-
-// Populate the stateFilter dropdown
-const stateSelect = document.getElementById("projectState");
-if (stateSelect) {
-  stateSelect.innerHTML = `<option value="">Show All</option>`; // Clear existing
-
-  sortedStates.forEach(state => {
-    const option = document.createElement("option");
-    option.value = state;
-    option.textContent = state;
-    stateSelect.appendChild(option);
-  });
-}   
-
-// Convert to array and sort (most recent first)
-const sortedYears = Array.from(yearSet).sort((a, b) => b - a);
-
-// Populate the yearFilter dropdown
-const yearSelect = document.getElementById("yearFilter");
-if (yearSelect) {
-  // Clear any existing options except "All Years"
-  yearSelect.innerHTML = `<option value="">All Years</option>`;
-
-  sortedYears.forEach(year => {
-    const option = document.createElement("option");
-    option.value = year;
-    option.textContent = year;
-    yearSelect.appendChild(option);
-  });
-} 
-
-    // Set all drawer-related data attributes
-    row.dataset.title = project["Project Title"] || '';
-    row.dataset.goal = project["Project Goal"] || '';
-    row.dataset.description = project["Project Description"] || '';
-    row.dataset.hazard = project["Weather Hazard"] || '';
-    row.dataset.benefits = project["Project Benefits"] || '';
-    row.dataset.keywords = project["Combined Keywords"] || '';
-    row.dataset.award = project["Award Number(s)"] || '';
-    row.dataset.program = project["Managing WPO Program"] || '';
-    row.dataset.performance = project["Period of Performance"] || '';
-    row.dataset.pi = project["PI Last Name"] || '';
-    row.dataset.orgs = project["Affiliations (Comma Separated)"] || '';
-    row.dataset.partner = project["Transition Partner Spelled Out"];
-    row.dataset.poc = project["Transition POC"] || '';
-    row.dataset.outputlink = project["REACH URLs"] || '';
-    row.dataset.icon = project["Weather Hazard Icon"] || '';
-    row.dataset.state = project["State"] || '';
-    row.dataset.hazard = project["Weather Hazard"] || '';
-    row.dataset.combinedsearch = project["Combined Search"] || '';
-    row.dataset.models = project["Associated Forecast Systems & Models"] || '';
-    row.dataset.year = project["Year Funded"] || '';
-    row.dataset.status = project["Project Status"] || '';
-
+    // —— inject your cells —— 
     row.innerHTML = `
-      <div class="cell hazard-icon">${project["Weather Hazard Icon"]}</div>
-      <div class="cell title"><strong>${project["Project Title"]}</strong><div>${project["Truncated Project Goal"]}</div></div>
+      <div class="cell hazard-icon">${iconHtml}</div>
+      <div class="cell title">
+        <strong>${project["Project Title"]}</strong>
+        <div>${project["Truncated Project Goal"] || ''}</div>
+      </div>
       <div class="cell pi">${project["PI Last Name"]}</div>
       <div class="cell program">${project["Managing WPO Program"]}</div>
       <div class="cell status">${project["Status Icon"]}</div>
       <div class="cell year">${project["Year Funded"]}</div>
-      <div class="cell link"><a href="${project["REACH URLs"]}" target="_blank">View Outputs</a></div>
+       <div class="cell link">
+   <a
+  class="view-outputs-btn"
+  data-award="${project["Award Number(s)"].trim()}"
+  href="${project["REACH URLs"]}"
+  target="_blank"
+>View Outputs</a>
+  </div>
     `;
 
+    // 7) drawer opener & append
     row.addEventListener("click", () => openDrawer(row));
-    resultsContainer.appendChild(row);
-    allRows.push(row);  // Add row to the allRows array for filtering
+    rowsContainer.appendChild(row);
+    allRows.push(row);
   });
 
-  // Ensure all rows are visible initially
-  allRows.forEach(row => row.style.display = 'grid');  // Make sure rows are displayed
-
-  // Update the "Total Projects" widget with the total count of rows
+  // 8) ensure they all show, update widget + pagination
+  allRows.forEach(r => r.style.display = 'grid');
   updateTotalProjectsWidget();
-
-  // Call showPage to ensure pagination is initialized correctly
-  showPage(1); // Display the first page (no filters applied yet)
+  showPage(1);
 }
   
 let isPaginationClick = false;  
@@ -971,11 +987,31 @@ function openDrawer(row) {
   document.getElementById("drawerAward").textContent = row.dataset.award || '';
   document.getElementById("drawerProgram").textContent = row.dataset.program || '';
   document.getElementById("drawerPeriod").textContent = row.dataset.performance || '';
-  document.getElementById("drawerPIs").textContent = row.dataset.pi || '';
+  document.getElementById("drawerPIs").textContent = row.dataset.piFullName || '';
   document.getElementById("drawerOrgs").textContent = row.dataset.orgs || '';
   document.getElementById("drawerPOC").textContent = row.dataset.poc || '';
   document.getElementById("drawerPartner").textContent = row.dataset.partner || '';
-  document.getElementById("drawerLink").href = row.dataset.outputlink || "#";
+  
+ const drawerLink = document.getElementById("drawerLink");
+  drawerLink.dataset.award = row.dataset.award;
+  drawerLink.href = row.dataset.outputlink || "#";
+
+  const count = countsMap[row.dataset.award] || 0;
+  if (count === 0) {
+    drawerLink.classList.add("disabled");
+    drawerLink.removeAttribute("href");
+    drawerLink.innerHTML = `<span class="material-icons toggle-icon">block</span>No Outputs`;
+    drawerLink.title = "No outputs reported for this award."; 
+    drawerLink.style.cursor = "not-allowed";
+  } else {
+    drawerLink.classList.remove("disabled");
+    drawerLink.href = row.dataset.outputlink;
+    drawerLink.removeAttribute("title");
+    // ← add this to restore the normal text & icon
+    drawerLink.innerHTML = `<span class="material-icons toggle-icon">open_in_new</span>View Outputs`;
+    drawerLink.style.cursor = "pointer";
+  }
+  
   document.getElementById("drawerState").textContent = row.dataset.state || '';
 
   const keywordsContainer = document.getElementById("drawerKeywords");
@@ -1067,6 +1103,20 @@ selectedYear = "";
   filterTable();
 }
   
+function disableZeroButtons(counts) {
+  document.querySelectorAll(".view-outputs-btn").forEach(btn => {
+    const award = btn.dataset.award;            // e.g. data-award="NA21OAR4590001"
+    const cnt = counts[award] || 0;
+    if (cnt === 0) {
+  btn.classList.add("disabled");
+  btn.removeAttribute("href");
+  btn.textContent = "No Outputs";
+  btn.title = "No outputs reported for this award.";
+  btn.style.cursor = "not-allowed";
+}
+  });
+}  
+  
  // All of your filter listeners go inside your DOMContentLoaded (or top‐level) scope:
 document.addEventListener("DOMContentLoaded", () => {
   // Debounced search
@@ -1104,6 +1154,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });  // <-- only one closing here, for the DOMContentLoaded
+  
+// --- Disable Outputs Button Based on URL like /NA21OAR4590001/0 ---
+const pathParts = window.location.pathname.split('/').filter(Boolean);
+
+if (pathParts.length >= 2 && pathParts[0].startsWith("NA")) {
+  const outputCount = parseInt(pathParts[1], 10);
+
+  if (!isNaN(outputCount) && outputCount === 0) {
+    const outputButton = document.getElementById("output-button");
+    if (outputButton) {
+      outputButton.classList.add("disabled");
+      outputButton.setAttribute("title", "No outputs available for this award.");
+    }
+  }
+}
   
   function debounce(func, delay) {
   let timeout;
@@ -1195,8 +1260,37 @@ airQualityButton.addEventListener('click', function() {
 document.getElementById("reset-btn").addEventListener("click", resetFilters);
   
 let selectedKeywords = [];
+  
+  
+// 1) A little helper to normalize any comma‑list of hazards:
+function normalizeHazardKey(hazardString) {
+  return hazardString
+    .split(',')
+    .map(h => h.trim())
+    .sort()            // <-- alphabetical sort so “A, B” and “B, A” both become “A, B”
+    .join(', ');
+}
 
+// 2) Build your icon lookup using those *normalized* keys:
+const multiHazardIcons = {
+  // keys must already be in sorted order:
+  "Severe Weather, Water Extremes": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/Severe%20%26%20Water.png",
+  "Extreme Temperatures, Water Extremes": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/Temps%20%26%20Water.png",
+  "Severe Weather, Winter Weather": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/Severe%20%26%20Winter.png",
+  "Water Extremes, Winter Weather": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/Winter%20%26%20Water.png",
+  "Severe Weather, Tropical Cyclones": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/Severe%20%26%20Tropical.png",
+  "Severe Weather, Water Extremes, Winter Weather": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/Severe%2C%20Water%2C%20Winter.png",
+  "Severe Weather, Tropical Cyclones, Water Extremes": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/Severe%2C%20Water%2C%20Tropical.png",
+};
 
+// 3) Swap in a lookup that normalizes before you check:
+function getHazardIconHtml(rawHazardString, defaultHtml) {
+  const key = normalizeHazardKey(rawHazardString);
+  if (multiHazardIcons[key]) {
+    return `<img src="${multiHazardIcons[key]}" alt="${key}" />`;
+  }
+  return defaultHtml;
+}
   
 </script>
 
