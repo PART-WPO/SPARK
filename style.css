@@ -468,8 +468,7 @@ body {
   border-top: 2px solid #dce3ea;
 }
 
-.faux-header,
-.faux-row {
+.faux-header {
   display: grid;
   grid-template-columns: 3fr 1.5fr 1.2fr 0.8fr 1fr;
   gap: 20px;
@@ -483,17 +482,6 @@ body {
   color: #ffffff;
   font-size: 14px;
   border-bottom: 1px solid #e3e8ef;
-}
-
-.faux-row {
-  font-size: 14px;
-  color: #2d3748;
-  border-bottom: 1px solid #f0f2f6;
-  transition: background 0.2s ease;
-}
-
-.faux-row:hover {
-  background-color: #f9fbfd;
 }
 
 .cell {
@@ -553,7 +541,7 @@ body {
 .faux-header,
 .faux-row {
   display: grid;
-  grid-template-columns: 60px 4.0fr 1.2fr 0.8fr 1.2fr 0.8fr 1.2fr;
+  grid-template-columns: 60px 4.0fr 1.2fr 0.9fr 1.2fr 0.8fr 1.1fr;
   padding: 16px 24px;
   align-items: center;
   gap: 16px;
@@ -827,7 +815,7 @@ body {
   text-align: center;
 }
 
-.output-button:hover {
+.output-button:not(.disabled):hover {
   background-color: #005fa3;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
 }
@@ -850,7 +838,8 @@ body {
 
 .drawer-keywords-row {
   display: flex;
-  gap: 12px;
+  justify-content: space-between; /* pushes the button to the right edge */
+  align-items: center; 
   
 }
 
@@ -893,18 +882,24 @@ body {
   transform: none;
   align-self: flex-start;
   text-align: center;
-  transform: translate(-10px, 10px);
-  
 }
 
 .drawer-context-chip {
+  display: flex;
+  gap: 6px;
   color: black;
-  font-size: 0.7rem;
+  font-size: 0.73rem;
   text-transform: uppercase;
   padding: 2px 8px;
   border-radius: 999px;
   display: inline-block;
   letter-spacing: 0.03em;
+}
+
+#drawer-context-chip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;    /* space between each chip, both rows & columns */
 }
 
 .drawer-context-chip.severe {
@@ -1206,4 +1201,99 @@ display: flex;
   border-top: 1px solid #004080;
   text-transform: uppercase;
   opacity: 1 !important;
+}
+
+/* hide default title balloon */
+.hazard-button[title] {
+  /* optional: disable default tooltip */
+  /* pointer-events: none; */
+}
+
+/* our custom tooltip */
+.hazard-button[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);   /* 6px gap above the button */
+  left: calc(50% + 50px);
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* little arrow below the tooltip */
+.hazard-button[data-tooltip]:hover::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(0,0,0,0.8);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* our custom tooltip */
+.hazard-button[data-tooltip_air-quality]:hover::after {
+  content: attr(data-tooltip_air-quality);
+  position: absolute;
+  bottom: calc(100% + 6px);   /* 6px gap above the button */
+  left: calc(50% + -50px);
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* little arrow below the tooltip */
+.hazard-button[data-tooltip_air-quality]:hover::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(0,0,0,0.8);
+  pointer-events: none;
+  z-index: 10;
+}
+
+a.view-outputs-btn.disabled {
+  color: #888;               /* gray text */
+  background-color: #efefefff; /* light gray background */
+  border: 1px solid #ccc;    /* if you have borders */
+  opacity: 1;                /* keep text readable */
+  cursor: not‑allowed;       /* show it’s disabled */
+  pointer-events: auto;      /* block clicks */
+}
+
+a.output-button.disabled {
+  color: #888;               /* gray text */
+  background-color: #efefefff; /* light gray background */
+  border: 1px solid #ccc;    /* if you have borders */
+  opacity: 1;                /* keep text readable */
+  cursor: not‑allowed;       /* show it’s disabled */
+  pointer-events: auto;
+}
+.drawer-keywords-row .output-button {
+   margin-left: auto;
+}
+
+a.output-button.disabled:hover {
+  background-color: #efefefff !important;
+}
+
+a.view-outputs-btn.disabled:hover {
+  background-color: #efefefff !important;
 }
