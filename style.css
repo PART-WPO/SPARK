@@ -663,7 +663,7 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  width: 710px;
+  width: clamp(300px, 80%, 710px);
   height: 100%;
   background: white;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
@@ -671,6 +671,7 @@ body {
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
   overflow-y: auto;
+  scroll-behavior: smooth;
   padding: 20px;
   box-sizing: border-box;
   background: #e0ecf9;
