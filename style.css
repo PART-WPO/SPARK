@@ -1,3 +1,10 @@
+html, body {
+  margin: 0;
+  padding: 0;                     /* Move page padding to your container instead */
+  height: auto;
+  overflow: visible;              /* Let the iframe size to content (with parent help) */
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
   background: #f4f7fa;
@@ -66,7 +73,7 @@ body {
 .intro-text {
   flex: 2.5;
   font-size: 14px;
-  align-text: left;
+  text-align: left;
   color: #003366;
 }
 
@@ -176,7 +183,7 @@ body {
 .feedback-widget .widget-header {
   font-size: 16px;
   font-weight: bold;
-  margin: 0 0 4pm 0;
+  margin: 0 0 4px 0;
   color: #1452a8;
 }
 
@@ -207,13 +214,13 @@ body {
 }
 
 .dashboard-container {
-  width: 1200px;
-  height: 2600px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 30px;
   box-sizing: border-box;
   background-color: #fff;
-  overflow-y: auto;
+  overflow: visible;
 }
 
 .header {
@@ -236,6 +243,7 @@ body {
   margin-bottom: 20px;
   margin-top: 5px;
   width: 96.5%;
+  box-sizing: border-box;
 }
 
 .filter-row {
@@ -402,7 +410,7 @@ body {
   cursor: pointer;
   height: 38px;
   align-items: center;
-  justify-center: center;
+  justify-content: center;
 }
 
 .reset-btn:hover {
@@ -527,6 +535,7 @@ body {
   padding: 20px;
   background-color: #ffffff;
   border-radius: 12px;
+  box-sizing: border-box;
 }
 
 .results-container {
@@ -664,7 +673,7 @@ body {
   top: 0;
   right: 0;
   width: clamp(300px, 80%, 710px);
-  height: 100%;
+  max-height: 100vh;
   background: white;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
@@ -675,6 +684,7 @@ body {
   padding: 20px;
   box-sizing: border-box;
   background: #e0ecf9;
+  overscroll-behavior: contain;
 }
 
 .drawer-overlay.open {
@@ -1297,4 +1307,8 @@ a.output-button.disabled:hover {
 
 a.view-outputs-btn.disabled:hover {
   background-color: #efefefff !important;
+}
+
+body.drawer-open {
+  overflow: hidden;
 }
