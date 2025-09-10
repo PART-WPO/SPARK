@@ -469,7 +469,7 @@
     <p id="pagination-info" class="pagination-info"></p>
   </div>
 
-  <div class="drawer-overlay" id="projectDrawer">
+  <div class="drawer-overlay" id="projectDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" tabindex="-1">
   <div class="drawer-content">
    <div class="drawer-header">
      <div class = "drawer-header-inner">
@@ -685,9 +685,7 @@ function populateRows(projects) {
       </div>
       <div class="cell pi">${project["PI Last Name"]}</div>
       <div class="cell program">${project["Managing WPO Program"]}</div>
-      <div class="cell status" title="${project['Project Status']}">
-  ${project["Status Icon"]}
-</div>
+      <div class="cell status">${project["Status Icon"]}</div>
       <div class="cell year">${project["Year Funded"]}</div>
        <div class="cell link">
    <a
@@ -967,11 +965,11 @@ function updateTransitionSectionVisibility() {
 
   // If none of the rows had real values, hide whole section; else show it
   section.style.display = anyRealValue ? '' : 'none';
-}
+}  
+  
   
 // Drawer Logic
 function openDrawer(row) {
-   if (window.ensureDrawerPortaled) window.ensureDrawerPortaled();
   if (selectedRow) selectedRow.classList.remove("selected");
   row.classList.add("selected");
   selectedRow = row;
@@ -1336,9 +1334,8 @@ function getHazardIconHtml(rawHazardString, defaultHtml) {
   
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
-      
-  <script>
+   <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize Choices.js for keywordFilter
   keywordChoices = new Choices("#keywordFilter", {
@@ -1372,20 +1369,15 @@ document.addEventListener("DOMContentLoaded", function () {
     filterTable();
   });
 
-  // 🔑 Option B: Portal the drawer into <body> to avoid clipping
-  const drawer = document.getElementById("projectDrawer");
-  if (drawer && drawer.parentElement !== document.body) {
-    document.body.appendChild(drawer);
-  }
-
-  // (optional helper, if you want to re-check each time before opening)
-  window.ensureDrawerPortaled = () => {
-    if (drawer && drawer.parentElement !== document.body) {
-      document.body.appendChild(drawer);
-    }
-  };
+  // Add custom styling to optgroup headers
+  setTimeout(() => {
+    const groups = document.querySelectorAll('.choices__list--dropdown .choices__group');
+    groups.forEach(group => group.classList.add('custom-optgroup-label'));
+  }, 100);
 });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/iframe-resizer/js/iframeResizer.contentWindow.min.js"></script>
       
 </body>
 </html>
