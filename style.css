@@ -680,9 +680,10 @@ body {
   /* keep your existing styles */
   background: #e0ecf9;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 999999;
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
+  pointer-events: none;
 
   /* IMPORTANT: stop the shell from being a scroll container */
   overflow: hidden;           /* was overflow-y:auto; */
@@ -697,10 +698,13 @@ body {
   overflow: auto;             /* scrolling moves here */
   min-height: 0;              /* critical so the flex child can actually scroll */
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;  /* smooth iOS scroll */
+  overscroll-behavior: contain; 
 }
 
 .drawer-overlay.open {
   transform: translateX(0);
+  pointer-events: auto;
 }
 
 .drawer-close {
@@ -712,6 +716,11 @@ body {
   z-index: 20;
   border-radius: 50%;
   padding: 4px;
+}
+
+.drawer-close:focus-visible {
+  outline: 2px solid #1a73e8;
+  outline-offset: 2px;
 }
 
 .collapsible {
@@ -757,13 +766,13 @@ body {
   top: 0;
   align-items: center;
   gap: 20px;
-  background: transparent;
+  background: #e0ecf9;
   z-index: 1;
   border-radius: 12px;
   padding: 0px;
   margin: 0px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.3s ease; background-color 0.3s ease;
+  transition: box-shadow .3s ease; background-color .3s ease;
   overflow: visible;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -1298,8 +1307,8 @@ a.view-outputs-btn.disabled {
   background-color: #efefefff; /* light gray background */
   border: 1px solid #ccc;    /* if you have borders */
   opacity: 1;                /* keep text readable */
-  cursor: not‑allowed;       /* show it’s disabled */
-  pointer-events: auto;      /* block clicks */
+  cursor: not-allowed;      /* show it’s disabled */
+  pointer-events: none;      /* block clicks */
 }
 
 a.output-button.disabled {
@@ -1307,8 +1316,8 @@ a.output-button.disabled {
   background-color: #efefefff; /* light gray background */
   border: 1px solid #ccc;    /* if you have borders */
   opacity: 1;                /* keep text readable */
-  cursor: not‑allowed;       /* show it’s disabled */
-  pointer-events: auto;
+  cursor: not-allowed;       /* show it’s disabled */
+  pointer-events: none;
 }
 .drawer-keywords-row .output-button {
    margin-left: auto;
@@ -1324,4 +1333,8 @@ a.view-outputs-btn.disabled:hover {
 
 body.drawer-open {
   overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer-overlay, .drawer-content, .toggle-icon { transition: none !important; }
 }
