@@ -3,7 +3,7 @@
 
 The [SPARK](https://wpo.noaa.gov/reach/) is a web-based open-science tool developed by NOAA’s Weather Program Office (WPO) to provide public access to project-level information on WPO-funded research.
 
-SPARK serves as the **entry point** to WPO’s research portfolio, offering a transparent view of active and completed projects and providing a historical look at WPO’s R&D investments. The tool helps users understand what research WPO funds, where it occurs, and how it contributes to advancing NOAA’s mission.
+SPARK serves as the entry point to WPO’s research portfolio, offering a transparent view of active and completed projects and providing a historical look at WPO’s R&D investments. The tool helps users understand what research WPO funds, where it occurs, and how it contributes to advancing NOAA’s mission.
 
 SPARK transforms static project tables into an **interactive, searchable interface**, allowing users to:
 
