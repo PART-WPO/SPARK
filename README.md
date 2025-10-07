@@ -57,8 +57,6 @@ The SPARK interface is a **static HTML/JS app** hosted on GitHub Pages.
 ### Step 6 – Public Embedding
 The live SPARK site is **embedded via iframe** on NOAA WPO’s public WordPress site, allowing users to explore projects without leaving the page.
 
----
-
 ## 🕒 Update & Refresh Process
 
 - A **time-based trigger** runs automatically at the end of each quarter — December (Q1), March (Q2), June (Q3), September (Q4).  
@@ -67,8 +65,6 @@ The live SPARK site is **embedded via iframe** on NOAA WPO’s public WordPress 
   2. Cleans, formats, and enriches the dataset.  
   3. Uploads the new CSV to GitHub.  
 - SPARK automatically fetches the newest CSV on next page load, ensuring users see the most current information.
-
----
 
 ## ⚙️ APIs, Libraries, and External Services
 
@@ -81,8 +77,6 @@ The live SPARK site is **embedded via iframe** on NOAA WPO’s public WordPress 
 | **Choices.js** | Multi-select dropdowns for interactive filtering |
 | **Material Icons** | Provides iconography for the interface |
 
----
-
 ## 🎨 UI/UX Features
 
 - Keyword and text-based search across project titles, goals, and metadata.  
@@ -92,8 +86,6 @@ The live SPARK site is **embedded via iframe** on NOAA WPO’s public WordPress 
 - “View Outputs” button linking directly to related research in **REACH**.  
 - Dynamic status and hazard icons to visually distinguish project activity and focus.  
 - Responsive, accessible layout optimized for both desktop and mobile.
-
----
 
 ## 🚀 Hosting & Deployment
 
@@ -107,34 +99,16 @@ The live SPARK site is **embedded via iframe** on NOAA WPO’s public WordPress 
   6. SPARK fetches CSV dynamically for public display  
   7. SPARK embedded on WPO WordPress site via iframe  
 
----
-
 ## ⚠️ Known Limitations
 
 - SPARK depends on timely and accurate project-level data entry in the WPO Project Directory.  
 - SPARK currently displays only WPO-funded projects and does not yet integrate data from other NOAA offices or partners.  
 - Data rendering relies on GitHub-hosted CSV files, and API rate limits may affect large or frequent updates.
 
----
-
-## 📁 Repository Structure
-
-/
-├── index.html # Main web interface
-├── styling.css # Styling and layout
-├── spark.js # Front-end logic, filtering, drawer
-├── /icons/ # Weather hazard and status icons
-├── SPARK CSV # Cleaned CSV hosted for display
-└── README.md # Documentation
-
----
-
 ## 📜 License
 
 © 2025 NOAA Weather Program Office (WPO).  
 Released under the [Apache 2.0 License](LICENSE).
-
----
 
 ## 📬 Contact
 
