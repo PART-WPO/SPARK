@@ -1,4 +1,4 @@
-# SPARK Tool [![DOI][(https://zenodo.org/badge/996198515.svg)](https://doi.org/10.5281/zenodo.16922908)](https://doi.org/10.5281/zenodo.17872407)  [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
+# SPARK Tool [![DOI][(https://zenodo.org/badge/996198515.svg)](https://doi.org/10.5281/zenodo.17872407)  [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
 **System for Public Access to Research Knowledge** 
 
 The [SPARK](https://wpo.noaa.gov/reach/) is a web-based open-science tool developed by NOAA’s Weather Program Office (WPO) to provide public access to project-level information on WPO-funded research.
