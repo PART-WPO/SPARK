@@ -728,7 +728,9 @@ body {
   border-radius: 10px;
   padding: 16px;
   margin-bottom: 16px;
-  box-shadow: 0 1px 3px rgba(0,0,0,.25);
+  border: 1px solid rgba(2, 6, 23, 0.08);
+  box-shadow: 0 8px 22px rgba(2,6,23,0.06);
+  padding: 16px 16px;
 }
 
 .collapsible-header {
@@ -736,12 +738,23 @@ body {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  transition: background-color 150ms ease, transform 100ms ease;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.collapsible-header *{
+  pointer-events: none;
 }
 
 .collapsible-header h3 {
   margin: 0;
   flex: 1;
   padding-left: 8px;
+  font-size: 1rem;
+  color: #0f172a;
 }
 
 .collapsible-body {
@@ -753,38 +766,41 @@ body {
   display: none;
 }
 
-.collapsible:hover {
+/* Hover styling ONLY when collapsed / not open */
+.collapsible:not(.open):hover {
   box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  background-color: #efefef;
+  transform: translateY(-1px);
+}
+
+/* Optional: keep the transform/shadow even when open, but no bg */
+.collapsible.open:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  transform: translateY(-1px);
+  background-color:#ffffff
 }
 
 .toggle-icon {
-  transition: transform 0.3s;
+  transition: transform 200ms ease;
 }
 
 .drawer-header {
-  position: sticky;
-  top: 0;
-  align-items: center;
-  gap: 20px;
-  background: #e0ecf9;
-  z-index: 1;
-  border-radius: 12px;
-  padding: 0px;
-  margin: 0px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: box-shadow .3s ease; background-color .3s ease;
-  overflow: visible;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  position: relative; /* was sticky; modal-header now sticky */
+  top: auto;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .drawer-header-inner {
-  background-color: #f9fafc;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
+  background: #ffffff; /* subtle slate tint */
+  border-radius: 10px;     /* header feels integrated */
+  padding: 22px 22px 18px;
+  margin: 0;
+  box-shadow: none;
+  border-bottom: 1px solid rgba(2,6,23,0.06);
 }
 
 #drawerIcon {
@@ -817,17 +833,13 @@ body {
 }
 
 .drawer-title-group h2 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #1a202c;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
 }
 
 .drawer-title-group p {
-  font-size: 0.95rem;
-  color: #5c677d;
-  margin: 6px 0 20px 0;
-  max-width: 100%;
+  margin: 8px 0 14px 0;
+  color: #475569; /* slate */
 }
 
 .drawer-keywords span {
@@ -851,6 +863,7 @@ body {
 .output-button:not(.disabled):hover {
   background-color: #005fa3;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
 }
 
 .output-button span.material-icons {
@@ -872,7 +885,8 @@ body {
 .drawer-keywords-row {
   display: flex;
   justify-content: space-between; /* pushes the button to the right edge */
-  align-items: center; 
+  align-items: center;
+  gap: 12px;
   
 }
 
@@ -905,16 +919,19 @@ body {
   align-items: center;
   justify-content: center;
   gap: 4px;
-  padding: 10px 26px;
+  padding: 10px 18px;
   text-decoration: none;
   background: #1a73e8;
   color: white;
-  border-radius: 6px;
+   border-radius: 6px;
   font-size: 0.9rem;
   margin-left: 4px;
   transform: none;
   align-self: flex-start;
   text-align: center;
+  font-weight: 600;
+  box-shadow: 0 2px 12px rgba(26, 115, 232, 0.20);
+  border: 1px solid rgba(26, 115, 232, 0.35);
 }
 
 .drawer-context-chip {
@@ -927,6 +944,8 @@ body {
   border-radius: 999px;
   display: inline-block;
   letter-spacing: 0.03em;
+  font-weight: 500;
+  
 }
 
 #drawer-context-chip {
@@ -956,7 +975,7 @@ body {
 }
 
 .drawer-context-chip.winter {
-  background-color: #5fb3f9ff; /* Blue for Winter */
+  background-color: #f5b3f9; /* Blue for Winter */
 }
 
 .drawer-context-chip.air-quality {
@@ -1338,3 +1357,199 @@ body.drawer-open {
 @media (prefers-reduced-motion: reduce) {
   .drawer-overlay, .drawer-content, .toggle-icon { transition: none !important; }
 }
+
+/* Overlay (dim + subtle blur) */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 9999;
+  background: rgba(15, 23, 42, 0.55); /* deep slate */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Respect hidden */
+.modal-overlay[hidden] { display: none !important; }
+
+/* Modal shell */
+.modal {
+  width: min(980px, calc(100% - 32px));
+  max-height: min(88vh, 920px);
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #e0ecf9;
+  border: 1px solid rgba(2, 6, 23, 0.08);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 00, 0.35),
+    0 2px 10px rgba(0, 0, 0, 0.12);
+
+  transform: translateY(10px) scale(0.985);
+  opacity: 0;
+  animation: modalIn 160ms ease-out forwards;
+}
+
+@keyframes modalIn {
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal { animation: none; transform: none; opacity: 1; }
+}
+
+/* Header stays fixed, body scrolls */
+.modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: linear-gradient(#e0ecf9, #e0ecf9); rgba(255,255,255,0) 100%);
+  padding: 0px 22px 14px 22px;
+}
+
+/* Title styling inside modal header */
+.modal-header h2, 
+.modal-header h1 {
+  margin: 10px 1 8px 0;
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #0f172a;
+}
+
+/* Summary line */
+.modal-header p {
+  margin: 0 0 20px 0;
+  color: #5c677d;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* This is the scroll region */
+.modal-body {
+  flex: 1 1 auto;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; /* iOS/embedded smooth scrolling */
+  overscroll-behavior: contain;       /* prevents scroll chaining */
+   padding: 0px 22px 22px 22px;
+  background: #e0ecf9;                      /* optional; if your drawer sections already have spacing, remove */
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #003087;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+
+  cursor: pointer;
+  transition: transform 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
+}
+
+.modal-close:hover {
+  transform: translateY(-1px);
+  background: #1a73e8;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+}
+
+.modal-close:active {
+  transform: translateY(0);
+}
+
+.modal-close:focus {
+  outline: 2px solid #0b5fff; /* or your theme */
+  outline-offset: 2px;
+}
+
+.modal-close:focus-visible {
+  outline: 2px solid rgba(26, 115, 232, 0.55);
+  outline-offset: 2px;
+
+/* Make the modal truly disappear when the hidden attribute is present */
+.modal-overlay[hidden] {
+  display: none !important;
+}
+
+.modal-overlay[hidden] {
+  pointer-events: none;
+}
+  
+  /* Generic tag style */
+.modal .tag,
+.modal .pill,
+.modal-header .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  background: rgba(2, 132, 199, 0.10); /* light blue */
+  color: #0b4a6f;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Keywords label row spacing */
+.modal-header .keywords-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+  
+  .modal-header .outputs-btn {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  background: #ffffff;
+  color: #334155;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.10);
+}
+
+/* Disabled variant */
+.modal-header .outputs-btn.disabled {
+  background: rgba(148, 163, 184, 0.18);
+  color: rgba(51, 65, 85, 0.65);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+  
+  /* Softer sections inside modal */
+.modal .collapsible {
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+/* Header spacing */
+.modal .collapsible-header {
+  padding: 10px 12px;
+}
+
+/* Body spacing */
+.modal .collapsible-body {
+  padding: 0 12px 12px 12px;
+}
+  
+ 
