@@ -1363,7 +1363,7 @@ body.drawer-open {
   position: fixed;
   inset: 0;
   display: grid;
-  place-items: center;
+  place-items: start center;
   padding: 20px;
   z-index: 9999;
   background: rgba(15, 23, 42, 0.55); /* deep slate */
