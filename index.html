@@ -111,7 +111,7 @@
 </div>
   <div class="hazard-button-wrapper">
   <button class="hazard-button air-quality" data-hazard="AIR QUALITY"
-          data-tooltip="This includes studies involving air pollution and smoke">
+          data-tooltip_air-quality="This includes studies involving air pollution and smoke">
     <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/air%20quality%20(2).png" alt="Air Quality" />
   </button>
   <div class="hazard-label">AIR QUALITY</div>
@@ -469,99 +469,84 @@
     <p id="pagination-info" class="pagination-info"></p>
   </div>
 
-  <div class="modal-overlay" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-describedby="modalDesc" hidden>
-  <div class="modal" role="document">
-    <p id="modalDesc" class="sr-only"> </p
+  <div class="drawer-overlay" id="projectDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" tabindex="-1">
+  <div class="drawer-content">
+   <div class="drawer-header">
+     <div class = "drawer-header-inner">
+   <div class="drawer-context-chip" id= "drawer-context-chip"></div>
+     <img id="drawerIcon" alt="Hazard Icon" />
+  <div class="drawer-header-content">
+    <div class="drawer-header-row">
+      <div class="drawer-title-group">
+        <h2 id="drawerTitle">Project Title</h2>
+        <p id="drawerGoal">Project Goal</p>
+      </div>
+      <div class="drawer-close" onclick="closeDrawer()">✖</div>
+    </div>
+    <div class="drawer-keywords-row">
+  <div class="keywords-left">
+    <span class="keyword-label">Keywords:</span>
+    <div class="drawer-keywords" id="drawerKeywords"></div>
+  </div>
+  <a href="#" id= "drawerLink" class="output-button"><span class="material-icons toggle-icon">open_in_new</span>View Outputs</a>
+    </div>
+    </div>
+  </div>
+</div>
 
-    <!-- Keep your existing content/IDs inside -->
-    <div class="modal-header">
-      <div class="drawer-header"> <!-- reuse your existing header styling if you want -->
-        <div class="drawer-header-inner">
-          <div class="drawer-context-chip" id="drawer-context-chip"></div>
-          <img id="drawerIcon" alt="Hazard Icon" />
-          <div class="drawer-header-content">
-            <div class="drawer-header-row">
-              <div class="drawer-title-group">
-                <h2 id="drawerTitle">Project Title</h2>
-                <p id="drawerGoal">Project Goal</p>
-              </div>
-
-              <!-- IMPORTANT: change onclick target -->
-              <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Close dialog">✖</button>
-            </div>
-
-            <div class="drawer-keywords-row">
-              <div class="keywords-left">
-                <span class="keyword-label">Keywords:</span>
-                <div class="drawer-keywords" id="drawerKeywords"></div>
-              </div>
-              <a href="#" id="drawerLink" class="output-button" target="_blank" rel="noopener">
-                <span class="material-icons toggle-icon">open_in_new</span>View Outputs
-              </a>
-            </div>
-
-          </div>
-        </div>
+    <div class="drawer-section collapsible" id="detailsSection">
+  <div class="collapsible-header" onclick="toggleCollapse(this)">
+    <span class="material-icons">info</span>
+    <h3>Project Details</h3>
+    <span class="material-icons toggle-icon">expand_more</span>
+  </div>
+  <div class="collapsible-body">
+    <ul class="drawer-details">
+      <li><strong>Award Number:</strong> <span id="drawerAward"></span></li>
+      <li><strong>WPO Program:</strong> <span id="drawerProgram"></span></li>
+      <li><strong>Period of Performance:</strong> <span id="drawerPeriod"></span></li>
+      <li><strong>Principal Investigators:</strong> <span id="drawerPIs"></span></li>
+      <li><strong>Organizations Involved:</strong> <span id="drawerOrgs"></span></li>
+      <li><strong>State(s):</strong> <span id="drawerState"></span></li>
+    </ul>
+  </div>
+</div>
+    
+    <div class="drawer-section collapsible" id= "descriptionSection">
+      <div class="collapsible-header" onclick="toggleCollapse(this)">
+        <span class="material-icons">description</span>
+        <h3>Project Description</h3>
+        <span class="material-icons toggle-icon">expand_more</span>
+      </div>
+      <div class="collapsible-body collapsed">
+        <p id="drawerDescription"></p>
       </div>
     </div>
 
-    <!-- Scroll area lives here -->
-    <div class="modal-body" id="modalBody">
-      <!-- Keep ALL your collapsible sections exactly as-is -->
-      <div class="drawer-section collapsible" id="detailsSection">
-        <div class="collapsible-header" onclick="toggleCollapse(this)">
-          <span class="material-icons">info</span>
-          <h3>Project Details</h3>
-          <span class="material-icons toggle-icon">expand_more</span>
-        </div>
-        <div class="collapsible-body collapsed">
-          <ul class="drawer-details">
-            <li><strong>Award Number:</strong> <span id="drawerAward"></span></li>
-            <li><strong>WPO Program:</strong> <span id="drawerProgram"></span></li>
-            <li><strong>Period of Performance:</strong> <span id="drawerPeriod"></span></li>
-            <li><strong>Principal Investigators:</strong> <span id="drawerPIs"></span></li>
-            <li><strong>Organizations Involved:</strong> <span id="drawerOrgs"></span></li>
-            <li><strong>State(s):</strong> <span id="drawerState"></span></li>
-          </ul>
-        </div>
+    <div class="drawer-section collapsible" id= "benefitsSection">
+      <div class="collapsible-header" onclick="toggleCollapse(this)">
+        <span class="material-icons">insights</span>
+        <h3>Project Benefits</h3>
+        <span class="material-icons toggle-icon">expand_more</span>
       </div>
-
-      <div class="drawer-section collapsible" id="descriptionSection">
-        <div class="collapsible-header" onclick="toggleCollapse(this)">
-          <span class="material-icons">description</span>
-          <h3>Project Description</h3>
-          <span class="material-icons toggle-icon">expand_more</span>
-        </div>
-        <div class="collapsible-body collapsed">
-          <p id="drawerDescription"></p>
-        </div>
-      </div>
-
-      <div class="drawer-section collapsible" id="benefitsSection">
-        <div class="collapsible-header" onclick="toggleCollapse(this)">
-          <span class="material-icons">insights</span>
-          <h3>Project Benefits</h3>
-          <span class="material-icons toggle-icon">expand_more</span>
-        </div>
-        <div class="collapsible-body collapsed">
-          <p id="drawerBenefits"></p>
-        </div>
-      </div>
-
-      <div class="drawer-section collapsible" id="transitionSection">
-        <div class="collapsible-header" onclick="toggleCollapse(this)">
-          <span class="material-icons">handshake</span>
-          <h3>Transition Information</h3>
-          <span class="material-icons toggle-icon">expand_more</span>
-        </div>
-        <div class="collapsible-body collapsed">
-          <ul class="drawer-bullets">
-            <li><strong>Transition Point of Contact:</strong> <span id="drawerPOC"></span></li>
-            <li><strong>Operational Partner(s):</strong> <span id="drawerPartner"></span></li>
-          </ul>
-        </div>
+      <div class="collapsible-body collapsed">
+        <p id="drawerBenefits"></p>
       </div>
     </div>
+
+    <div class="drawer-section collapsible" id="transitionSection">
+  <div class="collapsible-header" onclick="toggleCollapse(this)">
+    <span class="material-icons">handshake</span>
+    <h3>Transition Information</h3>
+    <span class="material-icons toggle-icon">expand_more</span>
+  </div>
+  <div class="collapsible-body">
+    <ul class="drawer-bullets">
+      <li><strong>Transition Point of Contact:</strong> <span id="drawerPOC"></span></li>
+      <li><strong>Operational Partner(s):</strong> <span id="drawerPartner"></span></li>
+    </ul>
+  </div>
+</div>
   </div>
 </div>
       
@@ -712,11 +697,6 @@ function populateRows(projects) {
   </div>
     `;
 
-    const outputsLink = row.querySelector(".view-outputs-btn");
-if (outputsLink) {
-  outputsLink.addEventListener("click", (e) => e.stopPropagation());
-}
-    
     // 7) drawer opener & append
     row.addEventListener("click", () => openDrawer(row));
     rowsContainer.appendChild(row);
@@ -987,159 +967,116 @@ function updateTransitionSectionVisibility() {
   section.style.display = anyRealValue ? '' : 'none';
 }  
   
-// Modal helpers (PUT THESE RIGHT ABOVE "// Drawer Logic")
-let lastFocusedElement = null;
+  
+// Drawer Logic
+function openDrawer(row) {
+  if (selectedRow) selectedRow.classList.remove("selected");
+  row.classList.add("selected");
+  selectedRow = row;
+  
+   const weatherHazards = row.dataset.hazard ? row.dataset.hazard.split(',') : ['Unknown Hazard'];  // Get the hazards from the row
+  const contextChipContainer = document.getElementById("drawer-context-chip");
+  
+  // Clear any existing chips
+  contextChipContainer.innerHTML = '';
 
-function openModal() {
-  const modalOverlay = document.getElementById("projectModal");
-  if (!modalOverlay) return;
+  // Create a chip for each hazard in the list
+  weatherHazards.forEach(hazard => {
+    const contextChip = document.createElement('div');
+    contextChip.classList.add('drawer-context-chip');
+    contextChip.textContent = hazard.trim();  // Trim spaces in case of extra spaces
 
-  lastFocusedElement = document.activeElement;
+    // Add appropriate hazard class based on the hazard type
+    switch (hazard.trim()) {
+      case 'Fire Weather':
+        contextChip.classList.add('fire');
+        break;
+      case 'Water Extremes':
+        contextChip.classList.add('water');
+        break;
+      case 'Extreme Temperatures':
+        contextChip.classList.add('extreme-temps');
+        break;
+      case 'Tropical Cyclones':
+        contextChip.classList.add('tropical');
+        break;
+      case 'Winter Weather':
+        contextChip.classList.add('winter');
+        break;
+      case 'Air Quality':
+        contextChip.classList.add('air-quality');
+        break;
+      case 'Relevant to All Hazards':
+        contextChip.classList.add('all-hazards');
+        break;
+      default:
+        contextChip.classList.add('severe');  // Default class if no match
+        break;
+    }
 
-  modalOverlay.hidden = false;
-  document.body.classList.add("modal-open");
+    // Append the new chip to the container
+    contextChipContainer.appendChild(contextChip);
+  });
 
-  const closeBtn = document.getElementById("modalCloseBtn");
-  if (closeBtn) closeBtn.focus();
-}
+  document.getElementById("drawerIcon").src = row.dataset.icon || '';
+  document.getElementById("drawerTitle").textContent = row.dataset.title || '';
+  document.getElementById("drawerGoal").textContent = row.dataset.goal || '';
+  document.getElementById("drawerDescription").textContent = row.dataset.description || '';
+  document.getElementById("drawerBenefits").textContent = row.dataset.benefits || '';
+  document.getElementById("drawerAward").textContent = row.dataset.award || '';
+  document.getElementById("drawerProgram").textContent = row.dataset.program || '';
+  document.getElementById("drawerPeriod").textContent = row.dataset.performance || '';
+  document.getElementById("drawerPIs").textContent = row.dataset.piFullName || '';
+  document.getElementById("drawerOrgs").textContent = row.dataset.orgs || '';
+  document.getElementById("drawerPOC").textContent = row.dataset.poc || '';
+  document.getElementById("drawerPartner").textContent = row.dataset.partner || '';
+  updateTransitionSectionVisibility();
+  
+ const drawerLink = document.getElementById("drawerLink");
+  drawerLink.dataset.award = row.dataset.award;
+  drawerLink.href = row.dataset.outputlink || "#";
 
-function closeModal() {
-  const modalOverlay = document.getElementById("projectModal");
-  if (!modalOverlay) return;
+  const count = countsMap[row.dataset.award] || 0;
+  if (count === 0) {
+    drawerLink.classList.add("disabled");
+    drawerLink.removeAttribute("href");
+    drawerLink.innerHTML = `<span class="material-icons toggle-icon">block</span>No Outputs`;
+    drawerLink.title = "No outputs reported for this award."; 
+    drawerLink.style.cursor = "not-allowed";
+  } else {
+    drawerLink.classList.remove("disabled");
+    drawerLink.href = row.dataset.outputlink;
+    drawerLink.removeAttribute("title");
+    // ← add this to restore the normal text & icon
+    drawerLink.innerHTML = `<span class="material-icons toggle-icon">open_in_new</span>View Outputs`;
+    drawerLink.style.cursor = "pointer";
+  }
+  
+  document.getElementById("drawerState").textContent = row.dataset.state || '';
 
-  modalOverlay.hidden = true;
-  document.body.classList.remove("modal-open");
-
-  if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
-    lastFocusedElement.focus();
+  const keywordsContainer = document.getElementById("drawerKeywords");
+  keywordsContainer.innerHTML = '';
+  if (row.dataset.keywords) {
+    row.dataset.keywords.split(',').forEach(word => {
+      const span = document.createElement('span');
+      span.textContent = word.trim();
+      keywordsContainer.appendChild(span);
+    });
   }
 
+  collapseAllSectionsExcept("detailsSection");
+  document.getElementById("projectDrawer").classList.add("open");
+}
+
+function closeDrawer() {
+  document.getElementById("projectDrawer").classList.remove("open");
   if (selectedRow) {
     selectedRow.classList.remove("selected");
     selectedRow = null;
   }
 }
 
-// Drawer Logic
-function openDrawer(row) {
-  // row highlight
-  if (selectedRow) selectedRow.classList.remove("selected");
-  row.classList.add("selected");
-  selectedRow = row;
-
-  // --- context chips ---
-  const hazardsRaw = row.dataset.hazard || "";
-  const weatherHazards = hazardsRaw ? hazardsRaw.split(",") : ["Unknown Hazard"];
-  const contextChipContainer = document.getElementById("drawer-context-chip");
-  if (contextChipContainer) {
-    contextChipContainer.innerHTML = "";
-
-    weatherHazards.forEach(hazard => {
-      const h = hazard.trim();
-      const chip = document.createElement("div");
-      chip.classList.add("drawer-context-chip");
-      chip.textContent = h;
-
-      switch (h) {
-        case "Fire Weather": chip.classList.add("fire"); break;
-        case "Water Extremes": chip.classList.add("water"); break;
-        case "Extreme Temperatures": chip.classList.add("extreme-temps"); break;
-        case "Tropical Cyclones": chip.classList.add("tropical"); break;
-        case "Winter Weather": chip.classList.add("winter"); break;
-        case "Air Quality": chip.classList.add("air-quality"); break;
-        case "Relevant to All Hazards": chip.classList.add("all-hazards"); break;
-        default: chip.classList.add("severe"); break;
-      }
-
-      contextChipContainer.appendChild(chip);
-    });
-  }
-
-  // --- basic fields ---
-  const setText = (id, val) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = val || "";
-  };
-
-  const icon = document.getElementById("drawerIcon");
-  if (icon) icon.src = row.dataset.icon || "";
-
-  setText("drawerTitle", row.dataset.title);
-  setText("drawerGoal", row.dataset.goal);
-  setText("drawerDescription", row.dataset.description);
-  setText("drawerBenefits", row.dataset.benefits);
-  setText("drawerAward", row.dataset.award);
-  setText("drawerProgram", row.dataset.program);
-  setText("drawerPeriod", row.dataset.performance);
-  setText("drawerPIs", row.dataset.piFullName);
-  setText("drawerOrgs", row.dataset.orgs);
-  setText("drawerPOC", row.dataset.poc);
-  setText("drawerPartner", row.dataset.partner);
-  setText("drawerState", row.dataset.state);
-
-  // hide transition section rows/section when empty
-  updateTransitionSectionVisibility();
-
-  // --- keywords pills ---
-  const keywordsContainer = document.getElementById("drawerKeywords");
-  if (keywordsContainer) {
-    keywordsContainer.innerHTML = "";
-    if (row.dataset.keywords) {
-      row.dataset.keywords.split(",").forEach(word => {
-        const span = document.createElement("span");
-        span.textContent = word.trim();
-        keywordsContainer.appendChild(span);
-      });
-    }
-  }
-
-  // --- outputs link disable/enable (modal header button) ---
-  const drawerLink = document.getElementById("drawerLink");
-  if (drawerLink) {
-    drawerLink.dataset.award = row.dataset.award || "";
-    drawerLink.href = row.dataset.outputlink || "#";
-
-    const awardKey = (row.dataset.award || "").trim();
-    const count = countsMap[awardKey] || 0;
-
-    if (count === 0) {
-      drawerLink.classList.add("disabled");
-      drawerLink.removeAttribute("href");
-      drawerLink.innerHTML = `<span class="material-icons toggle-icon">block</span>No Outputs`;
-      drawerLink.title = "No outputs reported for this award.";
-      drawerLink.style.cursor = "not-allowed";
-    } else {
-      drawerLink.classList.remove("disabled");
-      drawerLink.href = row.dataset.outputlink;
-      drawerLink.removeAttribute("title");
-      drawerLink.innerHTML = `<span class="material-icons toggle-icon">open_in_new</span>View Outputs`;
-      drawerLink.style.cursor = "pointer";
-    }
-  }
-
-  // collapse sections (keep your behavior)
-  collapseAllSections();
-
-  // IMPORTANT: open the MODAL now (not the old drawer)
-  openModal();
-}
-
-function closeDrawer() {
-  // closes modal + clears selection (your closeModal already clears selection too)
-  closeModal();
-}
-
-function collapseAllSections() {
-  document.querySelectorAll('.drawer-section.collapsible').forEach(section => {
-    const body = section.querySelector('.collapsible-body');
-    const icon = section.querySelector('.toggle-icon');
-    if (body) body.classList.add('collapsed');
-    if (icon) icon.textContent = 'expand_more';
-  });
-}
-  
-  
-  function collapseAllSectionsExcept(openSectionId) {
+function collapseAllSectionsExcept(openSectionId) {
   document.querySelectorAll('.drawer-section.collapsible').forEach(section => {
     const body = section.querySelector('.collapsible-body');
     const icon = section.querySelector('.toggle-icon');
@@ -1154,19 +1091,11 @@ function collapseAllSections() {
 }
   
 function toggleCollapse(header) {
-  const section = header.closest('.drawer-section');
   const body = header.nextElementSibling;
   const icon = header.querySelector('.toggle-icon');
-
   body.classList.toggle('collapsed');
-
-  const isCollapsed = body.classList.contains('collapsed');
-
-  icon.textContent = isCollapsed ? 'expand_more' : 'expand_less';
-
-  // Add/remove "open" class on section
-  section.classList.toggle('open', !isCollapsed);
-}
+  icon.textContent = body.classList.contains('collapsed') ? 'expand_more' : 'expand_less';
+}  
 
 // Toggle filters
 document.getElementById("toggleFilters").addEventListener("click", function () {
@@ -1264,25 +1193,6 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("keywordOptions").style.display = "none";
     }
   });
-  
-  // --- Modal close behavior ---
-  const modalOverlay = document.getElementById("projectModal");
-  const closeBtn = document.getElementById("modalCloseBtn");
-
-  if (closeBtn) closeBtn.addEventListener("click", closeModal);
-
-  if (modalOverlay) {
-    modalOverlay.addEventListener("click", (e) => {
-      if (e.target === modalOverlay) closeModal();
-    });
-  }
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modalOverlay && !modalOverlay.hidden) {
-      closeModal();
-    }
-  });
-  
 });  // <-- only one closing here, for the DOMContentLoaded
   
 // --- Disable Outputs Button Based on URL like /NA21OAR4590001/0 ---
@@ -1292,7 +1202,7 @@ if (pathParts.length >= 2 && pathParts[0].startsWith("NA")) {
   const outputCount = parseInt(pathParts[1], 10);
 
   if (!isNaN(outputCount) && outputCount === 0) {
-    const outputButton = document.getElementById("drawerLink");
+    const outputButton = document.getElementById("output-button");
     if (outputButton) {
       outputButton.classList.add("disabled");
       outputButton.setAttribute("title", "No outputs available for this award.");
