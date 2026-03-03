@@ -62,7 +62,7 @@
   <div class="hazard-button-wrapper">
   <button class="hazard-button all" data-hazard="ALL"
           data-tooltip="This includes studies that are relevant to all weather hazards">
-    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/all-hazards.png" alt="All" />
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/all-hazards.png" alt="All" />
   </button>
   <div class="hazard-label">RELEVANT TO ALL</div>
 </div>
@@ -70,49 +70,49 @@
   <button class="hazard-button severe" 
      data-hazard="SEVERE"
      data-tooltip="This includes studies involving tornadoes, thunderstorms, hail, and straight‑line winds">
-    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/severe%20(1).png" alt="Severe" />
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/severe%20(1).png" alt="Severe" />
   </button>
   <div class="hazard-label">SEVERE</div>
 </div>
    <div class="hazard-button-wrapper">
   <button class="hazard-button temps" data-hazard="EXTREME TEMPS"
           data-tooltip="This includes studies involving extreme cold and hot temperatures">
-    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/extremetemp.png" alt="Extreme Temps" />
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/extremetemp.png" alt="Extreme Temps" />
   </button>
   <div class="hazard-label">EXTREME TEMPS</div>
 </div>
      <div class="hazard-button-wrapper">
   <button class="hazard-button water" data-hazard="WATER"
           data-tooltip="This includes studies involving extreme precipitation, flooding, drought, and atmospheric rivers">
-    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/flooding.png" alt="Water" />
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/flooding.png" alt="Water" />
   </button>
   <div class="hazard-label">WATER</div>
 </div>
   <div class="hazard-button-wrapper">
   <button class="hazard-button fire" data-hazard="FIRE"
           data-tooltip="This includes studies involving wildfires and fire weather">
-    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/fire%20weather.png" alt="Fire" />
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/fire%20weather.png" alt="Fire" />
   </button>
   <div class="hazard-label">FIRE</div>
 </div>
   <div class="hazard-button-wrapper">
   <button class="hazard-button tropical" data-hazard="TROPICAL"
           data-tooltip="This includes studies involving tropical cyclones, hurricanes, hurricane-force winds, and storm surge">
-    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/tropical%20(1).png" alt="Tropical" />
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/tropical%20(1).png" alt="Tropical" />
   </button>
   <div class="hazard-label">TROPICAL</div>
 </div>
      <div class="hazard-button-wrapper">
   <button class="hazard-button winter" data-hazard="WINTER"
           data-tooltip="This includes studies involving winter weather, blizzards, snow, sleet, etc.">
-    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/winter%20(2).png" alt="Winter" />
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/winter%20(2).png" alt="Winter" />
   </button>
   <div class="hazard-label">WINTER</div>
 </div>
   <div class="hazard-button-wrapper">
   <button class="hazard-button air-quality" data-hazard="AIR QUALITY"
           data-tooltip_air-quality="This includes studies involving air pollution and smoke">
-    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/air%20quality%20(2).png" alt="Air Quality" />
+    <img src="https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/air%20quality%20(2).png" alt="Air Quality" />
   </button>
   <div class="hazard-label">AIR QUALITY</div>
 </div>
@@ -469,7 +469,7 @@
     <p id="pagination-info" class="pagination-info"></p>
   </div>
 
-  <div class="drawer-overlay" id="projectDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" tabindex="-1">
+  <div class="drawer-overlay" id="projectDrawer">
   <div class="drawer-content">
    <div class="drawer-header">
      <div class = "drawer-header-inner">
@@ -929,45 +929,6 @@ function updatePaginationButtons(visibleRows) {
   }
 }
 
-function isBlankOrNA(v) {
-  if (v == null) return true;
-  const s = String(v).trim().toLowerCase();
-  if (!s) return true;
-  // common "not applicable" patterns you sometimes have in the CSV
-  const naSet = new Set([
-    'n/a', 'na', 'none', 'no', 'null', 'tbd', '—', '-', 'not applicable',
-    'not planned', 'n.a.', 'n\\a', 'n.a', 'n a'
-  ]);
-  return naSet.has(s);
-}
-
-/**
- * Hide the entire Transition section if all its fields are empty/NA,
- * otherwise show it and hide only the empty list items.
- */
-function updateTransitionSectionVisibility() {
-  const section = document.getElementById('transitionSection');
-  if (!section) return;
-
-  // Grab all list items and their <span> value nodes inside the section
-  const items = Array.from(section.querySelectorAll('ul.drawer-bullets > li'));
-  let anyRealValue = false;
-
-  items.forEach(li => {
-    const valueSpan = li.querySelector('span');
-    const val = valueSpan ? valueSpan.textContent : '';
-    const isNA = isBlankOrNA(val);
-
-    // Hide this individual row if empty/NA
-    li.style.display = isNA ? 'none' : '';
-    if (!isNA) anyRealValue = true;
-  });
-
-  // If none of the rows had real values, hide whole section; else show it
-  section.style.display = anyRealValue ? '' : 'none';
-}  
-  
-  
 // Drawer Logic
 function openDrawer(row) {
   if (selectedRow) selectedRow.classList.remove("selected");
@@ -1030,7 +991,6 @@ function openDrawer(row) {
   document.getElementById("drawerOrgs").textContent = row.dataset.orgs || '';
   document.getElementById("drawerPOC").textContent = row.dataset.poc || '';
   document.getElementById("drawerPartner").textContent = row.dataset.partner || '';
-  updateTransitionSectionVisibility();
   
  const drawerLink = document.getElementById("drawerLink");
   drawerLink.dataset.award = row.dataset.award;
@@ -1314,13 +1274,13 @@ function normalizeHazardKey(hazardString) {
 // 2) Build your icon lookup using those *normalized* keys:
 const multiHazardIcons = {
   // keys must already be in sorted order:
-  "Severe Weather, Water Extremes": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/Severe%20%26%20Water.png",
-  "Extreme Temperatures, Water Extremes": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/Temps%20%26%20Water.png",
-  "Severe Weather, Winter Weather": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/Severe%20%26%20Winter.png",
-  "Water Extremes, Winter Weather": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/Winter%20%26%20Water.png",
-  "Severe Weather, Tropical Cyclones": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/Severe%20%26%20Tropical.png",
-  "Severe Weather, Water Extremes, Winter Weather": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/Severe%2C%20Water%2C%20Winter.png",
-  "Severe Weather, Tropical Cyclones, Water Extremes": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/icons/Severe%2C%20Water%2C%20Tropical.png",
+  "Severe Weather, Water Extremes": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/Severe%20%26%20Water.png",
+  "Extreme Temperatures, Water Extremes": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/Temps%20%26%20Water.png",
+  "Severe Weather, Winter Weather": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/Severe%20%26%20Winter.png",
+  "Water Extremes, Winter Weather": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/Winter%20%26%20Water.png",
+  "Severe Weather, Tropical Cyclones": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/Severe%20%26%20Tropical.png",
+  "Severe Weather, Water Extremes, Winter Weather": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/Severe%2C%20Water%2C%20Winter.png",
+  "Severe Weather, Tropical Cyclones, Water Extremes": "https://raw.githubusercontent.com/PART-WPO/SPARK/refs/heads/main/Severe%2C%20Water%2C%20Tropical.png",
 };
 
 // 3) Swap in a lookup that normalizes before you check:
