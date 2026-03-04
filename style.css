@@ -214,13 +214,16 @@ body {
 }
 
 .dashboard-container {
-  max-width: none;
+  max-width: 1200px;
   width: 100%;
+  min-height: 100vh;
+  height: auto;
+  overflow: visible;
   margin: 0 auto;
   padding: 30px;
   box-sizing: border-box;
   background-color: #fff;
-  overflow: visible;
+  overflow-y: auto;
 }
 
 .header {
