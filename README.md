@@ -116,4 +116,7 @@ For questions or feedback, please contact the **WPO Portfolio Analysis and Resea
 📧 **part.wpo@noaa.gov**  
 🌐 [https://wpo.noaa.gov](https://wpo.noaa.gov/)
 
+## Acknowledgements
+SPARK was developed with assistance from OpenAI's GPT-4o and Google's Gemini 2.5 Pro models during summer and fall 2025, which supported software development, code generation, documentation, and iterative design. The author directed the overall system architecture, validated all generated code and content, and was responsible for all final implementation decisions.
+
 ---
