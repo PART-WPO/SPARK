@@ -457,7 +457,6 @@
     <div class="faux-header">
       <div class="cell hazard-icon"></div>
       <div class="cell title">Title & Project Goal</div>
-      <div class="cell pi">PI Last Name(s)</div>
       <div class="cell program">Program</div>
       <div class="cell status">Project Status</div>
       <div class="cell year">Year Funded</div>
@@ -519,7 +518,6 @@
             <li><strong>Award Number:</strong> <span id="drawerAward"></span></li>
             <li><strong>WPO Program:</strong> <span id="drawerProgram"></span></li>
             <li><strong>Period of Performance:</strong> <span id="drawerPeriod"></span></li>
-            <li><strong>Principal Investigators:</strong> <span id="drawerPIs"></span></li>
             <li><strong>Organizations Involved:</strong> <span id="drawerOrgs"></span></li>
             <li><strong>State(s):</strong> <span id="drawerState"></span></li>
           </ul>
@@ -715,7 +713,6 @@ function populateRows(projects) {
     row.dataset.award          = project["Award Number(s)"]                           || '';
     row.dataset.program        = project["Managing WPO Program"]                     || '';
     row.dataset.performance    = project["Period of Performance"]                     || '';
-    row.dataset.pi             = project["PI Last Name"]                             || '';
     row.dataset.orgs           = project["Affiliations (Comma Separated)"]           || '';
     row.dataset.partner        = project["Transition Partner Spelled Out"]            || '';
     row.dataset.poc            = project["Transition POC"]                            || '';
@@ -726,7 +723,6 @@ function populateRows(projects) {
     row.dataset.models         = project["Associated Forecast Systems & Models"]      || '';
     row.dataset.year           = project["Year Funded"]                               || '';
     row.dataset.status         = project["Project Status"]                           || '';
-    row.dataset.piFullName         = project["Principal Investigator(s)"]                           || '';
 
  
     
@@ -737,7 +733,6 @@ function populateRows(projects) {
         <strong>${project["Project Title"]}</strong>
         <div>${project["Truncated Project Goal"] || ''}</div>
       </div>
-      <div class="cell pi">${project["PI Last Name"]}</div>
       <div class="cell program">${project["Managing WPO Program"]}</div>
       <div class="cell status">${project["Status Icon"]}</div>
       <div class="cell year">${project["Year Funded"]}</div>
@@ -1110,7 +1105,6 @@ function openDrawer(row) {
   setText("drawerAward", row.dataset.award);
   setText("drawerProgram", row.dataset.program);
   setText("drawerPeriod", row.dataset.performance);
-  setText("drawerPIs", row.dataset.piFullName);
   setText("drawerOrgs", row.dataset.orgs);
   setText("drawerPOC", row.dataset.poc);
   setText("drawerPartner", row.dataset.partner);
