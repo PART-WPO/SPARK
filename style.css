@@ -553,7 +553,7 @@ body {
 .faux-header,
 .faux-row {
   display: grid;
-  grid-template-columns: 60px 4.0fr 1.2fr 0.9fr 1.2fr 0.8fr 1.1fr;
+  grid-template-columns: 60px 3.7fr 1fr 1.1fr 0.9fr 1.35fr;
   padding: 16px 24px;
   align-items: center;
   gap: 16px;
