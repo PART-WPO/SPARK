@@ -1,6 +1,6 @@
 {
   "feed": "spark-agent-feed",
-  "schema_version": 2,
+  "schema_version": 3,
   "source": {
     "path": "SPARK Report - SPARK Report.csv",
     "bytes": 2089415,
@@ -24,44 +24,48 @@
       "Project Status",
       "Research Keywords",
       "Project Team Affiliations",
+      "Has Primary CI Award",
+      "Primary CI Awards",
+      "Has Related CI Award",
+      "Related CI Awards",
       "Detail File"
     ],
     "files": [
       {
         "path": "agent-data/index/part-001.csv",
-        "rows": 109,
-        "bytes": 48757,
-        "sha256": "789f024dccc794c5a7da0800128f9d29e7ae519938c6ae14496bc5cb356f97a5"
+        "rows": 108,
+        "bytes": 49149,
+        "sha256": "137f074982a6bc63474d64fa94b38a78f88004cb7da6e8d7545e50e2bd0cb66a"
       },
       {
         "path": "agent-data/index/part-002.csv",
-        "rows": 115,
-        "bytes": 48768,
-        "sha256": "a1ace9e34807918ae8a4d67ec3304ed6c4e1a838070d79fa1d29b96a2710538b"
+        "rows": 113,
+        "bytes": 49120,
+        "sha256": "de856eb5d2c6a665a67743e4ceaf6d6b8c7f0e5cfd177df42ddb6f4dc96ccab5"
       },
       {
         "path": "agent-data/index/part-003.csv",
-        "rows": 106,
-        "bytes": 49064,
-        "sha256": "1010540fe17e12bd3f46aa61b66127e07cff66df99ccde03d9f069b7531a8888"
+        "rows": 103,
+        "bytes": 48752,
+        "sha256": "4fbae658c7537b8c44162b45fc01ec0d39e76987c4f17c3f40e1dad39bda5646"
       },
       {
         "path": "agent-data/index/part-004.csv",
-        "rows": 130,
-        "bytes": 48878,
-        "sha256": "e690ddfcfbfb1cd8fa2dbe93c91edc2215cda19890f5c3a3b1ceab4de3a4be1e"
+        "rows": 127,
+        "bytes": 49145,
+        "sha256": "24abca338815d28b7711820796af0ef0c639373a294a65b85cc8f618e9a1dcb3"
       },
       {
         "path": "agent-data/index/part-005.csv",
-        "rows": 117,
-        "bytes": 48865,
-        "sha256": "0b746e94289c7ad9b57e941a8a3324aaf5477a3bdcf1eb1bd71c06940555f5e3"
+        "rows": 114,
+        "bytes": 48924,
+        "sha256": "120631f2f91ff607e3e73bd22cd4b74d4a7536823e2d98b8939bd972d5d92432"
       },
       {
         "path": "agent-data/index/part-006.csv",
-        "rows": 1,
-        "bytes": 871,
-        "sha256": "db7d48fe5985d9d121adce766a6524ddcab1d6059bc09ccdb08023496fb25d91"
+        "rows": 13,
+        "bytes": 5479,
+        "sha256": "9c48a80572264d1a710609a463f2b49a55ca6cc62a92f2f3ae4cf7558f1a169b"
       }
     ]
   },
@@ -75,45 +79,48 @@
       "Project Title",
       "Managing WPO Program",
       "Year Funded",
+      "Is CI Award",
+      "CI Base Award",
+      "CI Identifier Note",
       "Detail File"
     ],
     "rows": 990,
     "files": [
       {
         "path": "agent-data/awards/part-001.csv",
-        "rows": 199,
-        "bytes": 49145,
-        "sha256": "6966c7f165fccc688018f60f347675b745707dedc4973fac460f30b4d6d014a1"
+        "rows": 194,
+        "bytes": 49061,
+        "sha256": "68703d3a66ee62d777d084a2d9b0db95f35981b14fffd777ee9c1d8d7b5a2f15"
       },
       {
         "path": "agent-data/awards/part-002.csv",
-        "rows": 200,
-        "bytes": 49033,
-        "sha256": "4026248758aec91b85600397b18c68f22f3478ad176b2d4b12bf6e511660be61"
+        "rows": 196,
+        "bytes": 49032,
+        "sha256": "52679b0cda472ac7c35f984e54e655e89aed140f98737ca24e7ee099b9f06abb"
       },
       {
         "path": "agent-data/awards/part-003.csv",
-        "rows": 198,
-        "bytes": 48994,
-        "sha256": "149ada0a6700496e3d46646b5e6593d6fceb2ed2ddb4bdd567e3f667c4bffbb4"
+        "rows": 191,
+        "bytes": 49049,
+        "sha256": "614abcb9f5aed23cdc399d8e596875ebc5c962fe6c65aa4be3414fd0ae2a3287"
       },
       {
         "path": "agent-data/awards/part-004.csv",
-        "rows": 193,
-        "bytes": 49007,
-        "sha256": "0ec165441949991394bcfd1ecd993a85a2bf083688a79c4892d39445dd63d8aa"
+        "rows": 189,
+        "bytes": 48954,
+        "sha256": "4e4c8296b73014632bb2e88283cd9017a1e9438061fc95ce871853ccb5625ea5"
       },
       {
         "path": "agent-data/awards/part-005.csv",
-        "rows": 196,
-        "bytes": 49134,
-        "sha256": "37f83314a6f0cf43502d985b434ecf98b40fbf50a16804c719961e655e51bbc6"
+        "rows": 191,
+        "bytes": 49127,
+        "sha256": "d1814bb530e1c7711250b18e106004bcbdc6a0d65f35b94254c2d27d8d01ce64"
       },
       {
         "path": "agent-data/awards/part-006.csv",
-        "rows": 4,
-        "bytes": 1365,
-        "sha256": "0ba5a387c92c882186da9d68bfa7b1e4e06518914aa83bd21be6377931bd0bd3"
+        "rows": 29,
+        "bytes": 7663,
+        "sha256": "0217b019f74714cfdc41bcc48fa4d1588c84e4137625fe242a40fe159b5abd98"
       }
     ]
   },
@@ -433,11 +440,21 @@
   "quality_notes": {
     "projects_without_primary_award_tokens": 19,
     "projects_with_related_award_identifiers": 118,
+    "projects_with_primary_ci_awards": 6,
+    "projects_with_related_ci_awards": 10,
+    "ci_award_lookup_entries": 16,
+    "ci_entries_with_extended_suffixes": 4,
     "unparsed_primary_award_tokens": 191,
     "unparsed_related_award_tokens": 97,
     "duplicate_project_fingerprint_groups": 2
   },
+  "ci_identification": {
+    "rule": "Base award matches NAyyOAR432xxxx or NAyyOAR405xxxx",
+    "subaward_suffixes": "Recognized, and one-letter extensions flagged for manual format verification",
+    "scope": "identifier screening only; NOT proof of funding for any WPO project",
+    "crosswalk": "Treat primary and related CI awards as distinct match types"
+  },
   "identity_note": "Record ID identifies a row in this snapshot only. Project Fingerprint is a matching aid that may change when source metadata changes.",
-  "attribution_warning": "Primary awards, related awards, and umbrella roots are DISTINCT evidence types. Related-award and umbrella-root matches are DISCOVERY LEADS, not proof that an output belongs to a specific WPO-funded project. Verify the linked SPARK workstream and primary funding evidence.",
+  "attribution_warning": "Primary awards, related awards, and CI award classification are DISTINCT evidence types. Related-award and umbrella-root matches are DISCOVERY LEADS, not proof that an output belongs to a specific WPO-funded project. Verify the linked SPARK workstream and primary funding evidence.",
   "retrieval_note": "Read ALL index and award shards for global coverage; inspect Match Basis before interpreting any award relationship. Fetch details only for specific projects. Verify row counts and SHA-256 before declaring any record absent."
 }
