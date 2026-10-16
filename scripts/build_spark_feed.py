@@ -6,8 +6,11 @@ Run from the root of PART-WPO/SPARK:
 Reads the published SPARK CSV. Does NOT change it or the SPARK website.
 Writes only to agent-data/. Python 3.10+; standard library only.
 
-Version 1.1 also indexes Related Award Number(s) separately from primary awards.
-A related-award match is a DISCOVERY LEAD, not project/output attribution.
+Version 1.2 identifies likely Cooperative Institute (CI) awards by the base
+identifier NAyyOAR432xxxx or NAyyOAR405xxxx, including subaward suffixes and
+single-letter extensions. Classification is a screening rule, NOT proof that
+a research output belongs to a specific WPO-funded project. Related awards
+remain discovery leads, not funding attribution.
 """
 
 import csv
@@ -35,19 +38,27 @@ INDEX_COLUMNS = [
     "Related Award Number(s)", "Parsed Related NOAA Awards",
     "Umbrella Award Roots", "Principal Investigator", "Year Funded",
     "Project Status", "Research Keywords", "Project Team Affiliations",
-    "Detail File",
+    "Has Primary CI Award", "Primary CI Awards",
+    "Has Related CI Award", "Related CI Awards", "Detail File",
 ]
 
 AWARD_COLUMNS = [
     "Award Number", "Umbrella Award Root", "Match Basis", "Record ID",
     "Project Fingerprint", "Project Title", "Managing WPO Program",
-    "Year Funded", "Detail File",
+    "Year Funded", "Is CI Award", "CI Base Award",
+    "CI Identifier Note", "Detail File",
 ]
 
 # Legacy NOAA awards: keep any hyphenated subaward suffixes. Newer NOAA
 # identifier formats and non-NOAA internal project codes are also retained
 # as raw lookup values, never silently discarded or presumed equivalent.
 NOAA_AWARD = re.compile(r"\b(NA\d{2}[A-Z]{3}\d{7})(?:-[A-Z0-9]+)*\b", re.I)
+# The user-specified WPO convention: OAR432 and OAR405 identify CI awards.
+# Allow one trailing letter (e.g., NA23OAR4050503I) and hyphenated subaward
+# components; a trailing letter remains "unparsed" under the generic parser.
+CI_AWARD = re.compile(
+    r"^(NA\d{2}OAR(?:432|405)\d{4})(?:[A-Z])?(?:-[A-Z0-9]+)*$", re.I
+)
 EMPTY_IDENTIFIERS = {"N/A", "NA", "NONE", "NOT APPLICABLE", "UNKNOWN", "TBD", "-"}
 
 
@@ -86,6 +97,22 @@ def award_identifiers(raw):
         if token and token not in EMPTY_IDENTIFIERS and token not in unknown:
             unknown.append(token)
     return full, roots, unknown
+
+
+def ci_classification(award):
+    """(CI indicator, base grant, explanatory note), never project attribution.
+
+    A CI-formatted award in a related-award column is still ONLY a lead.
+    Leave extended identifier forms as unparsed in the existing award lookup.
+    """
+    token = (award or "").strip().upper()
+    match = CI_AWARD.fullmatch(token)
+    if not match:
+        return "No", "", ""
+    base = match.group(1).upper()
+    if NOAA_AWARD.fullmatch(token):
+        return "Yes", base, "CI pattern in recognized NOAA award format"
+    return "Yes", base, "CI prefix matched; extended suffix, verify exact identifier"
 
 
 def fingerprint(row):
@@ -174,6 +201,8 @@ def main():
     index_rows, award_rows = [], []
     no_primary_ids, unparsed_primary, unparsed_related = 0, 0, 0
     related_project_count = 0
+    ci_primary_projects, ci_related_projects, ci_award_rows = 0, 0, 0
+    ci_extended_suffix_rows = 0
     for project in details:
         primary, primary_roots, primary_other = award_identifiers(project.get("Award Number(s)"))
         related, related_roots, related_other = award_identifiers(project.get("Related Award Number(s)"))
@@ -183,6 +212,12 @@ def main():
             related_project_count += 1
         unparsed_primary += len(primary_other)
         unparsed_related += len(related_other)
+        primary_ci = [token for token in primary + primary_other
+                      if ci_classification(token)[0] == "Yes"]
+        related_ci = [token for token in related + related_other
+                      if ci_classification(token)[0] == "Yes"]
+        ci_primary_projects += bool(primary_ci)
+        ci_related_projects += bool(related_ci)
 
         common = {
             "Record ID": project["Record ID"],
@@ -198,6 +233,10 @@ def main():
             "Parsed NOAA Awards": "; ".join(primary),
             "Parsed Related NOAA Awards": "; ".join(related),
             "Umbrella Award Roots": "; ".join(dict.fromkeys(primary_roots + related_roots)),
+            "Has Primary CI Award": "Yes" if primary_ci else "No",
+            "Primary CI Awards": "; ".join(primary_ci),
+            "Has Related CI Award": "Yes" if related_ci else "No",
+            "Related CI Awards": "; ".join(related_ci),
         })
 
         for identifiers, basis in [
@@ -208,11 +247,19 @@ def main():
         ]:
             for identifier in identifiers:
                 match = NOAA_AWARD.fullmatch(identifier)
+                ci_flag, ci_root, ci_note = ci_classification(identifier)
+                if ci_flag == "Yes":
+                    ci_award_rows += 1
+                    if not match:
+                        ci_extended_suffix_rows += 1
                 award_rows.append({
                     **common,
                     "Award Number": identifier,
                     "Umbrella Award Root": match.group(1).upper() if match else "",
                     "Match Basis": basis,
+                    "Is CI Award": ci_flag,
+                    "CI Base Award": ci_root,
+                    "CI Identifier Note": ci_note,
                 })
 
     index_files, _ = write_shards(index_rows, INDEX_COLUMNS, DEST / "index")
@@ -226,7 +273,7 @@ def main():
 
     duplicates = Counter(x["Project Fingerprint"] for x in details)
     manifest = {
-        "feed": "spark-agent-feed", "schema_version": 2,
+        "feed": "spark-agent-feed", "schema_version": 3,
         "source": {
             "path": SOURCE.as_posix(), "bytes": len(original),
             "sha256": sha256(original), "rows": len(source_rows),
@@ -237,16 +284,26 @@ def main():
         "quality_notes": {
             "projects_without_primary_award_tokens": no_primary_ids,
             "projects_with_related_award_identifiers": related_project_count,
+            "projects_with_primary_ci_awards": ci_primary_projects,
+            "projects_with_related_ci_awards": ci_related_projects,
+            "ci_award_lookup_entries": ci_award_rows,
+            "ci_entries_with_extended_suffixes": ci_extended_suffix_rows,
             "unparsed_primary_award_tokens": unparsed_primary,
             "unparsed_related_award_tokens": unparsed_related,
             "duplicate_project_fingerprint_groups": sum(v > 1 for v in duplicates.values()),
+        },
+        "ci_identification": {
+            "rule": "Base award matches NAyyOAR432xxxx or NAyyOAR405xxxx",
+            "subaward_suffixes": "Recognized, and one-letter extensions flagged for manual format verification",
+            "scope": "identifier screening only; NOT proof of funding for any WPO project",
+            "crosswalk": "Treat primary and related CI awards as distinct match types",
         },
         "identity_note": (
             "Record ID identifies a row in this snapshot only. Project Fingerprint "
             "is a matching aid that may change when source metadata changes."
         ),
         "attribution_warning": (
-            "Primary awards, related awards, and umbrella roots are DISTINCT evidence "
+            "Primary awards, related awards, and CI award classification are DISTINCT evidence "
             "types. Related-award and umbrella-root matches are DISCOVERY LEADS, not "
             "proof that an output belongs to a specific WPO-funded project. "
             "Verify the linked SPARK workstream and primary funding evidence."
@@ -265,6 +322,8 @@ def main():
     print(f"Index files: {len(index_files)}; award lookup files: {len(awards_files)}; "
           f"detail files: {len(detail_files)}")
     print(f"Award references: {len(award_rows)}; projects with related awards: {related_project_count}")
+    print(f"CI references: {ci_award_rows}; primary-CI projects: {ci_primary_projects}; "
+          f"related-CI projects: {ci_related_projects}; extended CI suffixes: {ci_extended_suffix_rows}")
     print(f"All generated CSV shards <= {MAX_BYTES:,} bytes")
     print("Original SPARK CSV unchanged. Manifest: agent-data/manifest.json")
 
