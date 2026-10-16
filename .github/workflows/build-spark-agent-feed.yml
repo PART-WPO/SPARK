@@ -1,0 +1,85 @@
+
+name: Build SPARK Agent Feed
+
+# Manual testing only for now.
+on:
+  workflow_dispatch:
+
+# Read-only: no publishing to the repository yet.
+permissions:
+  contents: read
+
+jobs:
+  build-feed:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Generate SPARK agent feed
+        run: python scripts/build_spark_feed.py
+
+      - name: Validate generated files
+        run: |
+          python - <<'PY'
+          import csv
+          import hashlib
+          import json
+          from pathlib import Path
+
+          manifest = json.loads(
+              Path("agent-data/manifest.json").read_text(
+                  encoding="utf-8"
+              )
+          )
+
+          source = Path(manifest["source"]["path"])
+          source_bytes = source.read_bytes()
+
+          assert len(source_bytes) == manifest["source"]["bytes"]
+          assert hashlib.sha256(source_bytes).hexdigest() == (
+              manifest["source"]["sha256"]
+          )
+
+          projects = manifest["source"]["rows"]
+
+          for section in ("index", "awards", "details"):
+              total = 0
+
+              for entry in manifest[section]["files"]:
+                  path = Path(entry["path"])
+                  data = path.read_bytes()
+
+                  assert len(data) == entry["bytes"]
+                  assert len(data) <= 48 * 1024
+                  assert hashlib.sha256(data).hexdigest() == (
+                      entry["sha256"]
+                  )
+
+                  with path.open(
+                      newline="", encoding="utf-8"
+                  ) as file:
+                      count = sum(1 for _ in csv.DictReader(file))
+
+                  assert count == entry["rows"]
+                  total += count
+
+              expected = (
+                  manifest["awards"]["rows"]
+                  if section == "awards"
+                  else projects
+              )
+              assert total == expected
+              print(f"{section}: {total} records verified")
+
+          print("SPARK agent feed validation passed!")
+          PY
+
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: spark-agent-feed-preview
+          path: agent-data/
+          if-no-files-found: error
+          retention-days: 7
