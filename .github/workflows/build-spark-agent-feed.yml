@@ -1,13 +1,21 @@
 
 name: Build SPARK Agent Feed
 
-# Manual testing only for now.
+# Run manually or whenever the main SPARK CSV changes.
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'SPARK Report - SPARK Report.csv'
 
-# Read-only: no publishing to the repository yet.
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: spark-agent-feed
+  cancel-in-progress: false
 
 jobs:
   build-feed:
@@ -75,6 +83,22 @@ jobs:
 
           print("SPARK agent feed validation passed!")
           PY
+
+      - name: Publish SPARK agent feed
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Only stage generated agent-data files.
+          git add -A -- agent-data/
+
+          if git diff --cached --quiet; then
+            echo "No changes to the SPARK feed."
+          else
+            git commit -m "Update SPARK Scout agent feed"
+            git push
+          fi
 
       - name: Upload preview artifact
         uses: actions/upload-artifact@v7
