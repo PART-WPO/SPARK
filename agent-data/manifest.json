@@ -1,0 +1,443 @@
+{
+  "feed": "spark-agent-feed",
+  "schema_version": 2,
+  "source": {
+    "path": "SPARK Report - SPARK Report.csv",
+    "bytes": 2089415,
+    "sha256": "3f80a9284712dcb9e9e81efc0857995bdb640285bc25e7e7b6a2a22ae4782be3",
+    "rows": 578
+  },
+  "index": {
+    "columns": [
+      "Record ID",
+      "Project Fingerprint",
+      "Primary",
+      "Project Title",
+      "Managing WPO Program",
+      "Award Number(s)",
+      "Parsed NOAA Awards",
+      "Related Award Number(s)",
+      "Parsed Related NOAA Awards",
+      "Umbrella Award Roots",
+      "Principal Investigator",
+      "Year Funded",
+      "Project Status",
+      "Research Keywords",
+      "Project Team Affiliations",
+      "Detail File"
+    ],
+    "files": [
+      {
+        "path": "agent-data/index/part-001.csv",
+        "rows": 109,
+        "bytes": 48757,
+        "sha256": "789f024dccc794c5a7da0800128f9d29e7ae519938c6ae14496bc5cb356f97a5"
+      },
+      {
+        "path": "agent-data/index/part-002.csv",
+        "rows": 115,
+        "bytes": 48768,
+        "sha256": "a1ace9e34807918ae8a4d67ec3304ed6c4e1a838070d79fa1d29b96a2710538b"
+      },
+      {
+        "path": "agent-data/index/part-003.csv",
+        "rows": 106,
+        "bytes": 49064,
+        "sha256": "1010540fe17e12bd3f46aa61b66127e07cff66df99ccde03d9f069b7531a8888"
+      },
+      {
+        "path": "agent-data/index/part-004.csv",
+        "rows": 130,
+        "bytes": 48878,
+        "sha256": "e690ddfcfbfb1cd8fa2dbe93c91edc2215cda19890f5c3a3b1ceab4de3a4be1e"
+      },
+      {
+        "path": "agent-data/index/part-005.csv",
+        "rows": 117,
+        "bytes": 48865,
+        "sha256": "0b746e94289c7ad9b57e941a8a3324aaf5477a3bdcf1eb1bd71c06940555f5e3"
+      },
+      {
+        "path": "agent-data/index/part-006.csv",
+        "rows": 1,
+        "bytes": 871,
+        "sha256": "db7d48fe5985d9d121adce766a6524ddcab1d6059bc09ccdb08023496fb25d91"
+      }
+    ]
+  },
+  "awards": {
+    "columns": [
+      "Award Number",
+      "Umbrella Award Root",
+      "Match Basis",
+      "Record ID",
+      "Project Fingerprint",
+      "Project Title",
+      "Managing WPO Program",
+      "Year Funded",
+      "Detail File"
+    ],
+    "rows": 990,
+    "files": [
+      {
+        "path": "agent-data/awards/part-001.csv",
+        "rows": 199,
+        "bytes": 49145,
+        "sha256": "6966c7f165fccc688018f60f347675b745707dedc4973fac460f30b4d6d014a1"
+      },
+      {
+        "path": "agent-data/awards/part-002.csv",
+        "rows": 200,
+        "bytes": 49033,
+        "sha256": "4026248758aec91b85600397b18c68f22f3478ad176b2d4b12bf6e511660be61"
+      },
+      {
+        "path": "agent-data/awards/part-003.csv",
+        "rows": 198,
+        "bytes": 48994,
+        "sha256": "149ada0a6700496e3d46646b5e6593d6fceb2ed2ddb4bdd567e3f667c4bffbb4"
+      },
+      {
+        "path": "agent-data/awards/part-004.csv",
+        "rows": 193,
+        "bytes": 49007,
+        "sha256": "0ec165441949991394bcfd1ecd993a85a2bf083688a79c4892d39445dd63d8aa"
+      },
+      {
+        "path": "agent-data/awards/part-005.csv",
+        "rows": 196,
+        "bytes": 49134,
+        "sha256": "37f83314a6f0cf43502d985b434ecf98b40fbf50a16804c719961e655e51bbc6"
+      },
+      {
+        "path": "agent-data/awards/part-006.csv",
+        "rows": 4,
+        "bytes": 1365,
+        "sha256": "0ba5a387c92c882186da9d68bfa7b1e4e06518914aa83bd21be6377931bd0bd3"
+      }
+    ]
+  },
+  "details": {
+    "columns": [
+      "Record ID",
+      "Project Fingerprint",
+      "Primary",
+      "Level",
+      "Project Title",
+      "Project Goal",
+      "Managing WPO Program",
+      "Project Status",
+      "Project Start Date",
+      "Project End Date",
+      "Research Keywords",
+      "Associated Forecast Systems & Models",
+      "Method",
+      "Study Design",
+      "Sample",
+      "Project Description",
+      "Project Benefits",
+      "Transition Partner / Adopter",
+      "Transition POC",
+      "Project Team Affiliations",
+      "Award Number(s)",
+      "Weather Hazard",
+      "State",
+      "Related Award Number(s)",
+      "Related to Another Award?",
+      "Spelled Out Program Name",
+      "Year Funded",
+      "Period of Performance",
+      "Status Icon",
+      "Combined Keywords",
+      "Combined Search",
+      "Transition Partner Spelled Out",
+      "Affiliations (Comma Separated)",
+      "Weather Hazard Icon",
+      "REACH URLs",
+      "Truncated Project Goal",
+      "REACH Output #"
+    ],
+    "files": [
+      {
+        "path": "agent-data/details/part-001.csv",
+        "rows": 17,
+        "bytes": 46854,
+        "sha256": "687d0ff13769142279532ce0581efd0e7e02a2e18354dca681b1db267a752838"
+      },
+      {
+        "path": "agent-data/details/part-002.csv",
+        "rows": 15,
+        "bytes": 47648,
+        "sha256": "1d6f171fc2784ed0ea85a17f56d6d7e9aa8bc02a786921bccc34131c41e0c7d7"
+      },
+      {
+        "path": "agent-data/details/part-003.csv",
+        "rows": 12,
+        "bytes": 47591,
+        "sha256": "70e599772ea0d9368f885458a59e5c6d1cf664603151b050cc3bf47997fe657e"
+      },
+      {
+        "path": "agent-data/details/part-004.csv",
+        "rows": 14,
+        "bytes": 48492,
+        "sha256": "6fa59cd65adb525b936c4b0c3c705da5a8783605371b9bbc019bf840caa61ea5"
+      },
+      {
+        "path": "agent-data/details/part-005.csv",
+        "rows": 14,
+        "bytes": 47972,
+        "sha256": "cbb36bc8dca5361d2ba1bfdf8c97532c01561f02b42c6ac8e9f2c5f3f719f615"
+      },
+      {
+        "path": "agent-data/details/part-006.csv",
+        "rows": 14,
+        "bytes": 48415,
+        "sha256": "e3a5b583239081b8905eca53233d8a21a902752bdf9bc70ddbafbad49d0d7cef"
+      },
+      {
+        "path": "agent-data/details/part-007.csv",
+        "rows": 14,
+        "bytes": 47151,
+        "sha256": "ee837e83d70c3a686cacbf7d9dfa06676c38aa5819112ef8828e93df520088cb"
+      },
+      {
+        "path": "agent-data/details/part-008.csv",
+        "rows": 13,
+        "bytes": 47668,
+        "sha256": "f5ce177e09617ca75e211967e61521690418b705655e90a92a39d17d097617a5"
+      },
+      {
+        "path": "agent-data/details/part-009.csv",
+        "rows": 9,
+        "bytes": 47497,
+        "sha256": "121e0641b200d1180e53b51ed12c05cbc70b624b56da5a2d7281b6a4267b7f2d"
+      },
+      {
+        "path": "agent-data/details/part-010.csv",
+        "rows": 8,
+        "bytes": 46426,
+        "sha256": "8f9ac489bd893aad1d8e4879b0a6054475159cd6e9fcf7466ad0d661c2a2a4b4"
+      },
+      {
+        "path": "agent-data/details/part-011.csv",
+        "rows": 8,
+        "bytes": 46269,
+        "sha256": "71f4a05e1384e110201242f4562728b48a43c75f6ea71f2d3980e566188e56b1"
+      },
+      {
+        "path": "agent-data/details/part-012.csv",
+        "rows": 11,
+        "bytes": 47741,
+        "sha256": "8372478d9ebaa87f3befb0beab782e6d5b7649e038bcbd9fd1156b2894c6a26e"
+      },
+      {
+        "path": "agent-data/details/part-013.csv",
+        "rows": 9,
+        "bytes": 45922,
+        "sha256": "71d0fc4a0938007e930ffa74d0720d88c77e245a00c0a71b9961ccb04a4ad3c8"
+      },
+      {
+        "path": "agent-data/details/part-014.csv",
+        "rows": 14,
+        "bytes": 48201,
+        "sha256": "6019e2337a2490bbb3528c9817eb01d1a1472563d60228e1f24742acc193945c"
+      },
+      {
+        "path": "agent-data/details/part-015.csv",
+        "rows": 15,
+        "bytes": 46477,
+        "sha256": "c7bb4a3103ccd8aadf00eb652c6583ee9598c3feca574b611969021244810889"
+      },
+      {
+        "path": "agent-data/details/part-016.csv",
+        "rows": 16,
+        "bytes": 48904,
+        "sha256": "e102172f7d45da49de337d9282a753a65c5621ed8b8ac18acf162489422a6638"
+      },
+      {
+        "path": "agent-data/details/part-017.csv",
+        "rows": 16,
+        "bytes": 49046,
+        "sha256": "2231f435b01f8f269393ba202325ddfcdf667e3aff9c261d39f12f7d3da81f5c"
+      },
+      {
+        "path": "agent-data/details/part-018.csv",
+        "rows": 12,
+        "bytes": 45368,
+        "sha256": "072c3463f99ae77f2e98cb05fda3c63b4c26c19a1bcef6e050dabf855a94cd28"
+      },
+      {
+        "path": "agent-data/details/part-019.csv",
+        "rows": 11,
+        "bytes": 47643,
+        "sha256": "b6bb808b8948abc073068999ab2a1f7518e7e089e8622b58f3145961dc64497d"
+      },
+      {
+        "path": "agent-data/details/part-020.csv",
+        "rows": 10,
+        "bytes": 47876,
+        "sha256": "33c091df8777fd87f06f485d09769ae9556e158485ff880dd6771517d25b2666"
+      },
+      {
+        "path": "agent-data/details/part-021.csv",
+        "rows": 14,
+        "bytes": 46372,
+        "sha256": "54c9182811789075b76fe5e1890a3373fcf5c1b104393a98937e615192b99097"
+      },
+      {
+        "path": "agent-data/details/part-022.csv",
+        "rows": 14,
+        "bytes": 47727,
+        "sha256": "4c9452b2f875fccf72b68865627545687a21f40d1650dcfb93e259ef45ef9cf3"
+      },
+      {
+        "path": "agent-data/details/part-023.csv",
+        "rows": 14,
+        "bytes": 47827,
+        "sha256": "ad9a0bc2cfa9a1d4efb31152a7727b337e4c325f5a3ccf4745dd29da73bb8531"
+      },
+      {
+        "path": "agent-data/details/part-024.csv",
+        "rows": 17,
+        "bytes": 46259,
+        "sha256": "49d104d1a1891ee3df30e4bc8195813d00f50e60375ae31241f6cdda4f844650"
+      },
+      {
+        "path": "agent-data/details/part-025.csv",
+        "rows": 14,
+        "bytes": 47184,
+        "sha256": "5fd770be036c0d891877e606e64456a41d53c1f27c32cd63a7def92a2bd867b4"
+      },
+      {
+        "path": "agent-data/details/part-026.csv",
+        "rows": 14,
+        "bytes": 45634,
+        "sha256": "f2a1865b788300876eb43d5403f9f5bec0c17636b9a9279094c840e0879dbea4"
+      },
+      {
+        "path": "agent-data/details/part-027.csv",
+        "rows": 9,
+        "bytes": 46363,
+        "sha256": "c74e6576bb63805c7d0cc4e4ca27f57518d9ab2444cf7c7c0449b628db05b2cb"
+      },
+      {
+        "path": "agent-data/details/part-028.csv",
+        "rows": 12,
+        "bytes": 46035,
+        "sha256": "9580dca27d3831fcce0687949ac1b33432ed53f8f610bf46301ab78a90ff366e"
+      },
+      {
+        "path": "agent-data/details/part-029.csv",
+        "rows": 14,
+        "bytes": 47990,
+        "sha256": "bb87a6c02a68a1643f35319c11b2117f477ed941f7c9c56f4d76a5a941c05505"
+      },
+      {
+        "path": "agent-data/details/part-030.csv",
+        "rows": 12,
+        "bytes": 44351,
+        "sha256": "7983109ef9af1fc1e83bda1368d3e66bc65965bc7e6822d4a6af8b685cc234ef"
+      },
+      {
+        "path": "agent-data/details/part-031.csv",
+        "rows": 15,
+        "bytes": 47150,
+        "sha256": "3175ad6e782a1bd80779a8b62d9d3a4cb62dac067262a24ff57d9bd42164a406"
+      },
+      {
+        "path": "agent-data/details/part-032.csv",
+        "rows": 11,
+        "bytes": 45774,
+        "sha256": "d576c32ec5dfa238b2df4b38eb3466ad9f77883a938c9211924ab850628b8444"
+      },
+      {
+        "path": "agent-data/details/part-033.csv",
+        "rows": 11,
+        "bytes": 45467,
+        "sha256": "3ffc1fe6c0a5b22af1c7d6b3c1f6163d866958ff4d512d51f430be338aa0ae5a"
+      },
+      {
+        "path": "agent-data/details/part-034.csv",
+        "rows": 11,
+        "bytes": 48765,
+        "sha256": "f29774749d99b2dd908fe068859cd2723256adc0a6c1a7c9c09bdebe2e1c2a82"
+      },
+      {
+        "path": "agent-data/details/part-035.csv",
+        "rows": 8,
+        "bytes": 47077,
+        "sha256": "dc05f48dd57ca8290cdfbdc93b69800e76be377a20e9b2889cec901e9724d0c6"
+      },
+      {
+        "path": "agent-data/details/part-036.csv",
+        "rows": 11,
+        "bytes": 47741,
+        "sha256": "3ee927e109089f60b889e3bece1b2e06fb85620a3b617ccdcfc8db2351c7d468"
+      },
+      {
+        "path": "agent-data/details/part-037.csv",
+        "rows": 16,
+        "bytes": 45993,
+        "sha256": "2164447fae70a61389a1a78160dc2797cbf6220158e3ac9573f019e6ad27e899"
+      },
+      {
+        "path": "agent-data/details/part-038.csv",
+        "rows": 14,
+        "bytes": 47995,
+        "sha256": "a508e930b16f05b5f059bfd9e52589743b59be2b547a3de62116ccf7f566dd3f"
+      },
+      {
+        "path": "agent-data/details/part-039.csv",
+        "rows": 13,
+        "bytes": 47250,
+        "sha256": "70359e2c90925e939e42416a342e45e5ddee0f26c2c3ffa0fd5a3f1faaf7679a"
+      },
+      {
+        "path": "agent-data/details/part-040.csv",
+        "rows": 13,
+        "bytes": 47120,
+        "sha256": "16a5e371fa5905587dd0c594a50f1775518fef754a538efa1014da9716695574"
+      },
+      {
+        "path": "agent-data/details/part-041.csv",
+        "rows": 15,
+        "bytes": 47820,
+        "sha256": "58d721c58f650d95dab3115dea5d00b38527e3175fe5b911293063bdcf480fec"
+      },
+      {
+        "path": "agent-data/details/part-042.csv",
+        "rows": 12,
+        "bytes": 42045,
+        "sha256": "f8269559e4cf68e525ee6d9625b6ebfde8475ed890a0f1d3b5eff5bbabde164a"
+      },
+      {
+        "path": "agent-data/details/part-043.csv",
+        "rows": 11,
+        "bytes": 46892,
+        "sha256": "4d26da94de5a95d6935d74dd31a443fb87d52d511b7b003d4864189ffed2def9"
+      },
+      {
+        "path": "agent-data/details/part-044.csv",
+        "rows": 16,
+        "bytes": 47847,
+        "sha256": "e6ae22d46bf9b4f4c7c97e8b2b7fe232641a467f2457e49aaf03fb3b6191b939"
+      },
+      {
+        "path": "agent-data/details/part-045.csv",
+        "rows": 15,
+        "bytes": 43239,
+        "sha256": "0595a04ab1ddee019c1c1f54b409338ecbd19e8c86baac7468ae401ca7ff70fc"
+      }
+    ]
+  },
+  "quality_notes": {
+    "projects_without_primary_award_tokens": 19,
+    "projects_with_related_award_identifiers": 118,
+    "unparsed_primary_award_tokens": 191,
+    "unparsed_related_award_tokens": 97,
+    "duplicate_project_fingerprint_groups": 2
+  },
+  "identity_note": "Record ID identifies a row in this snapshot only. Project Fingerprint is a matching aid that may change when source metadata changes.",
+  "attribution_warning": "Primary awards, related awards, and umbrella roots are DISTINCT evidence types. Related-award and umbrella-root matches are DISCOVERY LEADS, not proof that an output belongs to a specific WPO-funded project. Verify the linked SPARK workstream and primary funding evidence.",
+  "retrieval_note": "Read ALL index and award shards for global coverage; inspect Match Basis before interpreting any award relationship. Fetch details only for specific projects. Verify row counts and SHA-256 before declaring any record absent."
+}
