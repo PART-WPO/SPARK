@@ -35,7 +35,7 @@ spark-000017,sparkfp-bccb920efc866634a99f,JTTI,Use of the Stochastic-dynamic App
 NA17OAR4590173
 NA17OAR4590172",NA17OAR4590181; NA17OAR4590173; NA17OAR4590172,,,NA17OAR4590181; NA17OAR4590173; NA17OAR4590172,,2017,Complete,"Atmospheric Physics, Data Assimilation and Ensembles, Dynamics and Nesting, Parameterization","CIRA/Colorado State University
 National Center for Atmospheric Research
-CIRES/University of Colorado Boulder",No,,No,,agent-data/details/part-001.csv
+CIRES/University of Colorado Boulder",No,,No,,agent-data/details/part-002.csv
 spark-000018,sparkfp-92a6767c79e7d1db86b4,JTTI,Implementation of Multi-Radar Multi-Sensor Dual-Polarization Radar Synthetic QPE,JTTI,NA17OAR4590177,NA17OAR4590177,,,NA17OAR4590177,,2017,Complete,Radar,CIMMS/University of Oklahoma,No,,No,,agent-data/details/part-002.csv
 spark-000019,sparkfp-7bf4561d1966aa91d5e6,JTTI,Forecast system development activities toward a convective-scale HRRR ensemble,JTTI,NA17OAR4590182,NA17OAR4590182,"NA19OAR4590232
 NA21OAR4590165
@@ -54,12 +54,12 @@ spark-000027,sparkfp-3a6f6cb176e68f4b7b4c,JTTI,Extending the Rapidly-Updating Re
 spark-000028,sparkfp-4e5d090a31c5a4befcef,JTTI,Improving the prediction of subseasonal global rainfall variability through the use of a scale-adaptive stochastic physics suite,JTTI,OWAQ17-JTTI-I-5,,,,,,2017,Complete,"Atmospheric Physics, Data Assimilation and Ensembles, Parameterization",NOAA/OAR/ESRL/PSD,No,,No,,agent-data/details/part-002.csv
 spark-000029,sparkfp-e014af67ccef693e0229,JTTI,Improving the use of dropsondes in NOAA operations (HWRF),JTTI,OWAQ17-JTTI-I-6,,,,,,2017,Complete,"Aircraft Reconnaissance, Data Assimilation and Ensembles, Dynamics and Nesting",NOAA/OAR/AOML,No,,No,,agent-data/details/part-002.csv
 spark-000030,sparkfp-34addc9b9a4ddba014f5,JTTI,Intelligent post-processing of convection-allowing model output to inform Weather Prediction Center outlooks and forecasts,JTTI,NA18OAR4590378,NA18OAR4590378,NA16OAR4590238.,NA16OAR4590238,NA18OAR4590378; NA16OAR4590238,,2018,Complete,"Artificial Intelligence (AI) / Machine Learning (ML), Model & Forecast Guidance, Post-processing",CIRA/Colorado State University,No,,No,,agent-data/details/part-002.csv
-spark-000031,sparkfp-89bc9093a34bac48f06f,JTTI,Advancing ADCIRC U.S. Atlantic and Gulf Coast Grids and Capabilities to Facilitate Coupling to the National Water Model in ESTOFS Operational Forecasting,JTTI,NA18OAR4590377,NA18OAR4590377,,,NA18OAR4590377,,2018,Complete,"Atmospheric Physics, Coupled Models & Techniques, Dynamics and Nesting",University of Notre Dame,No,,No,,agent-data/details/part-002.csv
+spark-000031,sparkfp-89bc9093a34bac48f06f,JTTI,Advancing ADCIRC U.S. Atlantic and Gulf Coast Grids and Capabilities to Facilitate Coupling to the National Water Model in ESTOFS Operational Forecasting,JTTI,NA18OAR4590377,NA18OAR4590377,,,NA18OAR4590377,,2018,Complete,"Atmospheric Physics, Coupled Models & Techniques, Dynamics and Nesting",University of Notre Dame,No,,No,,agent-data/details/part-003.csv
 spark-000032,sparkfp-c5919a1bf7a143648989,JTTI,"Accelerated Implementation, Testing and Evaluation of Optimized Radar Data Assimilation Capabilities within Ensemble-Variational Hybrid GSI for the NOAA Convection-allowing rapidly updated Forecasting System",JTTI,"NA18OAR4590385
 NA18OAR4590392",NA18OAR4590385; NA18OAR4590392,"NA17OAR4590186
 NA17OAR4590120",NA17OAR4590186; NA17OAR4590120,NA18OAR4590385; NA18OAR4590392; NA17OAR4590186; NA17OAR4590120,,2018,Complete,"Data Assimilation and Ensembles, Radar","University of Oklahoma - Center for Analysis and Prediction of Storms
 CIRES/University of Colorado
-NOAA/OAR/ESRL/GSD",No,,No,,agent-data/details/part-002.csv
+NOAA/OAR/ESRL/GSD",No,,No,,agent-data/details/part-003.csv
 spark-000033,sparkfp-cf26d202167656b0c4e0,JTTI,Development and NWS Forecaster Evaluation of a Convective-scale Ensemble System for Probabilistic Heavy Rainfall and Severe Weather Forecasts,JTTI,"NA18OAR4590361
 NA18OAR4590384",NA18OAR4590361; NA18OAR4590384,NA16OAR4590242,NA16OAR4590242,NA18OAR4590361; NA18OAR4590384; NA16OAR4590242,,2018,Complete,"Data Assimilation and Ensembles, Model & Forecast Guidance, Post-processing, Probabilistic Weather Forecasting, Radar, Verification & Validation, Forecast Product Usability & Design, Visual Risk Communication","Cooperative Institute for Mesoscale Meteorological Studies;
  Cooperative Institute for Research in Environmental Sciences",No,,No,,agent-data/details/part-003.csv
@@ -90,11 +90,11 @@ spark-000041,sparkfp-dd2a6eff7695a83a7ea5,JTTI,"Implications of inconsistent vis
 spark-000042,sparkfp-e67f80935eb38b48b35a,JTTI,"Improving Water Cycle Prediction in the National Water Model through Regional Calibration, Meteorological Forcing Improvements, and Coastal Coupling",JTTI,NA18OAR4590363,NA18OAR4590363,"NA16OAR4590229
 NA16OAR4590240
 NA16OAR4590237",NA16OAR4590229; NA16OAR4590240; NA16OAR4590237,NA18OAR4590363; NA16OAR4590229; NA16OAR4590240; NA16OAR4590237,,2018,Complete,"Atmospheric Physics, Coupled Models & Techniques, Dynamics and Nesting, Verification & Validation","Cooperative Institute for Great Lakes Research
-National Center for Atmospheric Research",No,,No,,agent-data/details/part-003.csv
-spark-000043,sparkfp-2ef652a47a70603aad51,JTTI,Making Sense of Uncertainty: Improving the Use of Hydrologic Probabilistic Information in Decision-Making,JTTI,NA18OAR4590365,NA18OAR4590365,,,NA18OAR4590365,,2018,Complete,"Probabilistic Weather Forecasting, Forecast Product Usability & Design, Decision-Making, Decision Support, ""Social, Behavioral, and Economic Sciences (SBES)""",Nurture Nature Center,No,,No,,agent-data/details/part-003.csv
+National Center for Atmospheric Research",No,,No,,agent-data/details/part-004.csv
+spark-000043,sparkfp-2ef652a47a70603aad51,JTTI,Making Sense of Uncertainty: Improving the Use of Hydrologic Probabilistic Information in Decision-Making,JTTI,NA18OAR4590365,NA18OAR4590365,,,NA18OAR4590365,,2018,Complete,"Probabilistic Weather Forecasting, Forecast Product Usability & Design, Decision-Making, Decision Support, ""Social, Behavioral, and Economic Sciences (SBES)""",Nurture Nature Center,No,,No,,agent-data/details/part-004.csv
 spark-000044,sparkfp-04fafce00fada79d0226,JTTI,Improving Operational Hail Prediction through Machine Learning from HREF and CAPS Storm-Scale Ensemble FV3 and WRF ARW Forecasts including Advanced Microphysics,JTTI,"NA18OAR4590371
 NA18OAR4590387",NA18OAR4590371; NA18OAR4590387,NA16OAR4590239,NA16OAR4590239,NA18OAR4590371; NA18OAR4590387; NA16OAR4590239,,2018,Complete,"Artificial Intelligence (AI) / Machine Learning (ML), Atmospheric Physics, Data Assimilation and Ensembles, Dynamics and Nesting, Numerical Weather Prediction (NWP), Probabilistic Weather Forecasting","University of Oklahoma
-National Center for Atmospheric Research",No,,No,,agent-data/details/part-003.csv
+National Center for Atmospheric Research",No,,No,,agent-data/details/part-004.csv
 spark-000045,sparkfp-197d1b7806dd866e8003,JTTI,Representing agricultural management processes in the National Water Model,JTTI,"NA18OAR4590381
 NA18OAR4590390",NA18OAR4590381; NA18OAR4590390,,,NA18OAR4590381; NA18OAR4590390,,2018,Complete,"Atmospheric Physics, Verification & Validation","National Center for Atmospheric Research
 Iowa State University",No,,No,,agent-data/details/part-004.csv
@@ -113,13 +113,13 @@ spark-000052,sparkfp-c241425ab16bac684d13,JTTI,Generating Operational Guidelines
 NA18OAR4590359",NA18OAR4590389; NA18OAR4590359,OWAQ17-JTTI-I-1,,NA18OAR4590389; NA18OAR4590359,,2018,Complete,"Probabilistic Weather Forecasting, Communicating Probabilities & Uncertainty, ""Social, Behavioral, and Economic Sciences (SBES)""","CIMMS/University of Oklahoma
  Cooperative Institute for Research in Environmental Sciences",No,,No,,agent-data/details/part-004.csv
 spark-000053,sparkfp-2957dee15babff153986,JTTI,Advancing Frequently-Updating Storm-Scale Ensemble Data Assimilation and Prediction Towards Operations,JTTI,OWAQ-18-JTTI-I-4,,,,,,2018,Complete,"Atmospheric Physics, Aviation, Data Assimilation and Ensembles, Post-processing, Verification & Validation",OAR/ESRL/GSD,No,,No,,agent-data/details/part-004.csv
-spark-000054,sparkfp-e1931b7a9c8a6072d230,JTTI,VSAFE: Verification Services for Aviation Forecast Evaluation,JTTI,OWAQ-18-JTTI-I-5,,,,,,2018,Complete,"Aviation, Verification & Validation",NOAA/NWS/NCEP,No,,No,,agent-data/details/part-004.csv
-spark-000055,sparkfp-a27e8e1e68c6a094d623,JTTI,Optimizing Geostationary Lightning Mapper Use in AWIPS,JTTI,OWAQ-18-JTTI-I-6,,,,,,2018,Complete,"Dynamics and Nesting, Verification & Validation",NOAA/NESDIS/STAR,No,,No,,agent-data/details/part-004.csv
-spark-000056,sparkfp-3ee4c44103b831737f01,JTTI,Using HYSPLIT ensemble dispersion modeling for forecasting applications,JTTI,OWAQ-18-JTTI-I-7,,,,,,2018,Complete,"Data Assimilation and Ensembles, High-Performance Computing (HPC), Communicating Probabilities & Uncertainty",NOAA/OAR/ARL,No,,No,,agent-data/details/part-004.csv
+spark-000054,sparkfp-e1931b7a9c8a6072d230,JTTI,VSAFE: Verification Services for Aviation Forecast Evaluation,JTTI,OWAQ-18-JTTI-I-5,,,,,,2018,Complete,"Aviation, Verification & Validation",NOAA/NWS/NCEP,No,,No,,agent-data/details/part-005.csv
+spark-000055,sparkfp-a27e8e1e68c6a094d623,JTTI,Optimizing Geostationary Lightning Mapper Use in AWIPS,JTTI,OWAQ-18-JTTI-I-6,,,,,,2018,Complete,"Dynamics and Nesting, Verification & Validation",NOAA/NESDIS/STAR,No,,No,,agent-data/details/part-005.csv
+spark-000056,sparkfp-3ee4c44103b831737f01,JTTI,Using HYSPLIT ensemble dispersion modeling for forecasting applications,JTTI,OWAQ-18-JTTI-I-7,,,,,,2018,Complete,"Data Assimilation and Ensembles, High-Performance Computing (HPC), Communicating Probabilities & Uncertainty",NOAA/OAR/ARL,No,,No,,agent-data/details/part-005.csv
 spark-000057,sparkfp-a03a861740b7774c5f53,JTTI,"FACETs: Advancing physical and social science concepts toward operational
- implementation of Probabilistic Hazard Information",JTTI,OWAQ-18-JTTI-I-8,,NA18OAR4590386,NA18OAR4590386,NA18OAR4590386,,2018,Complete,"Probabilistic Weather Forecasting, Radar, Risk Perception & Response, ""Social, Behavioral, and Economic Sciences (SBES)""",NOAA/OAR/NSSL,No,,No,,agent-data/details/part-004.csv
+ implementation of Probabilistic Hazard Information",JTTI,OWAQ-18-JTTI-I-8,,NA18OAR4590386,NA18OAR4590386,NA18OAR4590386,,2018,Complete,"Probabilistic Weather Forecasting, Radar, Risk Perception & Response, ""Social, Behavioral, and Economic Sciences (SBES)""",NOAA/OAR/NSSL,No,,No,,agent-data/details/part-005.csv
 spark-000058,sparkfp-94b411f49c3fc8e3ed76,JTTI-STI,Adding TC Genesis Verification Capabilities to the Model Evaluation Tools - TC Software,JTTI,NA18NWS4680066,NA18NWS4680066,,,NA18NWS4680066,,2018,Complete,"Model & Forecast Guidance, Probabilistic Weather Forecasting, Verification & Validation","Embry-Riddle Aeronautical University
-National Center for Atmospheric Research",No,,No,,agent-data/details/part-004.csv
+National Center for Atmospheric Research",No,,No,,agent-data/details/part-005.csv
 spark-000059,sparkfp-4eb1e49a96032d8fa9be,JTTI-STI,Development and Evaluation of new Statistical Calibration Methods for Multi-Model Ensemble Weeks 3-4 Probabilistic Forecasts,JTTI,NA18NWS4680067,NA18NWS4680067,"NA10OAR4310210
 NA12OAR4310091
 NA14OAR4310185
@@ -139,13 +139,13 @@ NA19OAR4590235",NA19OAR4590233; NA19OAR4590234; NA19OAR4590235,"NA21OAR4590174
 NA21OAR4590175",NA21OAR4590174; NA21OAR4590175,NA19OAR4590233; NA19OAR4590234; NA19OAR4590235; NA21OAR4590174; NA21OAR4590175,,2019,Complete,"Atmospheric Physics, Verification & Validation","CIMSS/University of Wisconsin
 National Center for Atmospheric Research
 CIMMS/University of Oklahoma",No,,No,,agent-data/details/part-005.csv
-spark-000067,sparkfp-749280d9d1e6de4641ff,JTTI,Estimating Inundation Extent and Depth from National Water Model Outputs and High Resolution Topographic Data,JTTI,NA19OAR4590229,NA19OAR4590229,,,NA19OAR4590229,,2019,Complete,"Dynamics and Nesting, Visual Risk Communication",University of Texas-Austin,No,,No,,agent-data/details/part-005.csv
-spark-000068,sparkfp-440a3ceac4cc7696e05e,JTTI,Enhancing the prediction of landfalling hurricanes through improved data assimilation with the GSI-based ensemble-variational hybrid system and JEDI,JTTI,NA19OAR4590239,NA19OAR4590239,,,NA19OAR4590239,,2019,Complete,"Data Assimilation and Ensembles, Radar, Satellite & Remote Sensing Technologies, Surface Observing Networks",University of Utah,No,,No,,agent-data/details/part-005.csv
-spark-000069,sparkfp-844381e4007d4c7cc588,JTTI,Laying the foundation for ensemble prediction and probabilistic hazard tool development for winter weather,JTTI,NA19OAR4590230,NA19OAR4590230,,,NA19OAR4590230,,2019,Complete,"Data Assimilation and Ensembles, Probabilistic Weather Forecasting",CIMMS/University of Oklahoma,No,,No,,agent-data/details/part-005.csv
-spark-000070,sparkfp-e4c8c9cc7acb530150cd,JTTI,Enhanced tools for high-resolution ensemble development and verification,JTTI,NA19OAR4590232,NA19OAR4590232,NA17OAR4590182,NA17OAR4590182,NA19OAR4590232; NA17OAR4590182,,2019,Complete,"Data Assimilation and Ensembles, Dynamics and Nesting, Verification & Validation",National Center for Atmospheric Research,No,,No,,agent-data/details/part-005.csv
-spark-000071,sparkfp-4f9f56f6f2f8722e3e93,JTTI,"Advancing the Direct Assimilation of Radar Observations to Improve Convective Scale Numerical Weather Prediction through Optimizing the Combined Use of Static and Ensemble Covariances, the Additive Perturbations, and the Assimilation Frequency in the Hybrid EnVar and through Integration with JEDI",JTTI,NA19OAR4590231,NA19OAR4590231,,,NA19OAR4590231,,2019,Complete,"Data Assimilation and Ensembles, Numerical Weather Prediction (NWP), Radar",University of Oklahoma,No,,No,,agent-data/details/part-005.csv
+spark-000067,sparkfp-749280d9d1e6de4641ff,JTTI,Estimating Inundation Extent and Depth from National Water Model Outputs and High Resolution Topographic Data,JTTI,NA19OAR4590229,NA19OAR4590229,,,NA19OAR4590229,,2019,Complete,"Dynamics and Nesting, Visual Risk Communication",University of Texas-Austin,No,,No,,agent-data/details/part-006.csv
+spark-000068,sparkfp-440a3ceac4cc7696e05e,JTTI,Enhancing the prediction of landfalling hurricanes through improved data assimilation with the GSI-based ensemble-variational hybrid system and JEDI,JTTI,NA19OAR4590239,NA19OAR4590239,,,NA19OAR4590239,,2019,Complete,"Data Assimilation and Ensembles, Radar, Satellite & Remote Sensing Technologies, Surface Observing Networks",University of Utah,No,,No,,agent-data/details/part-006.csv
+spark-000069,sparkfp-844381e4007d4c7cc588,JTTI,Laying the foundation for ensemble prediction and probabilistic hazard tool development for winter weather,JTTI,NA19OAR4590230,NA19OAR4590230,,,NA19OAR4590230,,2019,Complete,"Data Assimilation and Ensembles, Probabilistic Weather Forecasting",CIMMS/University of Oklahoma,No,,No,,agent-data/details/part-006.csv
+spark-000070,sparkfp-e4c8c9cc7acb530150cd,JTTI,Enhanced tools for high-resolution ensemble development and verification,JTTI,NA19OAR4590232,NA19OAR4590232,NA17OAR4590182,NA17OAR4590182,NA19OAR4590232; NA17OAR4590182,,2019,Complete,"Data Assimilation and Ensembles, Dynamics and Nesting, Verification & Validation",National Center for Atmospheric Research,No,,No,,agent-data/details/part-006.csv
+spark-000071,sparkfp-4f9f56f6f2f8722e3e93,JTTI,"Advancing the Direct Assimilation of Radar Observations to Improve Convective Scale Numerical Weather Prediction through Optimizing the Combined Use of Static and Ensemble Covariances, the Additive Perturbations, and the Assimilation Frequency in the Hybrid EnVar and through Integration with JEDI",JTTI,NA19OAR4590231,NA19OAR4590231,,,NA19OAR4590231,,2019,Complete,"Data Assimilation and Ensembles, Numerical Weather Prediction (NWP), Radar",University of Oklahoma,No,,No,,agent-data/details/part-006.csv
 spark-000072,sparkfp-b6fa82c557a26bd6ad70,JTTI,Use of Ocean Stability Data and Machine Learning to Improve Tropical Cyclone Situational Awareness and NHC Statistical-Dynamical Intensity Guidance,JTTI,NA20OAR4590353,NA20OAR4590353,,,NA20OAR4590353,,2020,Complete,"Artificial Intelligence (AI) / Machine Learning (ML), Dynamics and Nesting, Model & Forecast Guidance, Satellite & Remote Sensing Technologies","CIRA/Colorado State University
-NOAA/AOML",No,,No,,agent-data/details/part-005.csv
+NOAA/AOML",No,,No,,agent-data/details/part-006.csv
 spark-000073,sparkfp-bb63d72a499d88c5f1f8,JTTI,Generating Storm Surge Hazards using Hazard Services,JTTI,NA20OAR4590344,NA20OAR4590344,"OWAQ15-R2O-I-1
 OWAQ17-JTTI-I-1
 NA19OAR4590228",NA19OAR4590228,NA20OAR4590344; NA19OAR4590228,,2020,Complete,"Model & Forecast Guidance, Visualizations",CIRA/Colorado State University,No,,No,,agent-data/details/part-006.csv
@@ -167,21 +167,21 @@ NNX16AQ19G",NA16OAR4590120,NA20OAR4590352; NA20OAR4590351; NA16OAR4590120,,2020,
 CIRES/University of Colorado",No,,No,,agent-data/details/part-006.csv
 spark-000080,sparkfp-40223a7dabc7c39d3c63,JTTI,Products to Guide Impact-Based Flash Flood Warnings in the National Weather Service,JTTI,NA20OAR4590354,NA20OAR4590354,"NA14OAR4830100
 NA17OAR4590281",NA14OAR4830100; NA17OAR4590281,NA20OAR4590354; NA14OAR4830100; NA17OAR4590281,,2020,Complete,"Model & Forecast Guidance, Probabilistic Weather Forecasting, Visualizations","CIMMS/University of Oklahoma;
-NOAA/OAR/NSSL",No,,No,,agent-data/details/part-006.csv
+NOAA/OAR/NSSL",No,,No,,agent-data/details/part-007.csv
 spark-000081,sparkfp-e38c6d7e8fb0f4935888,JTTI,Winter Storm Severity Index: Improving Storm Readiness through Severity and Social Impact Forecasting,JTTI,NA20OAR4590355,NA20OAR4590355,"NA21OAR4590188
-NA21OAR4590183",NA21OAR4590188; NA21OAR4590183,NA20OAR4590355; NA21OAR4590188; NA21OAR4590183,,2020,Complete,"Forecast Product Usability & Design, ""Risk Categories, Indices, or Levels"", ""Social, Behavioral, and Economic Sciences (SBES)"", Visual Risk Communication",Nurture Nature Center,No,,No,,agent-data/details/part-006.csv
+NA21OAR4590183",NA21OAR4590188; NA21OAR4590183,NA20OAR4590355; NA21OAR4590188; NA21OAR4590183,,2020,Complete,"Forecast Product Usability & Design, ""Risk Categories, Indices, or Levels"", ""Social, Behavioral, and Economic Sciences (SBES)"", Visual Risk Communication",Nurture Nature Center,No,,No,,agent-data/details/part-007.csv
 spark-000082,sparkfp-9afc884dcdd39ae1e507,JTTI,0-3 hour tornado prediction using the Warn on Forecast System and machine learning,JTTI,"NA20OAR4590356
 NA20OAR4590357",NA20OAR4590356; NA20OAR4590357,,,NA20OAR4590356; NA20OAR4590357,,2020,Complete,"Artificial Intelligence (AI) / Machine Learning (ML), Post-processing, Radar","University of Oklahoma;
-National Center for Atmospheric Research",No,,No,,agent-data/details/part-006.csv
-spark-000083,sparkfp-9769fa55edce57ed67c8,JTTI,Flow-dependent machine learning based post-processing of convection allowing ensembles to provide convective outlooks of severe weather hazards,JTTI,NA20OAR4590358,NA20OAR4590358,,,NA20OAR4590358,,2020,Complete,"Artificial Intelligence (AI) / Machine Learning (ML), Data Assimilation and Ensembles, Model & Forecast Guidance, Post-processing",University of Oklahoma,No,,No,,agent-data/details/part-006.csv
+National Center for Atmospheric Research",No,,No,,agent-data/details/part-007.csv
+spark-000083,sparkfp-9769fa55edce57ed67c8,JTTI,Flow-dependent machine learning based post-processing of convection allowing ensembles to provide convective outlooks of severe weather hazards,JTTI,NA20OAR4590358,NA20OAR4590358,,,NA20OAR4590358,,2020,Complete,"Artificial Intelligence (AI) / Machine Learning (ML), Data Assimilation and Ensembles, Model & Forecast Guidance, Post-processing",University of Oklahoma,No,,No,,agent-data/details/part-007.csv
 spark-000084,sparkfp-1c2daec7ed97caa99366,JTTI,Improving land-surface flux partitioning in operational short range forecasts through integration of NOAA weather and water models,JTTI,"NA20OAR4590359
 NA20OAR4590360",NA20OAR4590359; NA20OAR4590360,NA15OAR4590157,NA15OAR4590157,NA20OAR4590359; NA20OAR4590360; NA15OAR4590157,,2020,Complete,"Atmospheric Physics, Coupled Models & Techniques, Data Assimilation and Ensembles","National Center for Atmospheric Research;
-University of Colorado",No,,No,,agent-data/details/part-006.csv
+University of Colorado",No,,No,,agent-data/details/part-007.csv
 spark-000085,sparkfp-91fba41d08a72e75988e,JTTI,Combining A Fuzzy Clustering Approach With the National Blend of Models (NBM) to Facilitate Scenario-Driven Products for Extreme Weather,JTTI,NA20OAR4590361,NA20OAR4590361,"NA13NWS4680002
-NA17NWS4680004",NA13NWS4680002; NA17NWS4680004,NA20OAR4590361; NA13NWS4680002; NA17NWS4680004,,2020,Complete,"Data Assimilation and Ensembles, Verification & Validation, Visualizations",Stony Brook University,No,,No,,agent-data/details/part-006.csv
+NA17NWS4680004",NA13NWS4680002; NA17NWS4680004,NA20OAR4590361; NA13NWS4680002; NA17NWS4680004,,2020,Complete,"Data Assimilation and Ensembles, Verification & Validation, Visualizations",Stony Brook University,No,,No,,agent-data/details/part-007.csv
 spark-000086,sparkfp-cdb3323240871d243ce8,JTTI,Enhancement of Radiation Coupling to Cloud Microphysics and Land Surface Properties for Global Weather Predictions,JTTI,"NA20OAR4590362
 NA20OAR4590363",NA20OAR4590362; NA20OAR4590363,,,NA20OAR4590362; NA20OAR4590363,,2020,Complete,"Atmospheric Physics, Coupled Models & Techniques, Dynamics and Nesting, Parameterization","AER;
-National Center for Atmospheric Research",No,,No,,agent-data/details/part-006.csv
+National Center for Atmospheric Research",No,,No,,agent-data/details/part-007.csv
 spark-000087,sparkfp-c578f71b33f04fd19441,JTTI,UFS-R2O: MRW/S2S Coupled Model Development,JTTI,WPO20-JTTI-I-1,,,,,,2020,Active,"Atmospheric Composition and Chemistry, Atmospheric Physics, Coupled Models & Techniques, Data Assimilation and Ensembles, High-Performance Computing (HPC), Reanalysis & Reforecasting, Numerical Weather Prediction (NWP), Post-processing","NOAA/NWS/EMC
 NOAA/OAR/GSL
 NOAA/OAR/PSL
@@ -201,38 +201,38 @@ spark-000092,sparkfp-416d4f4e9835a444fe7c,JTTI,Adapting machine learning-based c
 NA17OAR4590114
 NA17OAR4590122
 NA17OAR4590182
-NA19OAR4590128",NA15OAR4590191; NA17OAR4590114; NA17OAR4590122; NA17OAR4590182; NA19OAR4590128,NA21OAR4590163; NA15OAR4590191; NA17OAR4590114; NA17OAR4590122; NA17OAR4590182; NA19OAR4590128,,2021,Complete,"Artificial Intelligence (AI) / Machine Learning (ML), Data Assimilation and Ensembles, Dynamics and Nesting, Model & Forecast Guidance, Probabilistic Weather Forecasting",National Center for Atmospheric Research,No,,No,,agent-data/details/part-007.csv
-spark-000093,sparkfp-dda94eaee445abca17f0,JTTI,Unification and Improvements to Guidance for National Weather Service Tropical Cyclone Wind and Storm Surge Hazard Products,JTTI,NA21OAR4590164,NA21OAR4590164,,,NA21OAR4590164,,2021,Complete,"Atmospheric Physics, Model & Forecast Guidance, Post-processing",CIRA/Colorado State University,No,,No,,agent-data/details/part-007.csv
+NA19OAR4590128",NA15OAR4590191; NA17OAR4590114; NA17OAR4590122; NA17OAR4590182; NA19OAR4590128,NA21OAR4590163; NA15OAR4590191; NA17OAR4590114; NA17OAR4590122; NA17OAR4590182; NA19OAR4590128,,2021,Complete,"Artificial Intelligence (AI) / Machine Learning (ML), Data Assimilation and Ensembles, Dynamics and Nesting, Model & Forecast Guidance, Probabilistic Weather Forecasting",National Center for Atmospheric Research,No,,No,,agent-data/details/part-008.csv
+spark-000093,sparkfp-dda94eaee445abca17f0,JTTI,Unification and Improvements to Guidance for National Weather Service Tropical Cyclone Wind and Storm Surge Hazard Products,JTTI,NA21OAR4590164,NA21OAR4590164,,,NA21OAR4590164,,2021,Complete,"Atmospheric Physics, Model & Forecast Guidance, Post-processing",CIRA/Colorado State University,No,,No,,agent-data/details/part-008.csv
 spark-000094,sparkfp-8293c8541a9c294ab3cf,JTTI,Direct Assimilation of GOES-R Geostationary Lightning Mapper (GLM) Data within JEDI Hybrid System for Operational UFS Convection-Allowing Predictions,JTTI,"NA21OAR4590165
 NA21OAR4590166",NA21OAR4590165; NA21OAR4590166,"NA16OAR4320115
 NA18OAR4590385",NA16OAR4320115; NA18OAR4590385,NA21OAR4590165; NA21OAR4590166; NA16OAR4320115; NA18OAR4590385,,2021,Complete,Data Assimilation and Ensembles,"University of Oklahoma
-CIRA/Colorado State University",No,,Yes,NA16OAR4320115,agent-data/details/part-007.csv
+CIRA/Colorado State University",No,,Yes,NA16OAR4320115,agent-data/details/part-008.csv
 spark-000095,sparkfp-28a9cf8c40e491126e51,JTTI,Advancing Land Modeling Infrastructure in the UFS for Hierarchical Model Development,JTTI,NA21OAR4590167,NA21OAR4590167,"NA19OAR0220093
-WPO20-EPIC-1",NA19OAR0220093,NA21OAR4590167; NA19OAR0220093,,2021,Complete,"Atmospheric Physics, Coupled Models & Techniques",National Center for Atmospheric Research,No,,No,,agent-data/details/part-007.csv
+WPO20-EPIC-1",NA19OAR0220093,NA21OAR4590167; NA19OAR0220093,,2021,Complete,"Atmospheric Physics, Coupled Models & Techniques",National Center for Atmospheric Research,No,,No,,agent-data/details/part-008.csv
 spark-000096,sparkfp-decc90108f63e8891fc0,JTTI,Advancing the Use of Multivariate Object-Based Verification Methods in Regional-Scale Models,JTTI,NA21OAR4590168,NA21OAR4590168,"NA10NES4400013
 NA14NWS4680026
 NA15NES432001
 NA17OAR4590179
-NA19OAR4590233",NA10NES4400013; NA14NWS4680026; NA17OAR4590179; NA19OAR4590233,NA21OAR4590168; NA10NES4400013; NA14NWS4680026; NA17OAR4590179; NA19OAR4590233,,2021,Complete,"Radar, Satellite & Remote Sensing Technologies, Verification & Validation",CIMSS/University of Wisconsin,No,,No,,agent-data/details/part-007.csv
+NA19OAR4590233",NA10NES4400013; NA14NWS4680026; NA17OAR4590179; NA19OAR4590233,NA21OAR4590168; NA10NES4400013; NA14NWS4680026; NA17OAR4590179; NA19OAR4590233,,2021,Complete,"Radar, Satellite & Remote Sensing Technologies, Verification & Validation",CIMSS/University of Wisconsin,No,,No,,agent-data/details/part-008.csv
 spark-000097,sparkfp-98e9adf9acbf11b29328,JTTI,Advancing Ensemble Subseasonal Forecasting with Machine Learning,JTTI,"NA21OAR4590169
 NA21OAR4590170
 BOP",NA21OAR4590169; NA21OAR4590170,,,NA21OAR4590169; NA21OAR4590170,,2021,Complete,"Artificial Intelligence (AI) / Machine Learning (ML), Data Assimilation and Ensembles","Atmospheric and Environmental Research
 Massachusetts Institute of Technology
-NOAA/NWS/CPC",No,,No,,agent-data/details/part-007.csv
+NOAA/NWS/CPC",No,,No,,agent-data/details/part-008.csv
 spark-000098,sparkfp-b0727e944473b43d2c87,JTTI,"Implementation, Testing, and Evaluation of Radar Data Assimilation Capabilities within the JEDI Hybrid EnVar System for the Rapid Refresh Forecast System",JTTI,"NA21OAR4590171
 NA21OAR4590172",NA21OAR4590171; NA21OAR4590172,"NA16NWS4680002
 NA17OAR4590186
 NA18OAR4590385
 NA18OAR4590392
 NA19OAR4590236",NA16NWS4680002; NA17OAR4590186; NA18OAR4590385; NA18OAR4590392; NA19OAR4590236,NA21OAR4590171; NA21OAR4590172; NA16NWS4680002; NA17OAR4590186; NA18OAR4590385; NA18OAR4590392; NA19OAR4590236,,2021,Complete,"Data Assimilation and Ensembles, Radar","University of Oklahoma
-CIRES/University of Colorado",No,,No,,agent-data/details/part-007.csv
-spark-000099,sparkfp-0b23322908c45438a2f2,JTTI,Enhancing the Storm Prediction Center's Convective Outlook with Continuous Probabilities and Conditional Intensity Forecasts,JTTI,NA21OAR4590173,NA21OAR4590173,,,NA21OAR4590173,,2021,Complete,"Risk Communication, ""Social, Behavioral, and Economic Sciences (SBES)"", Visual Risk Communication",University of Oklahoma,No,,No,,agent-data/details/part-007.csv
+CIRES/University of Colorado",No,,No,,agent-data/details/part-008.csv
+spark-000099,sparkfp-0b23322908c45438a2f2,JTTI,Enhancing the Storm Prediction Center's Convective Outlook with Continuous Probabilities and Conditional Intensity Forecasts,JTTI,NA21OAR4590173,NA21OAR4590173,,,NA21OAR4590173,,2021,Complete,"Risk Communication, ""Social, Behavioral, and Economic Sciences (SBES)"", Visual Risk Communication",University of Oklahoma,No,,No,,agent-data/details/part-008.csv
 spark-000100,sparkfp-dfdc1fa65e5901f87d68,JTTI,Enhancing Feature Driven Evaluation of High Impact Hydrometeorology Events through METplus,JTTI,"NA21OAR4590174
 NA21OAR4590175",NA21OAR4590174; NA21OAR4590175,"NA18NWS4680047
 NA19OAR4590233
 NA19OAR4590234
 NA19OAR4590235",NA18NWS4680047; NA19OAR4590233; NA19OAR4590234; NA19OAR4590235,NA21OAR4590174; NA21OAR4590175; NA18NWS4680047; NA19OAR4590233; NA19OAR4590234; NA19OAR4590235,,2021,Complete,Verification & Validation,"National Center for Atmospheric Research
-CIRES/University of Colorado",No,,No,,agent-data/details/part-007.csv
+CIRES/University of Colorado",No,,No,,agent-data/details/part-008.csv
 spark-000101,sparkfp-7e8b8efd4afb6ee18162,JTTI,Medium-range excessive rainfall forecasts with machine learning models,JTTI,NA21OAR4590187,NA21OAR4590187,"NA16OAR4590238
 NA18OAR4590378",NA16OAR4590238; NA18OAR4590378,NA21OAR4590187; NA16OAR4590238; NA18OAR4590378,,2021,Complete,"Artificial Intelligence (AI) / Machine Learning (ML), Model & Forecast Guidance",CIRA/Colorado State University,No,,No,,agent-data/details/part-008.csv
 spark-000102,sparkfp-4f39f159ad51fed37553,JTTI,Leveraging artificial intelligence to statistically postprocess GEFS ensemble forecasts for Week 3-4 Outlooks of precipitation probabilities for the CPC,JTTI,NA21OAR4590176,NA21OAR4590176,,,NA21OAR4590176,,2021,Complete,"Artificial Intelligence (AI) / Machine Learning (ML), Data Assimilation and Ensembles, Post-processing",CIRES/University of Colorado,No,,No,,agent-data/details/part-008.csv
@@ -249,9 +249,9 @@ spark-000104,sparkfp-b5af526dc43839480b5a,JTTI,Adapting and ingesting the operat
 spark-000105,sparkfp-81a41816c11e9fc73904,JTTI,Integration of Model Large-Scale Environmental Diagnostics for Tropical Cyclones into the MET-TC Verification Package,JTTI,"NA21OAR4590181
 NA21OAR4590182",NA21OAR4590181; NA21OAR4590182,"NA19OAR0220086
 NA19OAR4320073",NA19OAR0220086; NA19OAR4320073,NA21OAR4590181; NA21OAR4590182; NA19OAR0220086; NA19OAR4320073,,2021,Complete,Verification & Validation,"CIRA/Colorado State University
-National Center for Atmospheric Research",No,,Yes,NA19OAR4320073,agent-data/details/part-008.csv
+National Center for Atmospheric Research",No,,Yes,NA19OAR4320073,agent-data/details/part-009.csv
 spark-000106,sparkfp-824c6842ed550dd8a0ce,JTTI,Winter Storm Severity Index for Alaska,JTTI,"NA21OAR4590188
 NA21OAR4590183",NA21OAR4590188; NA21OAR4590183,NA20OAR4590355,NA20OAR4590355,NA21OAR4590188; NA21OAR4590183; NA20OAR4590355,,2021,Complete,"""Risk Categories, Indices, or Levels"", ""Social, Behavioral, and Economic Sciences (SBES)"", Visual Risk Communication","CIRES/University of Colorado
-Nature Nurture Center",No,,No,,agent-data/details/part-008.csv
-spark-000107,sparkfp-6e8cad3542bb958fc83a,JTTI,Improving numerical weather forecasting and S2S prediction with the NCEP Unified Forecast System through strongly coupled land-atmosphere data assimilation using JEDI,JTTI,NA21OAR4590160,NA21OAR4590160,NA16NWS4680015,NA16NWS4680015,NA21OAR4590160; NA16NWS4680015,,2021,Complete,"Coupled Models & Techniques, Data Assimilation and Ensembles",University of Utah,No,,No,,agent-data/details/part-008.csv
-spark-000108,sparkfp-1383699b34efc17d3c06,JTTI,Diagnosing synoptic progressiveness forecast errors within the UFS MRWA,JTTI,NA21OAR4590184,NA21OAR4590184,NA19OAR4590232,NA19OAR4590232,NA21OAR4590184; NA19OAR4590232,,2021,Complete,Model & Forecast Guidance,National Center for Atmospheric Research,No,,No,,agent-data/details/part-008.csv
+Nature Nurture Center",No,,No,,agent-data/details/part-009.csv
+spark-000107,sparkfp-6e8cad3542bb958fc83a,JTTI,Improving numerical weather forecasting and S2S prediction with the NCEP Unified Forecast System through strongly coupled land-atmosphere data assimilation using JEDI,JTTI,NA21OAR4590160,NA21OAR4590160,NA16NWS4680015,NA16NWS4680015,NA21OAR4590160; NA16NWS4680015,,2021,Complete,"Coupled Models & Techniques, Data Assimilation and Ensembles",University of Utah,No,,No,,agent-data/details/part-009.csv
+spark-000108,sparkfp-1383699b34efc17d3c06,JTTI,Diagnosing synoptic progressiveness forecast errors within the UFS MRWA,JTTI,NA21OAR4590184,NA21OAR4590184,NA19OAR4590232,NA19OAR4590232,NA21OAR4590184; NA19OAR4590232,,2021,Complete,Model & Forecast Guidance,National Center for Atmospheric Research,No,,No,,agent-data/details/part-009.csv
