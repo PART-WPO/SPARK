@@ -3,9 +3,9 @@
   "schema_version": 3,
   "source": {
     "path": "SPARK Report - SPARK Report.csv",
-    "bytes": 2023855,
-    "sha256": "de87a3ac32fc0e7765b50b6d7391622896acb4d93295e7aa231b044ae4d4aa19",
-    "rows": 555
+    "bytes": 2093085,
+    "sha256": "098af13ab4c50b34138911b4beece01ee03deace68a79b12bc46f53c9a138384",
+    "rows": 579
   },
   "index": {
     "columns": [
@@ -57,9 +57,15 @@
       },
       {
         "path": "agent-data/index/part-005.csv",
-        "rows": 106,
-        "bytes": 45713,
-        "sha256": "0d512929659527af604d477e2321e0e35e4501735c60558a4b550da207bc1310"
+        "rows": 114,
+        "bytes": 48970,
+        "sha256": "305dbd6d750b64461c2f4521865d60ad3c16c92993b1464b062ce34e1ea17c73"
+      },
+      {
+        "path": "agent-data/index/part-006.csv",
+        "rows": 16,
+        "bytes": 6681,
+        "sha256": "3c3f77cef3325f278069872f1139e0cbfb46f435c47dba425426a44d1490c954"
       }
     ]
   },
@@ -78,7 +84,7 @@
       "CI Identifier Note",
       "Detail File"
     ],
-    "rows": 954,
+    "rows": 1005,
     "files": [
       {
         "path": "agent-data/awards/part-001.csv",
@@ -106,9 +112,15 @@
       },
       {
         "path": "agent-data/awards/part-005.csv",
-        "rows": 182,
-        "bytes": 46987,
-        "sha256": "98f7a3403001526568032f4dbf71861691cd2091b00432e0eb277d332f0057ca"
+        "rows": 190,
+        "bytes": 49066,
+        "sha256": "80da08877c51db07b726b5efaed6185e5afb4878a64cb549bfc2b308242c91de"
+      },
+      {
+        "path": "agent-data/awards/part-006.csv",
+        "rows": 43,
+        "bytes": 11186,
+        "sha256": "6bebe7e4b34f0772e3006ca2db5fccf330a43289baf8f4c493783f54354a9933"
       }
     ]
   },
@@ -395,40 +407,46 @@
       },
       {
         "path": "agent-data/details/part-041.csv",
-        "rows": 16,
-        "bytes": 48463,
-        "sha256": "ef3c0e49e453b157685112adeae33749b9462f6a6c1d18fc63742c9996f8b5e7"
+        "rows": 15,
+        "bytes": 47820,
+        "sha256": "58d721c58f650d95dab3115dea5d00b38527e3175fe5b911293063bdcf480fec"
       },
       {
         "path": "agent-data/details/part-042.csv",
-        "rows": 13,
-        "bytes": 47095,
-        "sha256": "de59381314aed823c6f73530f14bea3a9d8b054422f047a7db0b99f1197a35fa"
+        "rows": 12,
+        "bytes": 42045,
+        "sha256": "f8269559e4cf68e525ee6d9625b6ebfde8475ed890a0f1d3b5eff5bbabde164a"
       },
       {
         "path": "agent-data/details/part-043.csv",
-        "rows": 8,
-        "bytes": 44825,
-        "sha256": "d922e56320aea2cdf3f4b7313ba706871ec0a40ca76a37345ed7841d48d82d7e"
+        "rows": 11,
+        "bytes": 46892,
+        "sha256": "4d26da94de5a95d6935d74dd31a443fb87d52d511b7b003d4864189ffed2def9"
       },
       {
         "path": "agent-data/details/part-044.csv",
-        "rows": 9,
-        "bytes": 20962,
-        "sha256": "84cc56fcdb9fed6db459341511ece8db7ca332cc4678c000a342a471594882cb"
+        "rows": 15,
+        "bytes": 47158,
+        "sha256": "b68fdb36b80568ed819e41e5315a9235acca07156597f839c7247c72df343a67"
+      },
+      {
+        "path": "agent-data/details/part-045.csv",
+        "rows": 17,
+        "bytes": 46985,
+        "sha256": "0d90089253742dcebc7de7811079d29c9bc14624b0d3ab3b1a47703abc12e4d3"
       }
     ]
   },
   "quality_notes": {
     "projects_without_primary_award_tokens": 10,
-    "projects_with_related_award_identifiers": 105,
+    "projects_with_related_award_identifiers": 118,
     "projects_with_primary_ci_awards": 6,
-    "projects_with_related_ci_awards": 9,
-    "ci_award_lookup_entries": 15,
+    "projects_with_related_ci_awards": 10,
+    "ci_award_lookup_entries": 16,
     "ci_entries_with_extended_suffixes": 4,
-    "unparsed_primary_award_tokens": 182,
-    "unparsed_related_award_tokens": 75,
-    "duplicate_project_fingerprint_groups": 1
+    "unparsed_primary_award_tokens": 193,
+    "unparsed_related_award_tokens": 97,
+    "duplicate_project_fingerprint_groups": 2
   },
   "ci_identification": {
     "rule": "Base award matches NAyyOAR432xxxx or NAyyOAR405xxxx",
