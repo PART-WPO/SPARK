@@ -77,7 +77,9 @@ University of Central Florida",No,,No,,agent-data/details/part-011.csv
 spark-000134,sparkfp-2f403a8e1893481d60ef,JTTI,A Weather-Ready Nation Para Todos: Evaluating Current Practices in Communicating Hazardous Weather Risks to Spanish Speakers,JTTI,NA22OAR4590187,NA22OAR4590187,"NA18OAR4590376
 NA20OAR4590345",NA18OAR4590376; NA20OAR4590345,NA22OAR4590187; NA18OAR4590376; NA20OAR4590345,,2022,Active,"Language & Cultural Contexts, Risk Communication, Risk Perception & Response, Social Vulnerability, ""Social, Behavioral, and Economic Sciences (SBES)""",University of Oklahoma,No,,No,,agent-data/details/part-011.csv
 spark-000135,sparkfp-968e7d55b1f50979e836,JTTI,Advancing the Lake-Coupling Techniques for the Unified Forecast System (UFS),JTTI,NA22OAR4590188,NA22OAR4590188,"NA17OAR4320152
-NA19OAR4590140",NA17OAR4320152; NA19OAR4590140,NA22OAR4590188; NA17OAR4320152; NA19OAR4590140,,2022,Active,"Atmospheric Physics, Coupled Models & Techniques, Data Assimilation and Ensembles, High-Performance Computing (HPC)",University of Michigan/CIGLR/Colorado School of Mines,No,,Yes,NA17OAR4320152,agent-data/details/part-011.csv
+NA19OAR4590140",NA17OAR4320152; NA19OAR4590140,NA22OAR4590188; NA17OAR4320152; NA19OAR4590140,,2022,Active,"Atmospheric Physics, Coupled Models & Techniques, Data Assimilation and Ensembles, High-Performance Computing (HPC)","University of Michigan/CIGLR
+Colorado School of Mines
+GLERL",No,,Yes,NA17OAR4320152,agent-data/details/part-011.csv
 spark-000136,sparkfp-4f72dfc88f092e428bce,JTTI,Non-Gaussian Ensemble Data Assimilation within a Rapidly Updating Global Prediction System,JTTI,NA23OAR4590379,NA23OAR4590379,"NA19NES432000
 NA19NES4320002
 NA20OAR4600281
@@ -118,8 +120,8 @@ Columbia University
 Hebrew University of Jerusalem
 University of California Irvine
 Stony Brook University",No,,No,,agent-data/details/part-013.csv
-spark-000152,sparkfp-ce45a77ff3576894a040,CTB,Development of a Global Aerosol Reanalysis at NOAA in Support of Climate Monitoring and Prediction,Testbeds,NA22OAR4590219,NA22OAR4590219,NA18OAR4310281,NA18OAR4310281,NA22OAR4590219; NA18OAR4310281,,2022,Active,"Atmospheric Composition and Chemistry, Coupled Models & Techniques, Data Assimilation and Ensembles, Reanalysis & Reforecasting, Parameterization, Satellite & Remote Sensing Technologies",CIRES/University of Colorado,No,,No,,agent-data/details/part-013.csv
-spark-000153,sparkfp-c0721ac56140485a38e3,CTB,Transitioning NMME-based seasonal predictions of atmospheric river activity into an operational forecast product,Testbeds,NA22OAR4590217,NA22OAR4590217,,,NA22OAR4590217,,2022,Active,"Data Assimilation and Ensembles, Model & Forecast Guidance, Post-processing, Probabilistic Weather Forecasting, Verification & Validation","National Center for Atmospheric Research
+spark-000152,sparkfp-ce45a77ff3576894a040,CTB,Development of a Global Aerosol Reanalysis at NOAA in Support of Climate Monitoring and Prediction,Testbeds,NA22OAR4590219,NA22OAR4590219,NA18OAR4310281,NA18OAR4310281,NA22OAR4590219; NA18OAR4310281,,2022,Complete,"Atmospheric Composition and Chemistry, Coupled Models & Techniques, Data Assimilation and Ensembles, Reanalysis & Reforecasting, Parameterization, Satellite & Remote Sensing Technologies",CIRES/University of Colorado,No,,No,,agent-data/details/part-013.csv
+spark-000153,sparkfp-c0721ac56140485a38e3,CTB,Transitioning NMME-based seasonal predictions of atmospheric river activity into an operational forecast product,Testbeds,NA22OAR4590217,NA22OAR4590217,,,NA22OAR4590217,,2022,Complete,"Data Assimilation and Ensembles, Model & Forecast Guidance, Post-processing, Probabilistic Weather Forecasting, Verification & Validation","National Center for Atmospheric Research
 NOAA/OAR/GFDL
 NOAA/NWS/CPC",No,,No,,agent-data/details/part-013.csv
 spark-000154,sparkfp-4195a380e8995b69b681,CTB,Advancing S2S precipitation outlooks through the Weather Regime-Gaussian Mixture Model Framework,Testbeds,NA24OARX459C0014,,,,,,2024,Active,"Artificial Intelligence (AI) / Machine Learning (ML), Dynamics and Nesting",Utah State University,No,,No,,agent-data/details/part-013.csv
