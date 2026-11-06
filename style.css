@@ -624,6 +624,7 @@ body {
 
 .status-icon.active { color: #f7af39ff; }
 .status-icon.complete { color: #07ae07ff; }
+.status-icon.transferred { color: #79649B; }
 .status-icon.pending { color: #f9a825; }
 
 .pagination-controls {
