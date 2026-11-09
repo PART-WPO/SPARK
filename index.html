@@ -57,7 +57,7 @@ body { overflow-x: hidden; }
 }
 @media (max-width: 700px) {
   .spark-embedded #projectModal.modal-overlay {
-    --spark-wordpress-header-clearance: 84px;
+    --spark-wordpress-header-clearance: 104px;
   }
 }
 
@@ -295,6 +295,112 @@ body { overflow-x: hidden; }
   #projectModal .output-button { align-self: flex-start; }
 }
 /* ===== END WHITE-CARD MODAL PROTOTYPE ===== */
+
+
+/* ===== MOBILE IFRAME MODAL ERGONOMICS (Nov 9) =====
+   Keep the proven viewport-positioning algorithm and WordPress safe area.
+   The mobile modal is nearly the full iframe width and has ONE internal scroll.
+   Project summary, keywords, details and description all scroll together.
+   Its close button stays usable while content moves underneath. */
+#projectModal .modal { position: relative; }
+#projectModal .spark-modal-close-rail {
+  position: absolute; top: 19px; right: 28px;
+  z-index: 30;
+  pointer-events: none;
+}
+#projectModal .spark-modal-close-rail .modal-close {
+  position: relative; top: auto; right: auto;
+  pointer-events: auto;
+}
+@media (max-width: 700px) {
+  .spark-embedded #projectModal.modal-overlay {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .spark-embedded #projectModal .modal {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    /* Fill the safe visible area instead of shrinking around the sticky summary. */
+    height: var(--spark-iframe-available-height, calc(100dvh - 110px));
+    max-height: var(--spark-iframe-available-height, calc(100dvh - 110px));
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: auto;
+    border-radius: 12px;
+  }
+  .spark-embedded #projectModal .spark-modal-close-rail {
+    position: sticky;
+    top: 7px;
+    right: auto;
+    z-index: 40;
+    width: 100%;
+    height: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 12px;
+    pointer-events: none;
+  }
+  .spark-embedded #projectModal .spark-modal-close-rail .modal-close {
+    display: grid;
+    place-items: center;
+    flex: 0 0 41px;
+    width: 41px;
+    height: 41px;
+    min-width: 41px;
+    min-height: 41px;
+    border-radius: 10px;
+    border: 1px solid #a7c9e7;
+    background: rgba(255,255,255,.98);
+    box-shadow: 0 2px 9px rgba(23, 49, 74, .13);
+    pointer-events: auto;
+  }
+  /* On phones the header must not take up the complete scrollable window. */
+  .spark-embedded #projectModal .modal-header {
+    position: static;
+    top: auto;
+    z-index: auto;
+    flex: none;
+    padding: 7px 7px 0;
+  }
+  .spark-embedded #projectModal .drawer-header-inner {
+    padding: 15px 12px 13px;
+  }
+  .spark-embedded #projectModal .spark-modal-meta-row {
+    padding-right: 45px;  /* room for the floating close control */
+    margin-bottom: 10px;
+  }
+  .spark-embedded #projectModal #drawerTitle {
+    font-size: clamp(18px, 4.9vw, 22px);
+    line-height: 1.27;
+    margin-bottom: 11px;
+  }
+  .spark-embedded #projectModal #drawerGoal {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 13px;
+  }
+  .spark-embedded #projectModal .drawer-keywords-row { gap: 8px; }
+  .spark-embedded #projectModal .keywords-left { min-width: 0; }
+  .spark-embedded #projectModal .drawer-keywords { min-width: 0; }
+  .spark-embedded #projectModal .drawer-keywords span {
+    overflow-wrap: anywhere;
+    max-width: 100%;
+  }
+  .spark-embedded #projectModal .output-button { max-width: 100%; }
+  .spark-embedded #projectModal .modal-body {
+    display: block;
+    position: static;
+    flex: none;
+    overflow: visible;
+    min-height: 0;
+    padding: 8px 7px 12px;
+  }
+}
+/* ===== END MOBILE IFRAME MODAL ERGONOMICS ===== */
 
 </style>
 
@@ -763,6 +869,10 @@ body { overflow-x: hidden; }
 
   <div class="modal-overlay" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" hidden>
   <div class="modal" role="document">
+    <!-- Keep close accessible while a tall mobile dialog is scrolling. -->
+    <div class="spark-modal-close-rail">
+      <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Close project details">✖</button>
+    </div>
     
 
     <!-- Keep your existing content/IDs inside -->
@@ -781,8 +891,7 @@ body { overflow-x: hidden; }
                 <p id="drawerGoal">Project Goal</p>
               </div>
 
-              <!-- IMPORTANT: change onclick target -->
-              <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Close dialog">✖</button>
+
             </div>
 
             <div class="drawer-keywords-row">
@@ -1362,7 +1471,14 @@ function positionEmbeddedModal_(overlay, modal, closeButton) {
     // Reserve its approximate height, without moving the WordPress page.
     const configuredClearance = parseFloat(getComputedStyle(overlay)
       .getPropertyValue('--spark-wordpress-header-clearance')) || 0;
-    const headerClearance = Math.max(0, Math.min(configuredClearance,
+    // On the SPARK landing area, the iframe already begins below the
+    // WordPress navbar. After the visitor scrolls deeper into the iframe,
+    // reserve the full navbar height because it overlays the viewport.
+    const isMobileIframe = window.matchMedia('(max-width: 700px)').matches;
+    const iframeTopIsVisible = visibleTop < 2;
+    const effectiveClearance = (isMobileIframe && iframeTopIsVisible)
+      ? 16 : configuredClearance;
+    const headerClearance = Math.max(0, Math.min(effectiveClearance,
       Math.max(0, visibleHeight - 220)));
     const bottomClearance = 12;
     const usableHeight = Math.max(150,
