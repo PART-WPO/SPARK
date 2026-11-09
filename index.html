@@ -21,38 +21,19 @@ body { overflow-x: hidden; }
 .dashboard-container, .dashboard-container * { box-sizing: border-box; }
 
 .spark-transfer-notice {
-  display: flex; align-items: center; gap: 14px;
-  width: 100%; margin: 12px 0 24px; padding: 10px 14px;
+  display: flex; align-items: flex-start; gap: 14px;
+  width: 100%; margin: 12px 0 24px; padding: 15px 18px;
   color: #175c82; background: #dceff7; border: 1px solid #b9dfed;
   border-radius: 5px; font-size: 14px; line-height: 1.55;
 }
 .spark-transfer-notice__icon {
-  flex: none; color: #54bad6; font-size: 30px; line-height: 1; margin-top: 0px;
+  flex: none; color: #54bad6; font-size: 25px; line-height: 1; margin-top: 2px;
 }
 .spark-transfer-notice p { margin: 0; min-width: 0; }
 .spark-transfer-notice strong { font-weight: 700; }
 
-/* A viewport-sized standalone modal; no body scroll-lock that can shift the page. */
-#projectModal { box-sizing: border-box; overflow-y: auto; overscroll-behavior: contain; }
-#projectModal[hidden] { display: none !important; }
-#projectModal .modal { max-width: min(980px, 100%); }
-#projectModal .modal-body { min-height: 0; }
-#projectModal .modal-close { min-width: 42px; min-height: 42px; }
-
-/* A cross-origin, auto-height iframe has no useful fixed viewport for a dialog.
-   Anchor the dialog near the selected row, inside the iframe document. */
-.spark-embedded #projectModal {
-  position: absolute; inset: 0; height: 100%; min-height: 100%;
-  display: block; overflow: visible; padding: 0;
-  background: rgba(15,23,42,.42); backdrop-filter: none;
-}
-.spark-embedded #projectModal[hidden] { display: none !important; }
-.spark-embedded #projectModal .modal {
-  position: absolute; left: 50%; top: var(--spark-modal-top, 24px);
-  transform: translateX(-50%) !important; animation: none !important;
-  width: min(920px, calc(100% - 28px));
-  max-height: 640px; margin: 0; opacity: 1 !important;
-}
+/* Modal presentation intentionally uses the original style.css rules,
+   exactly as in the working SPARK file provided by the user. */
 
 @media (max-width: 940px) {
   .dashboard-container { padding: 20px; }
@@ -111,23 +92,12 @@ body { overflow-x: hidden; }
   .pagination-controls { flex-wrap: wrap; gap: 6px; }
   .pagination-btn { min-width: 40px; min-height: 40px; }
 
-  #projectModal { padding: 8px; }
-  #projectModal .modal { width: 100%; max-height: calc(100dvh - 16px); border-radius: 12px; }
-  #projectModal .modal-header { padding: 8px 12px 10px; }
-  #projectModal .modal-body { padding: 6px 12px 16px; }
-  #projectModal .drawer-header-inner, #projectModal .drawer-header-row, #projectModal .drawer-keywords-row { flex-wrap: wrap; }
-  #projectModal .drawer-title-group, #projectModal .drawer-header-content { min-width: 0; width: 100%; }
-  #projectModal #drawerTitle { font-size: clamp(18px,5vw,23px); overflow-wrap: anywhere; }
-  .spark-embedded #projectModal .modal { width: calc(100% - 16px); max-height: 590px; }
 }
 @media (max-width: 420px) {
   .dashboard-container { padding-inline: 9px; }
   .hazard-button-wrapper { width: calc(25% - 7px); }
   .hazard-button { height: 60px; }
   .faux-row { padding: 12px 10px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  #projectModal .modal { animation: none !important; }
 }
 </style>
 
@@ -641,9 +611,9 @@ body { overflow-x: hidden; }
         </div>
         <div class="collapsible-body collapsed">
           <ul class="drawer-details">
-             <li><strong>Project Status:</strong> <span id="drawerStatus"></span></li>
             <li><strong>Award Number:</strong> <span id="drawerAward"></span></li>
             <li><strong>WPO Program:</strong> <span id="drawerProgram"></span></li>
+            <li><strong>Project Status:</strong> <span id="drawerStatus"></span></li>
             <li><strong>Period of Performance:</strong> <span id="drawerPeriod"></span></li>
             <li><strong>Organizations Involved:</strong> <span id="drawerOrgs"></span></li>
             <li><strong>State(s):</strong> <span id="drawerState"></span></li>
@@ -1163,59 +1133,44 @@ function updateTransitionSectionVisibility() {
   section.style.display = anyRealValue ? '' : 'none';
 }  
   
-// Modal helpers: preserve the clicked project and avoid scroll-to-top in iframes.
+// Original SPARK modal behavior retained; only closing focus uses preventScroll.
 let lastFocusedElement = null;
-let modalScrollY = 0;
-
-function focusWithoutScroll_(element) {
-  if (!element || typeof element.focus !== 'function') return;
-  try { element.focus({ preventScroll: true }); }
-  catch (_) { element.focus(); }
-}
 
 function openModal() {
-  const modalOverlay = document.getElementById('projectModal');
+  const modalOverlay = document.getElementById("projectModal");
   if (!modalOverlay) return;
 
-  // The row clicked to open the modal is the correct focus-return target.
-  lastFocusedElement = selectedRow || document.activeElement;
-  modalScrollY = window.scrollY;
-
-  if (window.self !== window.top && selectedRow) {
-    // Fixed elements in a tall iframe appear at the top of the entire iframe,
-    // not the user's WordPress viewport. Place the modal near the clicked row.
-    const rowTop = selectedRow.getBoundingClientRect().top + window.scrollY;
-    modalOverlay.style.setProperty('--spark-modal-top', Math.max(12, Math.round(rowTop - 72)) + 'px');
-  }
+  lastFocusedElement = document.activeElement;
 
   modalOverlay.hidden = false;
-  document.body.classList.add('modal-open');
-  focusWithoutScroll_(document.getElementById('modalCloseBtn'));
-  if (window.setFrameHeight) window.setFrameHeight();
+  document.body.classList.add("modal-open");
+
+  const closeBtn = document.getElementById("modalCloseBtn");
+  if (closeBtn) closeBtn.focus();
 }
 
 function closeModal() {
-  const modalOverlay = document.getElementById('projectModal');
-  if (!modalOverlay || modalOverlay.hidden) return;
+  const modalOverlay = document.getElementById("projectModal");
+  if (!modalOverlay) return;
 
   modalOverlay.hidden = true;
-  document.body.classList.remove('modal-open');
+  document.body.classList.remove("modal-open");
 
-  // Returning focus without preventScroll can scroll the host WordPress page
-  // all the way to the iframe top when its content is taller than the screen.
-  focusWithoutScroll_(lastFocusedElement || selectedRow);
-  if (window.self === window.top && Math.abs(window.scrollY - modalScrollY) > 2) {
-    window.scrollTo({ top: modalScrollY, behavior: 'instant' });
+  // Return keyboard focus without scrolling SPARK or its WordPress iframe.
+  if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+    try {
+      lastFocusedElement.focus({ preventScroll: true });
+    } catch (_) {
+      // Older browsers: avoid calling focus() without preventScroll,
+      // which could jump the visitor back to the top of the page.
+    }
   }
 
   if (selectedRow) {
-    selectedRow.classList.remove('selected');
+    selectedRow.classList.remove("selected");
     selectedRow = null;
   }
-  lastFocusedElement = null;
-  if (window.setFrameHeight) window.setFrameHeight();
 }
-
 
 // Drawer Logic
 function openDrawer(row) {
@@ -1274,19 +1229,16 @@ function openDrawer(row) {
   setText("drawerTitle", row.dataset.title);
   setText("drawerGoal", row.dataset.goal);
   setText("drawerDescription", row.dataset.description);
-    setText("drawerStatus", row.dataset.status || "Not specified");
   setText("drawerBenefits", row.dataset.benefits);
-  
-  // Hide Project Benefits accordion when no benefits are provided
-const benefitsSection = document.getElementById("benefitsSection");
-
-if (benefitsSection) {
-  benefitsSection.style.display =
-    isBlankOrNA(row.dataset.benefits) ? "none" : "";
-}
-  
+  // Hide the entire Project Benefits accordion for blank/N/A values.
+  // Reset display on every project open so it reappears when applicable.
+  const benefitsSection = document.getElementById("benefitsSection");
+  if (benefitsSection) {
+    benefitsSection.style.display = isBlankOrNA(row.dataset.benefits) ? "none" : "";
+  }
   setText("drawerAward", row.dataset.award);
   setText("drawerProgram", row.dataset.program);
+  setText("drawerStatus", row.dataset.status || "Not specified");
   setText("drawerPeriod", row.dataset.performance);
   setText("drawerOrgs", row.dataset.orgs);
   setText("drawerPOC", row.dataset.poc);
