@@ -37,7 +37,10 @@ body { overflow-x: hidden; }
 /* SPARK in a tall WordPress iframe: keep the *original modal dimensions*,
    but allow the dialog to be placed in the part of the iframe the visitor sees.
    These rules have no effect on standalone GitHub Pages. */
+/* Reserve space for the WordPress navigation that overlays the iframe.
+   Adjust 112px if the site's sticky header height changes. */
 .spark-embedded #projectModal.modal-overlay {
+  --spark-wordpress-header-clearance: 112px;
   position: absolute;
   inset: 0;
   width: 100%;
@@ -47,8 +50,15 @@ body { overflow-x: hidden; }
   place-items: start center;
 }
 .spark-embedded #projectModal .modal {
-  /* No width, max-height, or animation overrides: use the original modal. */
+  /* Keep the original spacious modal unless the visible iframe area requires
+     its contents to scroll. Does not affect standalone GitHub Pages. */
   margin-top: var(--spark-iframe-modal-top, 20px);
+  max-height: min(88vh, 920px, var(--spark-iframe-available-height, 920px));
+}
+@media (max-width: 700px) {
+  .spark-embedded #projectModal.modal-overlay {
+    --spark-wordpress-header-clearance: 84px;
+  }
 }
 
 
@@ -1347,9 +1357,22 @@ function positionEmbeddedModal_(overlay, modal, closeButton) {
       sparkModalPositionObserver = null;
     }
 
-    // Keep the original modal's width, natural height and max-height.
+    // The cross-origin parent navigation is visually on top of the iframe.
+    // IntersectionObserver sees the viewport but cannot detect that navbar.
+    // Reserve its approximate height, without moving the WordPress page.
+    const configuredClearance = parseFloat(getComputedStyle(overlay)
+      .getPropertyValue('--spark-wordpress-header-clearance')) || 0;
+    const headerClearance = Math.max(0, Math.min(configuredClearance,
+      Math.max(0, visibleHeight - 220)));
+    const bottomClearance = 12;
+    const usableHeight = Math.max(150,
+      Math.floor(visibleHeight - headerClearance - bottomClearance));
+
+    // Only cap the height when the actually visible area is too small.
+    overlay.style.setProperty('--spark-iframe-available-height', usableHeight + 'px');
     const modalHeight = modal.getBoundingClientRect().height;
-    const dialogTop = visibleTop + Math.max(12, (visibleHeight - modalHeight) / 2);
+    const dialogTop = visibleTop + headerClearance +
+      Math.max(0, (usableHeight - modalHeight) / 2);
     const room = Math.max(12, overlay.offsetHeight - modalHeight - 12);
     overlay.style.setProperty('--spark-iframe-modal-top',
       Math.round(Math.max(12, Math.min(dialogTop, room))) + 'px');
@@ -1381,6 +1404,8 @@ function openModal() {
   if (!modalOverlay) return;
 
   lastFocusedElement = document.activeElement;
+  modalOverlay.style.removeProperty('--spark-iframe-modal-top');
+  modalOverlay.style.removeProperty('--spark-iframe-available-height');
   modalOverlay.hidden = false;
   document.body.classList.add("modal-open");
 
