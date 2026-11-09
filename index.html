@@ -13,6 +13,125 @@
 <!-- Then load your overrides -->
 <link rel="stylesheet" href="style.css" />
 
+<style id="spark-responsive-enhancements">
+/* Self-contained improvements. The existing style.css continues to supply the design. */
+html { scroll-behavior: auto; }
+body { overflow-x: hidden; }
+.dashboard-container { position: relative; min-height: 0; height: auto; overflow: visible; max-width: 1200px; }
+.dashboard-container, .dashboard-container * { box-sizing: border-box; }
+
+.spark-transfer-notice {
+  display: flex; align-items: flex-start; gap: 14px;
+  width: 100%; margin: 12px 0 24px; padding: 15px 18px;
+  color: #175c82; background: #dceff7; border: 1px solid #b9dfed;
+  border-radius: 5px; font-size: 14px; line-height: 1.55;
+}
+.spark-transfer-notice__icon {
+  flex: none; color: #54bad6; font-size: 25px; line-height: 1; margin-top: 2px;
+}
+.spark-transfer-notice p { margin: 0; min-width: 0; }
+.spark-transfer-notice strong { font-weight: 700; }
+
+/* A viewport-sized standalone modal; no body scroll-lock that can shift the page. */
+#projectModal { box-sizing: border-box; overflow-y: auto; overscroll-behavior: contain; }
+#projectModal[hidden] { display: none !important; }
+#projectModal .modal { max-width: min(980px, 100%); }
+#projectModal .modal-body { min-height: 0; }
+#projectModal .modal-close { min-width: 42px; min-height: 42px; }
+
+/* A cross-origin, auto-height iframe has no useful fixed viewport for a dialog.
+   Anchor the dialog near the selected row, inside the iframe document. */
+.spark-embedded #projectModal {
+  position: absolute; inset: 0; height: 100%; min-height: 100%;
+  display: block; overflow: visible; padding: 0;
+  background: rgba(15,23,42,.42); backdrop-filter: none;
+}
+.spark-embedded #projectModal[hidden] { display: none !important; }
+.spark-embedded #projectModal .modal {
+  position: absolute; left: 50%; top: var(--spark-modal-top, 24px);
+  transform: translateX(-50%) !important; animation: none !important;
+  width: min(920px, calc(100% - 28px));
+  max-height: 640px; margin: 0;
+}
+
+@media (max-width: 940px) {
+  .dashboard-container { padding: 20px; }
+  .top-row { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(170px, .6fr); gap: 14px; }
+  .top-row .intro-text { grid-column: 1 / -1; }
+  .top-col, .output-widget, .contact-feedback { min-width: 0; width: auto; max-width: 100%; }
+  .contact-feedback { min-width: 0; }
+  .filters-container { width: 100%; max-width: 100%; }
+  .filter-row, .filter-inputs { min-width: 0; }
+  .faux-header, .faux-row { grid-template-columns: 54px minmax(0,3fr) minmax(72px,1fr) minmax(65px,.75fr) minmax(64px,.7fr) minmax(104px,1fr); gap: 9px; padding: 12px; }
+  .faux-row .cell, .faux-header .cell { min-width: 0; }
+  .hazard-icon img { width: 50px; height: 50px; }
+}
+
+@media (max-width: 700px) {
+  .dashboard-container { padding: 14px 12px 24px; }
+  .title-with-logo { flex-wrap: wrap; gap: 10px; }
+  .title-with-logo .logo { width: min(160px, 40vw); }
+  .header h1 { font-size: clamp(22px, 5.5vw, 27px); overflow-wrap: anywhere; }
+  .top-row { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .top-row .intro-text, .top-row .output-widget, .top-row .contact-feedback { grid-column: 1; width: 100%; max-width: 100%; }
+  .top-col { min-width: 0; }
+  .spark-transfer-notice { gap: 10px; padding: 12px; margin: 14px 0 18px; font-size: 13px; }
+  .spark-transfer-notice__icon { font-size: 23px; }
+
+  .hazard-nav { justify-content: center; gap: 8px; margin: 12px 0 18px; }
+  .hazard-button-wrapper { width: calc(25% - 8px); min-width: 70px; max-width: 100px; margin: 0; }
+  .hazard-button { width: 100%; height: 67px; border-radius: 10px; }
+  .hazard-button img { max-width: 48px; max-height: 48px; object-fit: contain; }
+  .hazard-label { font-size: 10px; text-align: center; line-height: 1.2; }
+
+  .filters-container { width: 100%; padding: 14px; }
+  .filter-row, .filter-row.two-columns, .filter-row.three-columns, .filter-inputs, .filter-buttons { display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; width: 100%; min-width: 0; gap: 12px; }
+  .filter-group, .filter-row > *, .filter-inputs > *, .filter-buttons > * { width: 100%; min-width: 0; max-width: 100%; }
+  .filter-group input, .filter-group select, .filter-group .choices, .filter-group .choices__inner { max-width: 100%; min-width: 0; }
+  .filter-buttons { flex-direction: row; flex-wrap: wrap; }
+  .filter-buttons button { flex: 1 1 135px; }
+
+  .results-container { width: 100%; overflow: visible; }
+  .faux-header { display: none; }
+  .faux-row {
+    grid-template-columns: 58px minmax(0,1fr); gap: 8px 12px;
+    margin-bottom: 12px; padding: 14px 12px;
+    border: 1px solid #dce5ef; border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,48,135,.05);
+  }
+  .faux-row .cell { min-width: 0; font-size: 13px; text-align: left; overflow-wrap: anywhere; }
+  .faux-row .cell.hazard-icon { grid-column: 1; grid-row: 1 / span 2; align-self: start; }
+  .faux-row .cell.title { grid-column: 2; grid-row: 1 / span 2; }
+  .faux-row .cell.program, .faux-row .cell.status, .faux-row .cell.year, .faux-row .cell.link { grid-column: 2; }
+  .faux-row .cell.program::before { content: 'Program: '; color: #52657a; font-weight: 600; }
+  .faux-row .cell.status::before { content: 'Status: '; color: #52657a; font-weight: 600; }
+  .faux-row .cell.year::before { content: 'Year: '; color: #52657a; font-weight: 600; }
+  .faux-row .cell.hazard-icon img { width: 52px; height: 52px; }
+  .faux-row .cell.link a { display: inline-flex; max-width: 100%; white-space: normal; }
+  .pagination-controls { flex-wrap: wrap; gap: 6px; }
+  .pagination-btn { min-width: 40px; min-height: 40px; }
+
+  #projectModal { padding: 8px; }
+  #projectModal .modal { width: 100%; max-height: calc(100dvh - 16px); border-radius: 12px; }
+  #projectModal .modal-header { padding: 8px 12px 10px; }
+  #projectModal .modal-body { padding: 6px 12px 16px; }
+  #projectModal .drawer-header-inner, #projectModal .drawer-header-row, #projectModal .drawer-keywords-row { flex-wrap: wrap; }
+  #projectModal .drawer-title-group, #projectModal .drawer-header-content { min-width: 0; width: 100%; }
+  #projectModal #drawerTitle { font-size: clamp(18px,5vw,23px); overflow-wrap: anywhere; }
+  .spark-embedded #projectModal .modal { width: calc(100% - 16px); max-height: 590px; }
+}
+@media (max-width: 420px) {
+  .dashboard-container { padding-inline: 9px; }
+  .hazard-button-wrapper { width: calc(25% - 7px); }
+  .hazard-button { height: 60px; }
+  .faux-row { padding: 12px 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #projectModal .modal { animation: none !important; }
+}
+</style>
+
+
 </head>
 <body>
   <div class="dashboard-container">
@@ -57,6 +176,12 @@
         </div>
       </div>
     </div>
+
+  <!-- WPO organizational transfer notice; remains visible above the hazard filters. -->
+  <aside class="spark-transfer-notice" aria-label="Information about transferred projects">
+    <span class="material-icons spark-transfer-notice__icon" aria-hidden="true">info</span>
+    <p><strong>Notice:</strong> In October 2026, WPO moved to the National Weather Service. As part of this transition, management of several projects was transferred to other NOAA offices. Projects marked as <strong>Transferred</strong> (a purple icon depicting a box moving to the right) remain in SPARK for historical reference but are no longer managed by WPO.</p>
+  </aside>
 
  <div class="hazard-nav">
   <div class="hazard-button-wrapper">
@@ -570,35 +695,37 @@
  * and you don’t get multiple competing scrollbars.
  */
 (function () {
+  const embedded = window.self !== window.top;
+  if (embedded) document.documentElement.classList.add('spark-embedded');
+
+  let previousHeight = 0;
   function setFrameHeight() {
-    const h = Math.max(
+    const h = Math.ceil(Math.max(
       document.documentElement.scrollHeight,
       document.body.scrollHeight
-    );
+    ));
+    if (!Number.isFinite(h) || h < 1 || Math.abs(h - previousHeight) < 2) return;
+    previousHeight = h;
 
-    // Works for same-origin iframes
-    if (window.frameElement) {
-      window.frameElement.style.height = h + "px";
-      window.frameElement.style.overflow = "hidden";
-    }
+    // The same-origin case can resize itself. Cross-origin WordPress embedding
+    // needs the parent-side iframe-resizer (if used) or a host-defined iframe height.
+    try {
+      if (embedded && window.frameElement) {
+        window.frameElement.style.height = h + 'px';
+        window.frameElement.style.overflow = 'hidden';
+      }
+    } catch (_) { /* Cross-origin access may be blocked. */ }
   }
 
-  // run on load
-  window.addEventListener("load", setFrameHeight);
-
-  // run after the first render tick
+  window.addEventListener('load', setFrameHeight);
   requestAnimationFrame(setFrameHeight);
-
-  // run on any layout changes (filters/pagination/modal open/close/etc.)
-  const ro = new ResizeObserver(() => setFrameHeight());
-  ro.observe(document.documentElement);
-  ro.observe(document.body);
-
-  // optional: if animations/fonts load later
+  if (typeof ResizeObserver !== 'undefined') {
+    const ro = new ResizeObserver(setFrameHeight);
+    ro.observe(document.documentElement);
+    ro.observe(document.body);
+  }
   setTimeout(setFrameHeight, 250);
   setTimeout(setFrameHeight, 1000);
-
-  // expose if you want to call manually elsewhere
   window.setFrameHeight = setFrameHeight;
 })();
 </script>
@@ -747,13 +874,26 @@ function populateRows(projects) {
   </div>
     `;
 
+    const tableHazardImage = row.querySelector('.hazard-icon img');
+    const tableHazardSpan = row.querySelector('.hazard-icon [style*="background-image"]');
+    row.dataset.iconUrl = tableHazardImage
+      ? (tableHazardImage.getAttribute('data-src') || tableHazardImage.getAttribute('src') || '')
+      : ((tableHazardSpan && tableHazardSpan.style.backgroundImage.match(/url\(["']?([^"')]+)["']?\)/)?.[1]) || '');
     const outputsLink = row.querySelector(".view-outputs-btn");
 if (outputsLink) {
   outputsLink.addEventListener("click", (e) => e.stopPropagation());
 }
     
     // 7) drawer opener & append
-    row.addEventListener("click", () => openDrawer(row));
+    row.tabIndex = 0;
+    row.setAttribute('aria-label', 'View project details: ' + (project['Project Title'] || 'Project'));
+    row.addEventListener('click', () => openDrawer(row));
+    row.addEventListener('keydown', e => {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target === row) {
+        e.preventDefault();
+        openDrawer(row);
+      }
+    });
     rowsContainer.appendChild(row);
     allRows.push(row);
   });
@@ -1022,38 +1162,59 @@ function updateTransitionSectionVisibility() {
   section.style.display = anyRealValue ? '' : 'none';
 }  
   
-// Modal helpers (PUT THESE RIGHT ABOVE "// Drawer Logic")
+// Modal helpers: preserve the clicked project and avoid scroll-to-top in iframes.
 let lastFocusedElement = null;
+let modalScrollY = 0;
+
+function focusWithoutScroll_(element) {
+  if (!element || typeof element.focus !== 'function') return;
+  try { element.focus({ preventScroll: true }); }
+  catch (_) { element.focus(); }
+}
 
 function openModal() {
-  const modalOverlay = document.getElementById("projectModal");
+  const modalOverlay = document.getElementById('projectModal');
   if (!modalOverlay) return;
 
-  lastFocusedElement = document.activeElement;
+  // The row clicked to open the modal is the correct focus-return target.
+  lastFocusedElement = selectedRow || document.activeElement;
+  modalScrollY = window.scrollY;
+
+  if (window.self !== window.top && selectedRow) {
+    // Fixed elements in a tall iframe appear at the top of the entire iframe,
+    // not the user's WordPress viewport. Place the modal near the clicked row.
+    const rowTop = selectedRow.getBoundingClientRect().top + window.scrollY;
+    modalOverlay.style.setProperty('--spark-modal-top', Math.max(12, Math.round(rowTop - 72)) + 'px');
+  }
 
   modalOverlay.hidden = false;
-  document.body.classList.add("modal-open");
-
-  const closeBtn = document.getElementById("modalCloseBtn");
-  if (closeBtn) closeBtn.focus();
+  document.body.classList.add('modal-open');
+  focusWithoutScroll_(document.getElementById('modalCloseBtn'));
+  if (window.setFrameHeight) window.setFrameHeight();
 }
 
 function closeModal() {
-  const modalOverlay = document.getElementById("projectModal");
-  if (!modalOverlay) return;
+  const modalOverlay = document.getElementById('projectModal');
+  if (!modalOverlay || modalOverlay.hidden) return;
 
   modalOverlay.hidden = true;
-  document.body.classList.remove("modal-open");
+  document.body.classList.remove('modal-open');
 
-  if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
-    lastFocusedElement.focus();
+  // Returning focus without preventScroll can scroll the host WordPress page
+  // all the way to the iframe top when its content is taller than the screen.
+  focusWithoutScroll_(lastFocusedElement || selectedRow);
+  if (window.self === window.top && Math.abs(window.scrollY - modalScrollY) > 2) {
+    window.scrollTo({ top: modalScrollY, behavior: 'instant' });
   }
 
   if (selectedRow) {
-    selectedRow.classList.remove("selected");
+    selectedRow.classList.remove('selected');
     selectedRow = null;
   }
+  lastFocusedElement = null;
+  if (window.setFrameHeight) window.setFrameHeight();
 }
+
 
 // Drawer Logic
 function openDrawer(row) {
@@ -1097,7 +1258,17 @@ function openDrawer(row) {
   };
 
   const icon = document.getElementById("drawerIcon");
-  if (icon) icon.src = row.dataset.icon || "";
+  if (icon) {
+    const url = row.dataset.iconUrl || '';
+    if (/^https?:\/\//i.test(url)) {
+      icon.src = url;
+      icon.alt = row.dataset.hazard || 'Weather hazard';
+      icon.hidden = false;
+    } else {
+      icon.removeAttribute('src');
+      icon.hidden = true;
+    }
+  }
 
   setText("drawerTitle", row.dataset.title);
   setText("drawerGoal", row.dataset.goal);
@@ -1311,9 +1482,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modalOverlay && !modalOverlay.hidden) {
+  document.addEventListener('keydown', (e) => {
+    if (!modalOverlay || modalOverlay.hidden) return;
+    if (e.key === 'Escape') {
+      e.preventDefault();
       closeModal();
+      return;
+    }
+    if (e.key !== 'Tab') return;
+    const focusable = Array.from(modalOverlay.querySelectorAll(
+      'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    )).filter(el => el.getClientRects().length > 0);
+    if (!focusable.length) return;
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); focusWithoutScroll_(last);
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); focusWithoutScroll_(first);
     }
   });
   
