@@ -116,6 +116,176 @@ body { overflow-x: hidden; }
   .hazard-button { height: 60px; }
   .faux-row { padding: 12px 10px; }
 }
+
+
+/* ===== WHITE-CARD MODAL DESIGN PROTOTYPE (Nov 9) =====
+   Presentation only: the original iframe placement and close behavior remains intact. */
+#projectModal .modal {
+  background: #e0ecf9;
+  border-radius: 15px;
+  border: 1px solid #c7d9ec;
+  box-shadow: 0 24px 65px rgba(9, 28, 60, .24);
+}
+#projectModal .modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 6;
+  background: #e0ecf9;
+  padding: 12px 14px 0;
+}
+#projectModal .drawer-header {
+  position: relative;
+  top: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+#projectModal .drawer-header-inner {
+  position: relative;
+  padding: 19px 22px 18px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #dae5f1;
+  box-shadow: 0 2px 6px rgba(30, 67, 107, .045);
+}
+#projectModal .modal-close {
+  position: absolute;
+  top: 7px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #162336;
+  width: 36px;
+  height: 34px;
+  border-radius: 8px;
+  box-shadow: none;
+  z-index: 12;
+  font-size: 22px;
+}
+#projectModal .modal-close:hover { background: #cbdff1; color: #082a54; box-shadow: none; transform: none; }
+#projectModal .modal-close:focus-visible { outline: 3px solid #1168b0; outline-offset: 2px; }
+#projectModal .spark-modal-meta-row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;
+  margin: 0 0 14px;
+}
+#projectModal #drawer-context-chip {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 7px;
+  padding: 0; margin: 0; border: 0; background: none;
+  border-radius: 0; box-shadow: none; min-width: 0;
+}
+#projectModal #drawer-context-chip > .drawer-context-chip {
+  font-size: 11px; line-height: 1.35; padding: 4px 11px; font-weight: 650;
+}
+#projectModal .spark-modal-status {
+  display: inline-flex; align-items: center;
+  border-radius: 999px; padding: 4px 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: .015em;
+  border: 1px solid #d6e2ed; background: #edf2f7; color: #425466;
+}
+#projectModal .spark-modal-status[data-status='active'] { background: #e6f6ed; color: #176845; border-color: #bde6cb; }
+#projectModal .spark-modal-status[data-status='complete'] { background: #edf2fa; color: #335b83; border-color: #cddced; }
+#projectModal .spark-modal-status[data-status='transferred'] { background: #f1e9fa; color: #683a95; border-color: #dfcbed; }
+#projectModal .drawer-header-row { display: block; }
+#projectModal .drawer-title-group { width: 100%; }
+#projectModal .drawer-title-group h2,
+#projectModal #drawerTitle {
+  margin: 0 0 12px;
+  font-size: clamp(21px, 2.15vw, 28px);
+  line-height: 1.23; font-weight: 700;
+  color: #172536; overflow-wrap: anywhere;
+}
+#projectModal #drawerGoal {
+  margin: 0 0 18px;
+  font-size: 14px; line-height: 1.6;
+  color: #526173; overflow-wrap: anywhere;
+}
+#projectModal .drawer-keywords-row {
+  display: flex; flex-wrap: wrap; align-items: flex-end;
+  gap: 12px; justify-content: space-between;
+}
+#projectModal .keywords-left { display: flex; flex-wrap: wrap; gap: 7px; flex: 1 1 300px; align-items: center; }
+#projectModal .keyword-label { font-size: 12px; font-weight: 650; color: #56677c; }
+#projectModal .drawer-keywords { display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
+#projectModal .drawer-keywords span {
+  font-size: 11.5px; padding: 4px 10px; line-height: 1.45;
+  background: #e5f0fb; color: #285b89;
+  border-radius: 999px; box-shadow: none;
+}
+#projectModal .output-button { margin: 0; align-self: flex-end; white-space: nowrap; }
+#projectModal .output-button.disabled {
+  background: #f0f2f4; border: 1px solid #dce3e8;
+  color: #65727e; cursor: default !important; box-shadow: none;
+  pointer-events: none; font-weight: 500;
+}
+#projectModal .modal-body {
+  display: block; overflow-y: auto; overflow-x: hidden;
+  flex: 1 1 auto; min-height: 0; overscroll-behavior: contain;
+  padding: 14px 14px 18px;
+  background: #e0ecf9;
+}
+#projectModal .drawer-section {
+  background: #fff; border: 1px solid #dae5f1;
+  border-radius: 8px; margin: 0 0 14px;
+  padding: 0; box-shadow: 0 2px 6px rgba(30, 67, 107, .045);
+  transform: none;
+}
+#projectModal .drawer-section:last-child { margin-bottom: 0; }
+#projectModal .drawer-section:hover,
+#projectModal .drawer-section.open:hover {
+  background: #fff; transform: none;
+  box-shadow: 0 2px 6px rgba(30, 67, 107, .045);
+}
+#projectModal .collapsible-header {
+  display: flex; width: 100%; align-items: center; gap: 10px;
+  color: #253142; background: transparent; border: 0;
+  padding: 17px 19px; border-radius: 8px;
+  text-align: left; cursor: pointer;
+  font-family: inherit; font-size: 15px; font-weight: 700;
+}
+#projectModal .collapsible-header:hover { background: #f5f9fc; }
+#projectModal .collapsible-header:focus-visible { outline: 3px solid #0873bd; outline-offset: -3px; }
+#projectModal .collapsible-header .material-icons { color: #41566f; font-size: 20px; flex: none; }
+#projectModal .collapsible-header .spark-section-heading { flex: 1; }
+#projectModal .collapsible-header .toggle-icon { color: #64748b; opacity: .8; }
+#projectModal .collapsible-body:not(.collapsed) {
+  display: block; padding: 0 20px 20px;
+  font-size: 14px; line-height: 1.62; color: #394659;
+}
+#projectModal .collapsible-body p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+#projectModal .drawer-details,
+#projectModal .drawer-bullets {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px 22px;
+}
+#projectModal .drawer-details li,
+#projectModal .drawer-bullets li {
+  min-width: 0; margin: 0; padding: 0 0 9px;
+  border-bottom: 1px solid #edf1f5;
+  overflow-wrap: anywhere;
+}
+#projectModal .drawer-details li strong,
+#projectModal .drawer-bullets li strong { color: #253247; }
+@media (max-width: 700px) {
+  #projectModal .modal-header { padding: 8px 8px 0; }
+  #projectModal .drawer-header-inner { padding: 15px 13px 17px; }
+  #projectModal .modal-close { top: 4px; right: 5px; }
+  #projectModal #drawerTitle { font-size: clamp(18px, 5vw, 23px); }
+  #projectModal #drawerGoal { font-size: 13px; line-height: 1.5; margin-bottom: 13px; }
+  #projectModal .spark-modal-meta-row { margin-bottom: 10px; }
+  #projectModal .drawer-keywords-row { gap: 10px; }
+  #projectModal .keywords-left { flex-basis: 100%; }
+  #projectModal .modal-body { padding: 8px; }
+  #projectModal .drawer-section { margin-bottom: 9px; }
+  #projectModal .collapsible-header { padding: 14px; font-size: 14px; }
+  #projectModal .collapsible-body:not(.collapsed) { padding: 0 14px 15px; font-size: 13px; }
+  #projectModal .drawer-details, #projectModal .drawer-bullets { grid-template-columns: minmax(0, 1fr); gap: 7px; }
+  #projectModal .output-button { align-self: flex-start; }
+}
+/* ===== END WHITE-CARD MODAL PROTOTYPE ===== */
+
 </style>
 
 
@@ -581,15 +751,18 @@ body { overflow-x: hidden; }
     <p id="pagination-info" class="pagination-info"></p>
   </div>
 
-  <div class="modal-overlay" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-describedby="modalDesc" hidden>
+  <div class="modal-overlay" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" hidden>
   <div class="modal" role="document">
-    <p id="modalDesc" class="sr-only"> </p
+    
 
     <!-- Keep your existing content/IDs inside -->
     <div class="modal-header">
       <div class="drawer-header"> <!-- reuse your existing header styling if you want -->
         <div class="drawer-header-inner">
-          <div class="drawer-context-chip" id="drawer-context-chip"></div>
+          <div class="spark-modal-meta-row">
+            <div class="drawer-context-chip" id="drawer-context-chip"></div>
+            <span id="sparkModalStatus" class="spark-modal-status" aria-label="Project status"></span>
+          </div>
           <img id="drawerIcon" alt="Hazard Icon" />
           <div class="drawer-header-content">
             <div class="drawer-header-row">
@@ -621,12 +794,12 @@ body { overflow-x: hidden; }
     <div class="modal-body" id="modalBody">
       <!-- Keep ALL your collapsible sections exactly as-is -->
       <div class="drawer-section collapsible" id="detailsSection">
-        <div class="collapsible-header" onclick="toggleCollapse(this)">
-          <span class="material-icons">info</span>
-          <h3>Project Details</h3>
-          <span class="material-icons toggle-icon">expand_more</span>
-        </div>
-        <div class="collapsible-body collapsed">
+        <button type="button" class="collapsible-header" onclick="toggleCollapse(this)" aria-expanded="false" aria-controls="spark-panel-details">
+          <span class="material-icons" aria-hidden="true">info</span>
+          <span class="spark-section-heading">Project Details</span>
+          <span class="material-icons toggle-icon" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="collapsible-body collapsed" id="spark-panel-details">
           <ul class="drawer-details">
             <li><strong>Award Number:</strong> <span id="drawerAward"></span></li>
             <li><strong>WPO Program:</strong> <span id="drawerProgram"></span></li>
@@ -639,34 +812,34 @@ body { overflow-x: hidden; }
       </div>
 
       <div class="drawer-section collapsible" id="descriptionSection">
-        <div class="collapsible-header" onclick="toggleCollapse(this)">
-          <span class="material-icons">description</span>
-          <h3>Project Description</h3>
-          <span class="material-icons toggle-icon">expand_more</span>
-        </div>
-        <div class="collapsible-body collapsed">
+        <button type="button" class="collapsible-header" onclick="toggleCollapse(this)" aria-expanded="false" aria-controls="spark-panel-description">
+          <span class="material-icons" aria-hidden="true">description</span>
+          <span class="spark-section-heading">Project Description</span>
+          <span class="material-icons toggle-icon" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="collapsible-body collapsed" id="spark-panel-description">
           <p id="drawerDescription"></p>
         </div>
       </div>
 
       <div class="drawer-section collapsible" id="benefitsSection">
-        <div class="collapsible-header" onclick="toggleCollapse(this)">
-          <span class="material-icons">insights</span>
-          <h3>Project Benefits</h3>
-          <span class="material-icons toggle-icon">expand_more</span>
-        </div>
-        <div class="collapsible-body collapsed">
+        <button type="button" class="collapsible-header" onclick="toggleCollapse(this)" aria-expanded="false" aria-controls="spark-panel-benefits">
+          <span class="material-icons" aria-hidden="true">insights</span>
+          <span class="spark-section-heading">Project Benefits</span>
+          <span class="material-icons toggle-icon" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="collapsible-body collapsed" id="spark-panel-benefits">
           <p id="drawerBenefits"></p>
         </div>
       </div>
 
       <div class="drawer-section collapsible" id="transitionSection">
-        <div class="collapsible-header" onclick="toggleCollapse(this)">
-          <span class="material-icons">handshake</span>
-          <h3>Transition Information</h3>
-          <span class="material-icons toggle-icon">expand_more</span>
-        </div>
-        <div class="collapsible-body collapsed">
+        <button type="button" class="collapsible-header" onclick="toggleCollapse(this)" aria-expanded="false" aria-controls="spark-panel-transition">
+          <span class="material-icons" aria-hidden="true">handshake</span>
+          <span class="spark-section-heading">Transition Information</span>
+          <span class="material-icons toggle-icon" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="collapsible-body collapsed" id="spark-panel-transition">
           <ul class="drawer-bullets">
             <li><strong>Transition Point of Contact:</strong> <span id="drawerPOC"></span></li>
             <li><strong>Operational Partner(s):</strong> <span id="drawerPartner"></span></li>
@@ -1315,6 +1488,12 @@ function openDrawer(row) {
   setText("drawerAward", row.dataset.award);
   setText("drawerProgram", row.dataset.program);
   setText("drawerStatus", row.dataset.status || "Not specified");
+  const statusBadge = document.getElementById("sparkModalStatus");
+  if (statusBadge) {
+    const statusValue = (row.dataset.status || "").trim();
+    statusBadge.textContent = statusValue || "Status not specified";
+    statusBadge.dataset.status = statusValue.toLowerCase();
+  }
   setText("drawerPeriod", row.dataset.performance);
   setText("drawerOrgs", row.dataset.orgs);
   setText("drawerPOC", row.dataset.poc);
@@ -1352,8 +1531,12 @@ function openDrawer(row) {
       drawerLink.innerHTML = `<span class="material-icons toggle-icon">block</span>No Outputs`;
       drawerLink.title = "No outputs reported for this award.";
       drawerLink.style.cursor = "not-allowed";
+      drawerLink.setAttribute("aria-disabled", "true");
+      drawerLink.tabIndex = -1;
     } else {
       drawerLink.classList.remove("disabled");
+      drawerLink.removeAttribute("aria-disabled");
+      drawerLink.removeAttribute("tabindex");
       drawerLink.href = row.dataset.outputlink;
       drawerLink.removeAttribute("title");
       drawerLink.innerHTML = `<span class="material-icons toggle-icon">open_in_new</span>View Outputs`;
@@ -1374,11 +1557,17 @@ function closeDrawer() {
 }
 
 function collapseAllSections() {
+  // White-card prototype: core details are visible immediately.
+  // Benefits and Transition remain optional disclosures.
   document.querySelectorAll('.drawer-section.collapsible').forEach(section => {
     const body = section.querySelector('.collapsible-body');
     const icon = section.querySelector('.toggle-icon');
-    if (body) body.classList.add('collapsed');
-    if (icon) icon.textContent = 'expand_more';
+    const header = section.querySelector('.collapsible-header');
+    const initiallyOpen = section.id === 'detailsSection' || section.id === 'descriptionSection';
+    if (body) body.classList.toggle('collapsed', !initiallyOpen);
+    section.classList.toggle('open', initiallyOpen);
+    if (icon) icon.textContent = initiallyOpen ? 'expand_less' : 'expand_more';
+    if (header) header.setAttribute('aria-expanded', String(initiallyOpen));
   });
 }
   
@@ -1410,6 +1599,7 @@ function toggleCollapse(header) {
 
   // Add/remove "open" class on section
   section.classList.toggle('open', !isCollapsed);
+  header.setAttribute('aria-expanded', String(!isCollapsed));
 }
 
 // Toggle filters
