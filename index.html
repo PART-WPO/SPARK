@@ -32,8 +32,25 @@ body { overflow-x: hidden; }
 .spark-transfer-notice p { margin: 0; min-width: 0; }
 .spark-transfer-notice strong { font-weight: 700; }
 
-/* Modal presentation intentionally uses the original style.css rules,
-   exactly as in the working SPARK file provided by the user. */
+/* Modal presentation intentionally uses the original style.css rules. */
+
+/* SPARK in a tall WordPress iframe: keep the *original modal dimensions*,
+   but allow the dialog to be placed in the part of the iframe the visitor sees.
+   These rules have no effect on standalone GitHub Pages. */
+.spark-embedded #projectModal.modal-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  padding: 0 20px;
+  place-items: start center;
+}
+.spark-embedded #projectModal .modal {
+  /* No width, max-height, or animation overrides: use the original modal. */
+  margin-top: var(--spark-iframe-modal-top, 20px);
+}
+
 
 @media (max-width: 940px) {
   .dashboard-container { padding: 20px; }
@@ -150,7 +167,7 @@ body { overflow-x: hidden; }
   <!-- WPO organizational transfer notice; remains visible above the hazard filters. -->
   <aside class="spark-transfer-notice" aria-label="Information about transferred projects">
     <span class="material-icons spark-transfer-notice__icon" aria-hidden="true">info</span>
-    <p><strong>Notice:</strong> In October 2026, WPO moved to the National Weather Service. As part of this transition, several projects were transferred to other NOAA offices. Projects marked as <strong>Transferred</strong> (a purple icon depicting a box moving to the right) remain in SPARK for historical reference but are no longer managed by WPO.</p>
+    <p><strong>Notice:</strong> In October 2026, WPO moved to the National Weather Service. As part of this transition, management of several projects was transferred to other NOAA offices. Projects marked as <strong>Transferred</strong> (a purple icon depicting a box moving to the right) remain in SPARK for historical reference but are no longer managed by WPO.</p>
   </aside>
 
  <div class="hazard-nav">
@@ -1136,17 +1153,72 @@ function updateTransitionSectionVisibility() {
 // Original SPARK modal behavior retained; only closing focus uses preventScroll.
 let lastFocusedElement = null;
 
+// When SPARK fills a tall iframe, "position: fixed" means fixed to the
+// iframe's viewport, not the visible WordPress page. IntersectionObserver
+// reveals which slice is visible even if WordPress and GitHub are cross-origin.
+// It positions the SAME full-sized modal in that slice, without scrolling.
+let sparkModalPositionObserver = null;
+
+function positionEmbeddedModal_(overlay, modal, closeButton) {
+  if (sparkModalPositionObserver) {
+    sparkModalPositionObserver.disconnect();
+    sparkModalPositionObserver = null;
+  }
+
+  let positioned = false;
+  const finish = (visibleTop, visibleHeight) => {
+    if (positioned || overlay.hidden) return;
+    positioned = true;
+    if (sparkModalPositionObserver) {
+      sparkModalPositionObserver.disconnect();
+      sparkModalPositionObserver = null;
+    }
+
+    // Keep the original modal's width, natural height and max-height.
+    const modalHeight = modal.getBoundingClientRect().height;
+    const dialogTop = visibleTop + Math.max(12, (visibleHeight - modalHeight) / 2);
+    const room = Math.max(12, overlay.offsetHeight - modalHeight - 12);
+    overlay.style.setProperty('--spark-iframe-modal-top',
+      Math.round(Math.max(12, Math.min(dialogTop, room))) + 'px');
+
+    // Focus the close control without allowing either document to auto-scroll.
+    if (closeButton) {
+      try { closeButton.focus({ preventScroll: true }); } catch (_) { /* no forced fallback */ }
+    }
+  };
+
+  if (typeof IntersectionObserver !== 'undefined') {
+    sparkModalPositionObserver = new IntersectionObserver(entries => {
+      const e = entries[0];
+      if (!e || !e.isIntersecting || e.intersectionRect.height < 1) return;
+      const top = e.intersectionRect.top - e.boundingClientRect.top;
+      finish(top, e.intersectionRect.height);
+    }, { threshold: 0 });
+    sparkModalPositionObserver.observe(overlay);
+  } else {
+    // Older browsers: approximate using the selected project's position.
+    const position = selectedRow ? selectedRow.getBoundingClientRect().top : 20;
+    const top = Math.max(12, position - modal.getBoundingClientRect().height / 2);
+    finish(top, window.innerHeight);
+  }
+}
+
 function openModal() {
   const modalOverlay = document.getElementById("projectModal");
   if (!modalOverlay) return;
 
   lastFocusedElement = document.activeElement;
-
   modalOverlay.hidden = false;
   document.body.classList.add("modal-open");
 
   const closeBtn = document.getElementById("modalCloseBtn");
-  if (closeBtn) closeBtn.focus();
+  if (window.self !== window.top) {
+    const modal = modalOverlay.querySelector('.modal');
+    if (modal) positionEmbeddedModal_(modalOverlay, modal, closeBtn);
+  } else if (closeBtn) {
+    // Standalone display unchanged except for suppressing needless scrolling.
+    try { closeBtn.focus({ preventScroll: true }); } catch (_) { /* no forced fallback */ }
+  }
 }
 
 function closeModal() {
@@ -1155,6 +1227,10 @@ function closeModal() {
 
   modalOverlay.hidden = true;
   document.body.classList.remove("modal-open");
+  if (sparkModalPositionObserver) {
+    sparkModalPositionObserver.disconnect();
+    sparkModalPositionObserver = null;
+  }
 
   // Return keyboard focus without scrolling SPARK or its WordPress iframe.
   if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
